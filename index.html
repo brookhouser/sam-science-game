@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#5b3df5">
+<title>Sam's Science Lab Game</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;background:linear-gradient(160deg,#5b3df5 0%,#1fa2ff 55%,#12d8a4 100%);background-attachment:fixed;min-height:100vh;color:#1d1b3a}
+#app{max-width:760px;margin:0 auto;padding:10px 12px 40px}
+.top{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.95);border-radius:18px;padding:10px 12px;box-shadow:0 4px 0 rgba(0,0,0,.15)}
+.top .logo{font-size:26px}
+.top .who{flex:1;min-width:0}
+.top .lvl{font-weight:800;font-size:15px}
+.bar{height:12px;background:#e3e0ff;border-radius:8px;overflow:hidden;margin-top:4px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#ff9f1c,#ff3d81);border-radius:8px;transition:width .4s}
+.tbtn{border:0;background:#efeaff;border-radius:12px;padding:8px 10px;font-size:18px;cursor:pointer}
+h1{color:#fff;text-align:center;margin:16px 0 4px;font-size:28px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.sub{color:#fff;text-align:center;margin:0 0 12px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0 12px}
+.chip{border:0;border-radius:20px;padding:8px 14px;font-weight:800;background:rgba(255,255,255,.35);color:#fff;cursor:pointer;font-size:14px}
+.chip.on{background:#fff;color:#5b3df5;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+.mode{border:0;border-radius:20px;padding:14px 8px;color:#fff;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.22);text-align:center;min-height:104px;transition:transform .08s}
+.mode:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.22)}
+.mode .e{display:block;font-size:32px;margin-bottom:4px}
+.mode small{display:block;font-weight:600;font-size:12px;opacity:.95;margin-top:2px}
+.c1{background:#ff3d81}.c2{background:#ff9f1c}.c3{background:#7c4dff}.c4{background:#00b894}.c5{background:#0984e3}.c6{background:#e17055}.c7{background:#d63031}.c8{background:#6c5ce7}.c9{background:#00a8a8}
+.card{background:#fff;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 5px 0 rgba(0,0,0,.15)}
+.card h2{margin:0 0 8px;font-size:20px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.stat{flex:1;min-width:90px;background:#f4f1ff;border-radius:14px;padding:8px;text-align:center}
+.stat b{display:block;font-size:22px;color:#5b3df5}
+.stat span{font-size:12px;font-weight:700}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-size:16px;font-weight:800;color:#fff;background:#5b3df5;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.btn:active{transform:translateY(2px)}
+.btn.g{background:#00b894}.btn.r{background:#ff3d81}.btn.o{background:#ff9f1c}.btn.w{background:#eee;color:#333}
+.btn[disabled]{opacity:.45}
+.hud{display:flex;gap:8px;align-items:center;color:#fff;font-weight:800;margin:10px 0}
+.hud .sp{flex:1}
+.hud .pill{background:rgba(0,0,0,.25);border-radius:14px;padding:6px 10px}
+.q{font-size:20px;font-weight:800;line-height:1.3}
+.q small{display:block;font-size:13px;color:#6b64a8;margin-bottom:4px}
+.ch{display:block;width:100%;text-align:left;border:3px solid #e3e0ff;background:#fff;border-radius:14px;padding:12px;margin:8px 0;font-size:16px;font-weight:700;cursor:pointer;color:#1d1b3a}
+.ch:active{background:#f4f1ff}
+.ch.ok{background:#c9f7e2;border-color:#00b894}
+.ch.bad{background:#ffd6e3;border-color:#ff3d81}
+.ch[disabled]{cursor:default}
+.fb{margin-top:10px;padding:10px;border-radius:12px;font-weight:700}
+.fb.ok{background:#c9f7e2}.fb.bad{background:#ffe0e9}
+.flash{perspective:900px;margin:12px 0}
+.fc{min-height:230px;border-radius:22px;padding:20px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.2);background:linear-gradient(135deg,#ffd166,#ff9f1c);color:#3a2300;animation:pop .25s}
+.fc.back{background:linear-gradient(135deg,#a0f0d0,#00b894);color:#00332a;font-size:19px}
+.fc small{display:block;font-size:13px;font-weight:700;margin-bottom:8px;opacity:.75}
+@keyframes pop{from{transform:scale(.94);opacity:.5}to{transform:scale(1);opacity:1}}
+.mgrid{display:grid;grid-template-columns:1fr 1.5fr;gap:8px}
+.mt{border:3px solid #e3e0ff;background:#fff;border-radius:12px;padding:10px 8px;font-weight:800;font-size:14px;cursor:pointer;text-align:left;color:#1d1b3a}
+.mt.sel{border-color:#7c4dff;background:#efeaff}
+.mt.done{background:#c9f7e2;border-color:#00b894;opacity:.7}
+.mt.wrong{animation:shake .35s;border-color:#ff3d81;background:#ffd6e3}
+.mt.def{font-weight:600;font-size:13px}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.steps{list-style:none;padding:0;margin:8px 0}
+.steps li{background:#c9f7e2;border-radius:12px;padding:10px;margin:6px 0;font-weight:700}
+.bank{display:flex;flex-direction:column;gap:6px}
+.pill2{display:inline-block;background:#efeaff;border-radius:16px;padding:6px 12px;margin:3px;font-weight:700;font-size:14px}
+.pill2.sel{background:#7c4dff;color:#fff}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.badge{background:#f4f1ff;border-radius:14px;padding:8px;text-align:center;font-size:12px;font-weight:700;opacity:.4;filter:grayscale(1)}
+.badge.on{opacity:1;filter:none;background:#fff3c4}
+.badge b{display:block;font-size:26px}
+.toast{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:#1d1b3a;color:#fff;padding:10px 16px;border-radius:16px;font-weight:800;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.3);max-width:90%;text-align:center;animation:pop .25s}
+.back{color:#fff;background:rgba(0,0,0,.25);border:0;border-radius:14px;padding:8px 12px;font-weight:800;cursor:pointer;font-size:15px}
+label.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eee;font-weight:600;cursor:pointer}
+label.chk input{width:22px;height:22px;flex:none}
+details{margin:6px 0}
+summary{font-weight:800;cursor:pointer;padding:4px 0}
+.tl{margin:4px 0 10px;font-size:14px}
+.tl b{color:#5b3df5}
+.hand{font-size:15px}
+.big{font-size:44px;text-align:center}
+.tag{font-size:11px;background:#efeaff;border-radius:8px;padding:2px 6px;margin-left:4px;color:#5b3df5;font-weight:800}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+var SAM_SRC = {LT:'Living Things.pdf', NB:'Notebook 1-9.pdf', S2:'sam science 2.pdf'};
+var SAM_TOPICS = [
+  {id:'life', name:'Living Things', emoji:'\uD83D\uDC38'},
+  {id:'levels', name:'Levels of Life', emoji:'\uD83E\uDDEC'},
+  {id:'scope', name:'Microscope', emoji:'\uD83D\uDD2C'}
+];
+// [term, definition, topic, sources]
+var SAM_PAIRS = [
+ ['Organism','An individual living thing (an individual form of life). Examples: humans, mushrooms, trees, bacteria, sea jellies, and whales.','levels',['S2','NB']],
+ ['Biotic','A living part of an environment, such as a plant, animal, or fungus. Example: a person.','life',['S2','NB']],
+ ['Abiotic','A nonliving part of an environment, such as water, air, or sunlight. It was never alive. Example: a rock.','life',['S2','NB']],
+ ['Stimulus','A change in an organism\'s environment that causes a reaction (something that causes a response). Example: the brightness of the sun.','life',['LT','S2','NB']],
+ ['Response','How an organism reacts to a stimulus. Example: squinting your eyes in bright sun.','life',['LT']],
+ ['Respond','To react to a change in the environment.','life',['S2','NB']],
+ ['Grow','To increase in size or number.','life',['S2','NB']],
+ ['Growth','An increase in mass. It also means an increase in size and in the number of cells.','life',['LT']],
+ ['Develop','To change over time by becoming more complex or mature.','life',['S2','NB']],
+ ['Reproduce','To produce offspring.','life',['S2','NB']],
+ ['Reproduction','The process of making more of the same kind of organism. Because all living things eventually die, reproduction allows life to continue.','life',['LT']],
+ ['Unicellular','Made of one cell.','life',['S2','NB']],
+ ['Multicellular','Made of many cells.','life',['S2','NB']],
+ ['Homeostasis','The process of keeping stable internal conditions despite outside changes. Organ systems work together to maintain this stability.','life',['S2','NB']],
+ ['Virus','A tiny thing that has some characteristics of life, but not all of them. Most are not living.','life',['NB']],
+ ['Cell','The smallest unit of a living thing and the simplest structure that can carry out all the life functions (the smallest form of life that can perform all functions of a living organism, like bacteria).','levels',['LT','S2','NB']],
+ ['Tissue','A group of similar cells that work together to perform a function.','levels',['S2','NB']],
+ ['Organ','A structure made of different tissues that works to perform a specific job. Examples: lungs, heart.','levels',['S2','NB']],
+ ['Organ system','A group of organs that work together to complete major body functions.','levels',['S2','NB']],
+ ['Eyepiece (ocular lens)','The lens you look through. It magnifies the specimen 10x.','scope',['NB','S2']],
+ ['Body tube','Connects the objectives.','scope',['NB','S2']],
+ ['Revolving nosepiece','Holds the objectives and rotates between the objective lenses.','scope',['NB','S2']],
+ ['Low-power objective','The shortest objective lens, 4X. Start here (total magnification 40X).','scope',['NB','S2']],
+ ['Medium-power objective','The 10X objective lens (total magnification 100X).','scope',['NB','S2']],
+ ['High-power objective','The longest objective lens, 40X (total magnification 400X). Use only the fine adjustment knob with it.','scope',['NB','S2']],
+ ['Stage','The platform that holds the slide. It has a window for light.','scope',['NB','S2']],
+ ['Stage clips','Hold the slide in place on the stage.','scope',['NB','S2']],
+ ['Diaphragm','Under the stage. It turns to adjust the light and contrast.','scope',['NB','S2']],
+ ['Light source','Provides light that shines upward.','scope',['NB','S2']],
+ ['Condenser','The glass part of the stage that focuses light. Center the specimen over it.','scope',['NB']],
+ ['Arm','Allows the user to carry the microscope (carry it by the arm and the base).','scope',['NB','S2']],
+ ['Base','Supports the microscope.','scope',['NB','S2']],
+ ['Coarse adjustment knob','The large knob that makes large focus changes. It raises and lowers the stage.','scope',['NB','S2']],
+ ['Fine adjustment knob','The small knob that makes small focus adjustments. It is the only knob to use at high power.','scope',['NB','S2']],
+ ['Lens tissue','Used to clean the objectives, the slide, and the stage.','scope',['NB']],
+ ['Compound light microscope','The type of microscope used in most science classes.','scope',['NB','S2']],
+ ['Total magnification','The ocular (eyepiece) power multiplied by the objective power.','scope',['NB','S2'] ]
+];
+// [question, answer, pool, topic, sources, wrong answers]
+var SAM_FACTS = [
+ ['How many characteristics of life do all living things share?','5','num','life',['LT','NB'],['3','4','7']],
+ ['Which characteristic of life is shown when you squint after going from a dark room into bright sunshine?','Respond to the environment','char','life',['LT'],[]],
+ ['A butterfly goes through several different stages. Which characteristic of life is this?','Grow and develop','char','life',['NB'],[]],
+ ['Without this characteristic, a species would go extinct. Which one is it?','Reproduce','char','life',['NB'],[]],
+ ['Plants use light, animals eat, and some bacteria use chemicals. Which characteristic of life is this?','Use energy','char','life',['NB','LT'],[]],
+ ['Living things are made of at least one cell, the building blocks of life. Which characteristic is this?','Made of cells','char','life',['NB','LT'],[]],
+ ['An animal seeking shade when it is too hot shows which characteristic of life?','Respond to the environment','char','life',['NB'],[]],
+ ['In the frog pictures, a frog changes from tadpoles to a small frog. Which characteristic is this?','Grow and develop','char','life',['LT'],[]],
+ ['In the frog pictures, a frog jumps to catch a fly. Which characteristic is this?','Use energy','char','life',['LT'],[]],
+ ['In the frog pictures, two frogs sit together. Which characteristic is this?','Reproduce','char','life',['LT'],[]],
+ ['In the frog pictures, a frog has a magnified circle showing tiny parts. Which characteristic is this?','Made of cells','char','life',['LT'],[]],
+ ['Living things take materials from their surroundings, such as food, water, and gases. What do they use the materials for?','To get energy to carry out all of the life functions','sent','life',['LT'],['To stop responding to a stimulus','To turn into a virus','Nothing, only plants use materials']],
+ ['Why does reproduction matter for life?','All living things eventually die, so reproduction allows life to continue','sent','life',['LT'],['Living things never die, so they need more room','It is the only way to get energy','It is how living things respond to a stimulus']],
+ ['The brightness of the sun is an example of a ____.','stimulus','term2','life',['LT','NB'],['response','organism','tissue']],
+ ['Squinting your eyes in bright sun is an example of a ____.','response','term2','life',['LT'],['stimulus','cell','organ']],
+ ['Why do scientists generally not consider viruses to be living?','They are tiny things that have some characteristics of life, but not all of them','sent','life',['NB'],['They are too big to be alive','They are made of many cells but cannot grow','They are abiotic rocks']],
+ ['Brine shrimp are relatives of which animals?','Crabs and lobsters','crab','life',['NB'],['Frogs and snakes','Whales and sea jellies','Mushrooms and trees']],
+ ['In Sam\'s notes, what is adaptation?','When a living thing needs to be able to survive in its area','sent','life',['NB'],['When a cell splits into two tissues','When a stimulus causes a response','When organs work together']],
+ ['Why are you and I biotic, but a rock is abiotic?','We are living organisms, but a rock is nonliving and was never alive','sent','life',['NB'],['A rock is a tissue and we are not','We are made of rocks','A rock can respond to a stimulus']],
+ ['What should a strong biotic and abiotic explanation include?','Your criteria (rules for deciding) and at least one biotic and one abiotic example','sent','life',['NB'],['Only the vocabulary words','Just a drawing of a rock','A list of microscope parts']],
+ ['What are the levels of organization of life, from simplest to most complex?','Cell, tissue, organ, organ system, organism','order','levels',['NB','S2'],['Organ, cell, tissue, organism, organ system','Tissue, cell, organ system, organ, organism','Cell, organ, tissue, organism, organ system']],
+ ['Which level of organization is the simplest?','Cell','lvl','levels',['NB','S2'],['Tissue','Organ','Organ system']],
+ ['Which level of organization is the most complex?','Organism','lvl','levels',['NB','S2'],['Cell','Tissue','Organ system']],
+ ['The lungs and the heart are examples of which level?','Organ','lvl','levels',['NB'],['Cell','Tissue','Organ system']],
+ ['The mouth, esophagus, stomach, pancreas, liver, gallbladder, small intestine, and large intestine working together are an example of which level?','Organ system','lvl','levels',['NB'],['Cell','Tissue','Organ']],
+ ['Which of these is one of the organs in Sam\'s organ system example?','Pancreas','organs','levels',['NB'],['Eyepiece','Stage clips','Diaphragm']],
+ ['Which of these is an example of a cell (the smallest form of life that can perform all functions of a living organism)?','Bacteria','organs','levels',['NB'],['Lungs','Stomach','Liver']],
+ ['An organism can be made of multiple organ systems working together to maintain stability. What is that stability called?','Homeostasis','term3','levels',['NB','S2'],['Reproduction','Stimulus','Tissue']],
+ ['A group of the same cells working together to perform a similar function is a ____.','Tissue','lvl','levels',['NB','S2'],['Organ','Cell','Organism']],
+ ['How much does the ocular lens (eyepiece) magnify the specimen?','10x','mag','scope',['NB'],['4x','40x','100x']],
+ ['What is the power of the low-power objective?','4X','mag','scope',['NB'],['10X','40X','100X']],
+ ['What is the power of the medium-power objective?','10X','mag','scope',['NB'],['4X','40X','400X']],
+ ['What is the power of the high-power objective?','40X','mag','scope',['NB','S2'],['4X','10X','100X']],
+ ['How do you calculate total magnification?','Multiply the ocular (eyepiece) power by the objective power','sent','scope',['NB'],['Add the ocular power and the objective power','Divide the objective power by the ocular power','Use only the objective power']],
+ ['A 10X eyepiece with the 4X objective gives what total magnification?','40x','tot','scope',['NB'],['14x','100x','400x']],
+ ['A 10X eyepiece with the 10X objective gives what total magnification?','100x','tot','scope',['NB'],['20x','40x','400x']],
+ ['A 10X eyepiece with the 40X objective gives what total magnification?','400x','tot','scope',['NB'],['50x','100x','4000x']],
+ ['A 10X eyepiece with a 50x objective gives what total magnification?','500x','tot','scope',['NB'],['60x','400x','5000x']],
+ ['Which objective do you start with when focusing on a specimen?','Low-power (4X)','obj','scope',['NB'],['Medium-power (10X)','High-power (40X)','Any one you like']],
+ ['When using the high-power objective, which knob can you use to focus?','Fine adjustment knob','knob','scope',['NB'],['Coarse adjustment knob','Both knobs','The diaphragm']],
+ ['Which knob do you use to lower the stage when getting started?','Coarse adjustment knob','knob','scope',['NB'],['Fine adjustment knob','Diaphragm','Stage clips']],
+ ['What type of microscope is used in most science classes?','Compound light microscope','type','scope',['NB','S2'],['Electron microscope','Stereo microscope','Pocket magnifier']],
+ ['You must carry the microscope by the ____.','Arm and base','carry','scope',['NB'],['Stage and body tube','Eyepiece and stage','Only the arm']],
+ ['The objectives are attached and rotated using the ____.','Revolving nosepiece','partname','scope',['NB'],['Body tube','Stage clips','Diaphragm']],
+ ['Compared to the naked eye, how does the letter "e" look through the microscope?','Upside down and backward (inverted)','look','scope',['NB'],['Right side up and the same','Only sideways','Smaller but upright']],
+ ['You move the slide toward you (down). Which way does the image seem to move?','Away from you','dir','scope',['NB'],['Toward you','To the left','To the right']],
+ ['You push the slide away from you (up). Which way does the image seem to move?','Toward you','dir','scope',['NB'],['Away from you','To the left','To the right']],
+ ['You move the slide to the right. Which way does the image seem to move?','To the left','dir','scope',['NB'],['To the right','Toward you','Away from you']],
+ ['You want the image to move to the right. Which way do you move the slide?','To the left','dir','scope',['NB'],['To the right','Toward you','Away from you']],
+ ['Before you move to a higher power, what must be true about the specimen?','It is centered and focused at low power first','sent','scope',['NB'],['It is already at the edge of the view','The high-power objective is already in place','The stage is at its highest point']],
+ ['When putting the microscope away, which objective do you rotate into place first?','The 4X objective','obj2','scope',['NB'],['The 10X objective','The 40X objective','Any objective']],
+ ['When putting the microscope away, which way do you turn the coarse adjustment knob to lower the stage?','Away from the arm','away','scope',['NB'],['Toward the arm','Toward the stage clips','Do not touch it']],
+ ['What do you use to clean the lens and stage if there is moisture or debris?','Lens tissue','clean','scope',['NB'],['A paper towel','Your shirt','Running water']],
+ ['What do you do with the cord when putting the microscope away?','Wrap it up, wrap the cord-keeper around it 2 times, and hang it on the body tube','sent','scope',['NB'],['Leave it on the floor','Hang it on the stage clips','Wrap it around the eyepiece']],
+ ['What specimen did Sam look at in the microscope lab?','The letter "e"','spec','scope',['NB'],['A brine shrimp','A frog','A virus']],
+ ['If you could not move the 40X objective into place, what do you write in the circle?','too close','sent','scope',['NB'],['400x','upside down','stop']]
+];
+var SAM_SEQS = [
+ {title:'Levels of organization (simplest to most complex)', topic:'levels', src:['NB','S2'], steps:['Cell','Tissue','Organ','Organ system','Organism']},
+ {title:'Getting started with the microscope', topic:'scope', src:['NB'], steps:[
+  'Lower the stage using the coarse adjustment knob.',
+  'Make sure the low-power objective (4X) is clicked into place.',
+  'Clean the objectives and slide with lens tissue.',
+  'Center the slide specimen over the condenser on the stage and secure it with the clips.',
+  'Look through the ocular lens and use the coarse adjustment knob to raise the stage until the specimen is in view.',
+  'Adjust the diaphragm for light and contrast.']},
+ {title:'Going from low power to higher power', topic:'scope', src:['NB'], steps:[
+  'Center and focus the specimen at low power first.',
+  'Slowly rotate the revolving nosepiece to the next objective, without skipping.',
+  'Use only the fine adjustment knob to sharpen the focus.']},
+ {title:'Putting the microscope away', topic:'scope', src:['NB'], steps:[
+  'Slowly rotate the nosepiece so the 4X objective is in place.',
+  'Lower the stage by turning the coarse adjustment knob away from the arm.',
+  'Remove the slide.',
+  'Use lens tissue to clean the lens and stage if there is moisture or debris.',
+  'Wrap up the cord, wrap the cord-keeper around it 2 times, and hang it on the body tube.',
+  'Use the arm and base to carry the microscope to the cabinet.']}
+];
+// [name, bucket, sources]
+var SAM_SORT = [
+ ['Person','biotic',['NB']],['Cow','biotic',['NB']],['Plant','biotic',['S2']],['Animal','biotic',['S2']],['Fungus','biotic',['S2']],
+ ['Mushroom','biotic',['NB']],['Tree','biotic',['NB']],['Bacteria','biotic',['NB']],['Sea jelly','biotic',['NB']],['Whale','biotic',['NB']],
+ ['Rock','abiotic',['NB']],['Water','abiotic',['S2']],['Air','abiotic',['S2']],['Sunlight','abiotic',['S2']],['Pen','abiotic',['NB']]
+];
+var SAM_FIVE = {
+ right:['Able to reproduce','Responds to stimuli','Made up of cells','Able to grow and develop','Able to use energy'],
+ decoys:['Tissue','Homeostasis','Diaphragm','Stage','Organ']
+};
+var SAM_LOOKUP = ['Autotroph','Biology','Evolution','Heterotroph','Metabolism','Slide','Glass coverslip'];
+// [text, group, sources]
+var SAM_GOALS = [
+ ['Name the 5 characteristics of a living organism','Living things',['NB']],
+ ['Give an example of each of the 5 characteristics of a living organism','Living things',['NB']],
+ ['Identify and give examples of each characteristic of life','Living things',['NB']],
+ ['Know all 20 vocabulary words on the study guide','Living things',['NB']],
+ ['Name each microscope part and say its purpose (arm, body tube, coarse and fine focus knobs, revolving nosepiece, low, medium and high power objectives, light source, diaphragm, stage, stage clips, eyepiece)','Microscope',['NB','S2']],
+ ['Steps to go from low power to high power','Microscope',['NB','S2']],
+ ['What type of microscope we use','Microscope',['NB','S2']],
+ ['Calculate magnification and total magnification of a specimen','Microscope',['NB','S2']],
+ ['How to carry, set up, use, clean, and put away a microscope','Microscope',['NB','S2']],
+ ['Know the definitions of the levels of organization, simplest to most complex','Levels of life',['NB']],
+ ['Identify and give examples of each level','Levels of life',['NB']],
+ ['Compare and contrast: how are the levels alike, and how are they different?','Levels of life',['NB']],
+ ['Give the levels of organization of a human, with examples of each level','Levels of life',['NB']]
+];
+var SAM_SKIPPED = {text:'Introduction to experiments and variables (crossed out on Sam\'s study guide, so not on this test): variables of an experiment, variables of a fair experiment, why variables matter when designing an experiment, setting up a good experiment.', src:['NB']};
+var SAM_TIPS = [
+ 'The best way to prepare for a test is to teach someone, again and again, using your working memory.',
+ 'Get a good night\'s sleep before the test.',
+ 'Eat a nutritious breakfast with protein and healthy fats.',
+ 'Rereading your notes gives a false understanding. Quiz yourself instead!',
+ 'Cramming is ineffective. Study a little bit each day.',
+ 'Teach an adult for at least 15 minutes to get ready for the science test.',
+ 'Use your ISN (Interactive Science Notebook) and your EdPuzzles to study.'
+];
+var SAM_ITEMS = (function(){
+  var items = [], n;
+  SAM_PAIRS.forEach(function(p,i){ items.push({id:'p'+(i+1), kind:'pair', term:p[0], def:p[1], topic:p[2], src:p[3]}); });
+  SAM_FACTS.forEach(function(f,i){ items.push({id:'f'+(i+1), kind:'fact', q:f[0], a:f[1], pool:f[2], topic:f[3], src:f[4], w:f[5]}); });
+  SAM_SEQS.forEach(function(s,i){ items.push({id:'s'+(i+1), kind:'seq', title:s.title, steps:s.steps, topic:s.topic, src:s.src}); });
+  SAM_SORT.forEach(function(s,i){ items.push({id:'b'+(i+1), kind:'sort', name:s[0], bucket:s[1], topic:'life', src:s[2]}); });
+  items.push({id:'five', kind:'five', topic:'life', src:['LT','NB'], right:SAM_FIVE.right, decoys:SAM_FIVE.decoys});
+  SAM_LOOKUP.forEach(function(t,i){ items.push({id:'l'+(i+1), kind:'lookup', term:t, topic:i<5?'life':'scope', src:['NB']}); });
+  SAM_GOALS.forEach(function(g,i){ items.push({id:'g'+(i+1), kind:'goal', text:g[0], group:g[1], topic:'goal', src:g[2]}); });
+  items.push({id:'g0', kind:'skipped', text:SAM_SKIPPED.text, topic:'goal', src:SAM_SKIPPED.src});
+  return items;
+})();
+if (typeof module !== 'undefined') { module.exports = {SAM_SRC:SAM_SRC, SAM_TOPICS:SAM_TOPICS, SAM_ITEMS:SAM_ITEMS, SAM_FIVE:SAM_FIVE, SAM_TIPS:SAM_TIPS, SAM_SEQS:SAM_SEQS, SAM_SORT:SAM_SORT}; }
+
+</script>
+<script>
+(function(){
+"use strict";
+var KEY='samSciGame.v1';
+var VOCAB20=['Abiotic','Autotroph','Biology','Biotic','Cell','Develop','Evolution','Grow','Heterotroph','Homeostasis','Metabolism','Multicellular','Organ','Organ system','Organism','Reproduce','Respond','Stimulus','Tissue','Unicellular'];
+var LEVELNAMES=['Cell Cadet','Tissue Tinkerer','Organ Operator','System Specialist','Organism Expert','Microscope Master','Lab Legend'];
+var SRCNAME={LT:'Living Things',NB:'Notebook 1-9',S2:'sam science 2'};
+var BADGES=[
+ ['first','\uD83C\uDF31','First Steps','Answer your first question'],
+ ['s5','\uD83D\uDD25','Hot Streak','5 right in a row'],
+ ['s10','\u26A1','Lightning','10 right in a row'],
+ ['s20','\uD83D\uDE80','Unstoppable','20 right in a row'],
+ ['perfect','\uD83C\uDFAF','Perfect Quiz','10 out of 10 in a quiz'],
+ ['speed150','\u23F1\uFE0F','Speed Demon','150 points in a speed round'],
+ ['speed300','\uD83C\uDFC6','Speed Legend','300 points in a speed round'],
+ ['match','\uD83E\uDDE9','Match Maker','Finish matching with no mistakes'],
+ ['sorter','\uD83D\uDDC2\uFE0F','Sorting Star','Sort 10 in a row: biotic or abiotic'],
+ ['order','\uD83D\uDCCB','Order Ace','Put a whole list in order with no mistakes'],
+ ['five','\u270B','Give Me 5','Find all 5 characteristics of life'],
+ ['comeback','\uD83D\uDCAA','Comeback Kid','Fix a missed item'],
+ ['half','\uD83D\uDD2C','Halfway Scientist','Master half of all items'],
+ ['all','\uD83E\uDDEC','Science Champion','Master every item'],
+ ['days3','\uD83D\uDCC5','3 Day Streak','Study on 3 days'],
+ ['lvl5','\uD83E\uDD47','Level 5','Reach level 5']
+];
+var ITEMS=SAM_ITEMS, BYID={};
+ITEMS.forEach(function(it){BYID[it.id]=it;});
+var PAIRS=ITEMS.filter(function(i){return i.kind==='pair';});
+
+/* ---------- storage ---------- */
+var S;
+function fresh(){return {xp:0,stats:{},best:{speed:0,match:0},bestStreak:0,badges:{},days:[],checks:{},sound:false,topic:'all',answered:0,vk:{}};}
+function load(){try{var r=localStorage.getItem(KEY);S=r?JSON.parse(r):fresh();}catch(e){S=fresh();}
+ var f=fresh();for(var k in f){if(S[k]===undefined)S[k]=f[k];}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+load();
+function stat(id){return S.stats[id]||(S.stats[id]={c:0,w:0,s:0,miss:false,seen:0});}
+function isMastered(it){
+ if(it.kind==='skipped')return true;
+ if(it.kind==='goal')return !!S.checks[it.id];
+ return stat(it.id).s>=2;}
+function masteredCount(){var n=0;ITEMS.forEach(function(i){if(i.kind!=='skipped'&&isMastered(i))n++;});return n;}
+function totalCount(){return ITEMS.filter(function(i){return i.kind!=='skipped';}).length;}
+function missedItems(){return ITEMS.filter(function(i){var s=S.stats[i.id];return s&&s.miss;});}
+
+/* ---------- audio ---------- */
+var AC=null;
+function beep(f,d,t){if(!S.sound)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var o=AC.createOscillator(),g=AC.createGain();o.type=t||'sine';o.frequency.value=f;g.gain.value=0.07;o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+d);o.stop(AC.currentTime+d);}catch(e){}}
+function sOk(){beep(660,.12);setTimeout(function(){beep(880,.14);},110);}
+function sBad(){beep(180,.25,'square');}
+function sWin(){[523,659,784,1047].forEach(function(f,i){setTimeout(function(){beep(f,.18);},i*120);});}
+
+/* ---------- helpers ---------- */
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function pick(a,n){return shuf(a).slice(0,n);}
+function level(){return Math.floor(Math.sqrt(S.xp/50))+1;}
+function lname(l){return LEVELNAMES[Math.min(l,LEVELNAMES.length)-1];}
+function toast(msg){var t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},2300);}
+function today(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function touchDay(){var t=today();if(S.days.indexOf(t)<0){S.days.push(t);}
+ if(S.days.length>=3)badge('days3');}
+function badge(id){if(S.badges[id])return;S.badges[id]=1;var b=BADGES.filter(function(x){return x[0]===id;})[0];if(b){toast(b[1]+' Badge: '+b[2]+'!');sWin();}save();}
+function addXP(n){var l0=level();S.xp+=n;var l1=level();if(l1>l0){toast('\uD83C\uDF89 Level '+l1+': '+lname(l1)+'!');sWin();}if(l1>=5)badge('lvl5');save();}
+function checkMastery(){var m=masteredCount(),t=totalCount();if(m>=t/2)badge('half');if(m>=t)badge('all');}
+function record(it,ok){
+ var s=stat(it.id);S.answered++;touchDay();badge('first');
+ if(ok){s.c++;s.s++;if(s.miss&&s.s>=2){s.miss=false;badge('comeback');}}
+ else{s.w++;s.s=0;s.miss=true;}
+ checkMastery();save();}
+function filtered(kinds){
+ return ITEMS.filter(function(i){
+  if(kinds.indexOf(i.kind)<0)return false;
+  return S.topic==='all'||i.topic===S.topic;});}
+function topicName(){if(S.topic==='all')return 'All topics';var t=SAM_TOPICS.filter(function(x){return x.id===S.topic;})[0];return t.emoji+' '+t.name;}
+
+/* ---------- multiple choice builder ---------- */
+function pre(s){return s.toLowerCase().replace(/[^a-z]/g,'').slice(0,4);}
+function makeMC(it){
+ if(it.kind==='pair'){
+  var others=PAIRS.filter(function(p){return p.id!==it.id&&pre(p.term)!==pre(it.term);});
+  var same=others.filter(function(p){return p.topic===it.topic;});
+  var dis=pick(same,3);
+  if(dis.length<3){dis=dis.concat(pick(others.filter(function(p){return dis.indexOf(p)<0;}),3-dis.length));}
+  if(Math.random()<0.6){
+   return {hint:'Which word matches?',text:it.def,choices:shuf([{t:it.term,ok:true}].concat(dis.map(function(p){return {t:p.term};}))),why:it.term+': '+it.def};
+  }
+  return {hint:'What does this word mean?',text:it.term,choices:shuf([{t:it.def,ok:true}].concat(dis.map(function(p){return {t:p.def};}))),why:it.term+': '+it.def};
+ }
+ if(it.kind==='fact'){
+  var w=it.w.slice();
+  if(w.length<3){
+   var pool=[];ITEMS.forEach(function(f){if(f.kind==='fact'&&f.pool===it.pool&&f.a!==it.a&&pool.indexOf(f.a)<0)pool.push(f.a);});
+   w=w.concat(pick(pool,3-w.length));
+  }
+  return {hint:it.topic==='scope'?'Microscope':(it.topic==='levels'?'Levels of life':'Living things'),text:it.q,choices:shuf([{t:it.a,ok:true}].concat(w.slice(0,3).map(function(x){return {t:x};}))),why:'Answer: '+it.a};
+ }
+ if(it.kind==='sort'){
+  return {hint:'Biotic or abiotic?',text:'Is "'+it.name+'" biotic or abiotic?',choices:[{t:'Biotic (living)',ok:it.bucket==='biotic'},{t:'Abiotic (nonliving)',ok:it.bucket==='abiotic'}],why:it.name+' is '+it.bucket+'.'};
+ }
+ return null;
+}
+
+/* ---------- views ---------- */
+var app=$('app');
+var timer=null;
+function stopTimer(){if(timer){clearInterval(timer);timer=null;}}
+function header(){
+ var l=level(),lo=50*(l-1)*(l-1),hi=50*l*l,pct=Math.round(100*(S.xp-lo)/(hi-lo));
+ return '<div class="top"><div class="logo">\uD83E\uDDEA</div><div class="who"><div class="lvl">Level '+l+': '+lname(l)+' <span class="tag">'+S.xp+' XP</span></div><div class="bar"><i style="width:'+pct+'%"></i></div></div><button class="tbtn" id="snd" title="Sound">'+(S.sound?'\uD83D\uDD0A':'\uD83D\uDD07')+'</button></div>';
+}
+function bindHeader(){var b=$('snd');if(b)b.onclick=function(){S.sound=!S.sound;save();b.textContent=S.sound?'\uD83D\uDD0A':'\uD83D\uDD07';sOk();};}
+
+function home(){
+ stopTimer();
+ var m=masteredCount(),t=totalCount(),miss=missedItems().length;
+ var chips='<button class="chip'+(S.topic==='all'?' on':'')+'" data-t="all">All</button>'+SAM_TOPICS.map(function(x){return '<button class="chip'+(S.topic===x.id?' on':'')+'" data-t="'+x.id+'">'+x.emoji+' '+x.name+'</button>';}).join('');
+ app.innerHTML=header()+
+ '<h1>Sam\'s Science Lab</h1><p class="sub">7th Grade: Is It Alive? Organization of Life. Microscopes.</p>'+
+ '<div class="chips">'+chips+'</div>'+
+ '<div class="grid">'+
+ '<button class="mode c1" data-m="flash"><span class="e">\uD83C\uDCCF</span>Flashcards<small>Flip and learn</small></button>'+
+ '<button class="mode c2" data-m="quiz"><span class="e">\u2753</span>Quiz<small>10 questions</small></button>'+
+ '<button class="mode c3" data-m="match"><span class="e">\uD83E\uDDE9</span>Matching<small>Words and meanings</small></button>'+
+ '<button class="mode c4" data-m="speed"><span class="e">\u23F1\uFE0F</span>Speed Round<small>60 seconds, streaks</small></button>'+
+ '<button class="mode c5" data-m="sort"><span class="e">\uD83D\uDDC2\uFE0F</span>Biotic or Abiotic<small>Sort it fast</small></button>'+
+ '<button class="mode c6" data-m="order"><span class="e">\uD83D\uDCCB</span>Put in Order<small>Levels and steps</small></button>'+
+ '<button class="mode c7" data-m="five"><span class="e">\u270B</span>Give Me 5<small>Characteristics of life</small></button>'+
+ '<button class="mode c8" data-m="review"><span class="e">\uD83D\uDD01</span>Missed Items<small>'+miss+' to review</small></button>'+
+ '<button class="mode c9" data-m="guide"><span class="e">\uD83D\uDCD8</span>Study Guide<small>Words, goals, tips</small></button>'+
+ '</div>'+
+ '<div class="card"><h2>My Progress</h2><div class="row"><div class="stat"><b>'+m+'/'+t+'</b><span>Mastered</span></div><div class="stat"><b>'+S.bestStreak+'</b><span>Best streak</span></div><div class="stat"><b>'+S.best.speed+'</b><span>Best speed score</span></div><div class="stat"><b>'+S.days.length+'</b><span>Study days</span></div></div>'+
+ '<div class="bar" style="height:16px;margin-top:10px"><i style="width:'+Math.round(100*m/t)+'%"></i></div>'+
+ '<p class="tl">An item is mastered when you get it right 2 times in a row.</p></div>'+
+ '<div class="card"><h2>Badges</h2><div class="badges">'+BADGES.map(function(b){return '<div class="badge'+(S.badges[b[0]]?' on':'')+'" title="'+esc(b[3])+'"><b>'+b[1]+'</b>'+esc(b[2])+'<br><span style="font-weight:500">'+esc(b[3])+'</span></div>';}).join('')+'</div></div>'+
+ '<p class="sub"><button class="back" id="reset">Reset my progress</button></p>';
+ bindHeader();
+ var cs=app.querySelectorAll('.chip');for(var i=0;i<cs.length;i++)cs[i].onclick=function(){S.topic=this.getAttribute('data-t');save();home();};
+ var ms=app.querySelectorAll('.mode');for(var j=0;j<ms.length;j++)ms[j].onclick=function(){go(this.getAttribute('data-m'));};
+ $('reset').onclick=function(){if(confirm('Erase all of your progress, XP and badges?')){var snd=S.sound;S=fresh();S.sound=snd;save();home();}};
+}
+function go(m){
+ if(m==='flash')return flashcards(filtered(['pair','fact','seq','sort','five','lookup']),'Flashcards');
+ if(m==='quiz')return runMC(pick(filtered(['pair','fact','sort']),10),{title:'Quiz',mode:'quiz'});
+ if(m==='match')return matching();
+ if(m==='speed')return speed();
+ if(m==='sort')return runMC(pick(filtered(['sort']).length?filtered(['sort']):ITEMS.filter(function(i){return i.kind==='sort';}),10),{title:'Biotic or Abiotic',mode:'sort'});
+ if(m==='order')return runOrder();
+ if(m==='five')return five();
+ if(m==='review')return review();
+ if(m==='guide')return guide();
+}
+function shell(title,inner,onBack){
+ stopTimer();
+ app.innerHTML=header()+'<div class="hud"><button class="back" id="bk">\u2190 Home</button><div class="sp"></div><div class="pill">'+esc(title)+'</div></div>'+inner;
+ bindHeader();$('bk').onclick=function(){home();};
+}
+function empty(title,msg){shell(title,'<div class="card"><h2>Nothing here yet</h2><p>'+esc(msg)+'</p><button class="btn" onclick="void 0" id="eh">Back home</button></div>');$('eh').onclick=home;}
+
+/* ---------- flashcards ---------- */
+function flashcards(list,title){
+ if(!list.length)return empty(title,'No cards for this topic. Try another topic.');
+ var q=shuf(list),i=0,back=false;
+ function face(it){
+  if(it.kind==='pair')return ['Word',it.term,'Meaning',it.def];
+  if(it.kind==='fact')return ['Question',it.q,'Answer',it.a];
+  if(it.kind==='sort')return ['Biotic or abiotic?',it.name,'Answer',it.bucket==='biotic'?'Biotic (living)':'Abiotic (nonliving)'];
+  if(it.kind==='seq')return ['Put in order',it.title,'Steps',it.steps.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
+  if(it.kind==='five')return ['Name them','The 5 characteristics of living things',"Answer",it.right.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
+  if(it.kind==='lookup')return ['On Sam\'s study guide word list',it.term,'Note','This word is on the vocabulary list, but its meaning is not written in the science files. Look it up in your ISN or textbook.'];
+  return ['','',' ',''];
+ }
+ function draw(){
+  if(i>=q.length){addXP(10);return shell(title,'<div class="card"><div class="big">\uD83C\uDF89</div><h2>Deck done!</h2><p>You went through '+q.length+' cards. +10 XP</p><button class="btn g" id="again">Go again</button> <button class="btn w" id="hm">Home</button></div>'),$('again').onclick=function(){flashcards(list,title);},$('hm').onclick=home;}
+  var it=q[i],f=face(it);
+  var inner='<div class="hud"><div class="pill">Card '+(i+1)+' of '+q.length+'</div><div class="sp"></div><div class="pill">'+esc(topicName())+'</div></div>'+
+  '<div class="flash"><div class="fc'+(back?' back':'')+'" id="fc"><div><small>'+esc(back?f[2]:f[0])+'</small>'+(back?f[3]:esc(f[1]))+'<small style="margin-top:12px">'+(back?'':'Tap to flip')+'</small></div></div></div>'+
+  '<div class="row"><button class="btn r" id="again" style="flex:1">Study again</button><button class="btn g" id="got" style="flex:1">Got it</button></div>';
+  shell(title,inner);
+  $('fc').onclick=function(){back=!back;draw();};
+  $('again').onclick=function(){var s=stat(it.id);s.miss=true;s.s=0;save();i++;back=false;draw();};
+  $('got').onclick=function(){var s=stat(it.id);s.seen++;if(it.kind==='lookup'){s.s=2;}else if(s.s<1){s.s=1;}checkMastery();addXP(1);i++;back=false;draw();};
+ }
+ draw();
+}
+
+/* ---------- multiple choice runner ---------- */
+function runMC(list,cfg){
+ if(!list.length)return empty(cfg.title,'No questions for this topic yet.');
+ var i=0,score=0,right=0,streak=0,bestS=0,timed=cfg.timed||0,left=timed,over=false,queue=list.slice(),miss=[],cur=null,answered=false,sortStreak=0,sortBest=0;
+ function fin(){
+  if(over)return;over=true;stopTimer();
+  var msg='',xp=0;
+  if(cfg.mode==='speed'){
+   if(score>S.best.speed){S.best.speed=score;msg='New best score! ';}
+   if(score>=150)badge('speed150');if(score>=300)badge('speed300');
+   xp=Math.round(score/5);
+  }else{xp=right*3;if(cfg.mode==='quiz'&&right===queue.length&&queue.length>=10)badge('perfect');}
+  if(cfg.mode==='sort'&&sortBest>=10)badge('sorter');
+  addXP(xp);save();
+  var st=(cfg.mode==='speed')?'<div class="stat"><b>'+score+'</b><span>Points</span></div>':'';
+  shell(cfg.title,'<div class="card"><div class="big">'+(right>=queue.length*0.8||cfg.mode==='speed'?'\uD83C\uDFC6':'\uD83D\uDCAA')+'</div><h2>'+msg+'Round complete!</h2><div class="row">'+st+'<div class="stat"><b>'+right+'/'+(cfg.mode==='speed'?i:queue.length)+'</b><span>Correct</span></div><div class="stat"><b>'+bestS+'</b><span>Best streak</span></div><div class="stat"><b>+'+xp+'</b><span>XP</span></div></div>'+
+  (miss.length?'<p><b>Missed:</b> '+miss.map(function(m){return esc(m);}).join('; ')+'</p><p class="tl">Missed items are saved in Missed Items mode.</p>':'<p>No misses. Amazing!</p>')+
+  '<button class="btn g" id="again">Play again</button> <button class="btn w" id="hm">Home</button></div>');
+  $('again').onclick=function(){go(cfg.mode==='review'?'review':cfg.mode);};$('hm').onclick=home;
+ }
+ function next(){
+  if(over)return;
+  if(cfg.mode==='speed'&&i>=queue.length){queue=queue.concat(shuf(list));}
+  if(i>=queue.length)return fin();
+  var it=queue[i],mc=makeMC(it);cur=it;answered=false;
+  if(!mc){i++;return next();}
+  var hud='<div class="hud">'+(cfg.mode==='speed'?'<div class="pill" id="tm">\u23F1 '+left+'s</div>':'<div class="pill">Q '+(i+1)+'/'+queue.length+'</div>')+'<div class="sp"></div><div class="pill">\uD83D\uDD25 '+streak+'</div><div class="pill">\u2B50 '+score+'</div></div>';
+  var body='<div class="card"><div class="q"><small>'+esc(mc.hint)+'</small>'+esc(mc.text)+'</div><div id="chs">'+mc.choices.map(function(c,k){return '<button class="ch" data-k="'+k+'">'+esc(c.t)+'</button>';}).join('')+'</div><div id="fb"></div></div>';
+  shell(cfg.title,hud+body);
+  var bs=app.querySelectorAll('.ch');
+  for(var b=0;b<bs.length;b++)bs[b].onclick=function(){
+   if(answered||over)return;answered=true;
+   var k=+this.getAttribute('data-k'),ok=!!mc.choices[k].ok;
+   for(var z=0;z<bs.length;z++){bs[z].disabled=true;if(mc.choices[z].ok)bs[z].classList.add('ok');}
+   if(!ok)this.classList.add('bad');
+   record(it,ok);
+   if(ok){streak++;right++;if(streak>bestS)bestS=streak;if(streak>S.bestStreak)S.bestStreak=streak;
+    var pts=10+Math.min(streak,10)*2;score+=pts;addXP(cfg.mode==='speed'?1:2);sOk();
+    if(streak===5)badge('s5');if(streak===10)badge('s10');if(streak===20)badge('s20');
+    sortStreak++;if(sortStreak>sortBest)sortBest=sortStreak;
+   }else{streak=0;sortStreak=0;sBad();if(miss.indexOf(it.term||it.q||it.name)<0)miss.push(it.term||it.q||it.name);if(cfg.mode==='speed'){left=Math.max(0,left-3);}}
+   save();
+   var fbEl=$('fb');
+   if(cfg.mode==='speed'){
+    setTimeout(function(){i++;next();},ok?350:1100);
+    if(!ok)fbEl.innerHTML='<div class="fb bad">'+esc(mc.why)+' (-3s)</div>';
+    else fbEl.innerHTML='<div class="fb ok">+'+(10+Math.min(streak,10)*2)+'</div>';
+   }else{
+    fbEl.innerHTML='<div class="fb '+(ok?'ok':'bad')+'">'+(ok?'\u2705 Correct! ':'\u274C Not quite. ')+esc(mc.why)+'</div><p><button class="btn" id="nx">'+(i+1>=queue.length?'Finish':'Next')+'</button></p>';
+    $('nx').onclick=function(){i++;next();};
+   }
+  };
+ }
+ if(timed){timer=setInterval(function(){left--;var t=$('tm');if(t)t.textContent='\u23F1 '+Math.max(0,left)+'s';if(left<=0)fin();},1000);}
+ next();
+}
+function speed(){
+ var l=filtered(['pair','fact','sort']);
+ if(!l.length)return empty('Speed Round','No questions for this topic yet.');
+ runMC(shuf(l),{title:'Speed Round',mode:'speed',timed:60});
+}
+
+/* ---------- matching ---------- */
+function matching(){
+ var pool=filtered(['pair']);if(pool.length<4)pool=PAIRS;
+ var round=[],seen={};
+ shuf(pool).forEach(function(p){if(round.length<6&&!seen[pre(p.term)]){seen[pre(p.term)]=1;round.push(p);}});
+ var terms=shuf(round),defs=shuf(round),selT=null,selD=null,done={},mist=0,flagged={},total=round.length;
+ function draw(){
+  var inner='<div class="hud"><div class="pill">Matched '+Object.keys(done).length+'/'+total+'</div><div class="sp"></div><div class="pill">Mistakes '+mist+'</div></div><div class="card"><div class="q"><small>Tap a word, then tap its meaning</small></div><div class="mgrid"><div class="bank">'+
+  terms.map(function(p){return '<button class="mt'+(done[p.id]?' done':'')+(selT===p.id?' sel':'')+'" data-id="'+p.id+'" data-s="t">'+esc(p.term)+'</button>';}).join('')+'</div><div class="bank">'+
+  defs.map(function(p){return '<button class="mt def'+(done[p.id]?' done':'')+(selD===p.id?' sel':'')+'" data-id="'+p.id+'" data-s="d">'+esc(p.def)+'</button>';}).join('')+'</div></div></div>';
+  shell('Matching',inner);
+  var bs=app.querySelectorAll('.mt');
+  for(var i=0;i<bs.length;i++)bs[i].onclick=function(){
+   var id=this.getAttribute('data-id'),side=this.getAttribute('data-s');
+   if(done[id])return;
+   if(side==='t')selT=(selT===id?null:id);else selD=(selD===id?null:id);
+   if(selT&&selD){
+    if(selT===selD){done[selT]=1;record(BYID[selT],!flagged[selT]);sOk();addXP(3);selT=selD=null;
+     if(Object.keys(done).length===total)return finish();
+    }else{mist++;sBad();var a=selT,b=selD;if(!flagged[a]){flagged[a]=1;record(BYID[a],false);}selT=selD=null;draw();
+     var w=app.querySelectorAll('.mt');for(var k=0;k<w.length;k++){var wid=w[k].getAttribute('data-id');if(wid===a||wid===b)w[k].classList.add('wrong');}return;}
+   }
+   draw();
+  };
+ }
+ function finish(){
+  var xp=Math.max(10,30-mist*5);if(mist===0)badge('match');addXP(xp);
+  var sc=Math.max(0,100-mist*15);if(sc>S.best.match)S.best.match=sc;save();sWin();
+  shell('Matching','<div class="card"><div class="big">\uD83E\uDDE9</div><h2>All matched!</h2><div class="row"><div class="stat"><b>'+mist+'</b><span>Mistakes</span></div><div class="stat"><b>+'+xp+'</b><span>XP</span></div></div><p><button class="btn g" id="again">New round</button> <button class="btn w" id="hm">Home</button></p></div>');
+  $('again').onclick=matching;$('hm').onclick=home;
+ }
+ draw();
+}
+
+/* ---------- order ---------- */
+function runOrder(queue){
+ var list=queue||shuf(filtered(['seq']).length?filtered(['seq']):ITEMS.filter(function(i){return i.kind==='seq';}));
+ var idx=0,perfect=true,total=list.length;
+ function one(){
+  if(idx>=list.length){addXP(10);sWin();return shell('Put in Order','<div class="card"><div class="big">\uD83D\uDCCB</div><h2>All lists done!</h2><p>+10 XP</p><button class="btn g" id="again">Again</button> <button class="btn w" id="hm">Home</button></div>'),$('again').onclick=function(){runOrder();},$('hm').onclick=home;}
+  var it=list[idx],order=shuf(it.steps.map(function(s,k){return k;})),n=0,mist=0;
+  if(it.steps.length>1){var tries=0;while(order.join()===it.steps.map(function(s,k){return k;}).join()&&tries++<5)order=shuf(order);}
+  function draw(){
+   var doneList=it.steps.slice(0,n).map(function(s){return '<li>'+esc(s)+'</li>';}).join('');
+   var bank=order.filter(function(k){return k>=n;}).map(function(k){return '<button class="ch" data-k="'+k+'">'+esc(it.steps[k])+'</button>';}).join('');
+   shell('Put in Order','<div class="hud"><div class="pill">List '+(idx+1)+' of '+total+'</div><div class="sp"></div><div class="pill">Mistakes '+mist+'</div></div><div class="card"><div class="q"><small>Tap the steps in the right order, first to last</small>'+esc(it.title)+'</div><ol class="steps">'+doneList+'</ol><div>'+bank+'</div></div>');
+   var bs=app.querySelectorAll('.ch');
+   for(var b=0;b<bs.length;b++)bs[b].onclick=function(){
+    var k=+this.getAttribute('data-k');
+    if(k===n){n++;sOk();addXP(1);if(n===it.steps.length){record(it,mist===0);if(mist===0)badge('order');else perfect=false;idx++;return finishStep(it,mist);}}
+    else{mist++;sBad();}
+    draw();
+   };
+  }
+  function finishStep(it,mist){
+   shell('Put in Order','<div class="card"><h2>'+(mist===0?'\u2705 Perfect order!':'Done, with '+mist+' mistake'+(mist>1?'s':''))+'</h2><ol class="steps">'+it.steps.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ol><button class="btn" id="nx">'+(idx>=list.length?'Finish':'Next list')+'</button></div>');
+   $('nx').onclick=one;
+  }
+  draw();
+ }
+ one();
+}
+
+/* ---------- give me 5 ---------- */
+function five(then){
+ var it=BYID.five,chips=shuf(it.right.concat(it.decoys)),sel={},checked=false;
+ function draw(){
+  var n=Object.keys(sel).length;
+  shell('Give Me 5','<div class="card"><div class="q"><small>Pick the 5 characteristics of living things (one for each finger)</small>Which 5 are true for ALL living things?</div><div style="margin:10px 0">'+chips.map(function(c,k){
+    var cls='pill2'+(sel[c]?' sel':'');var st='';
+    if(checked){if(it.right.indexOf(c)>=0){st='background:#c9f7e2;color:#004d3a;';}else if(sel[c]){st='background:#ffd6e3;color:#7a0030;';}}
+    return '<button class="'+cls+'" style="border:0;cursor:pointer;font-size:15px;'+st+'" data-c="'+k+'">'+esc(c)+'</button>';}).join('')+'</div>'+
+   (checked?'':'<button class="btn g" id="chk"'+(n===5?'':' disabled')+'>Check my '+n+'/5</button>')+
+   '<div id="fb"></div></div>');
+  if(checked)return;
+  var bs=app.querySelectorAll('.pill2');
+  for(var b=0;b<bs.length;b++)bs[b].onclick=function(){var c=chips[+this.getAttribute('data-c')];if(sel[c])delete sel[c];else if(Object.keys(sel).length<5)sel[c]=1;draw();};
+  $('chk').onclick=function(){
+   checked=true;var ok=it.right.every(function(r){return sel[r];})&&Object.keys(sel).length===5;
+   record(it,ok);
+   if(ok){badge('five');addXP(15);sWin();}else{sBad();}
+   draw();
+   $('fb').innerHTML='<div class="fb '+(ok?'ok':'bad')+'">'+(ok?'\u2705 Yes! +15 XP. ':'\u274C Not quite. ')+'The 5 are: '+it.right.map(esc).join(', ')+'.</div><p><button class="btn" id="again">Play again</button> <button class="btn w" id="hm">Home</button></p>';
+   $('again').onclick=function(){five();};$('hm').onclick=home;
+  };
+ }
+ draw();
+}
+
+/* ---------- review missed ---------- */
+function review(){
+ var m=missedItems();
+ if(!m.length)return empty('Missed Items','You have no missed items right now. Play other modes and anything you miss will show up here.');
+ var mc=m.filter(function(i){return i.kind==='pair'||i.kind==='fact'||i.kind==='sort';});
+ var special=m.filter(function(i){return i.kind==='seq'||i.kind==='five';});
+ var other=m.filter(function(i){return i.kind==='lookup';});
+ if(mc.length)return runMC(shuf(mc),{title:'Missed Items ('+m.length+')',mode:'review',after:special});
+ if(special.length){var sq=special.filter(function(i){return i.kind==='seq';});if(sq.length)return runOrder(sq);return five();}
+ return flashcards(other,'Missed Items');
+}
+
+/* ---------- study guide ---------- */
+function guide(){
+ var byName={};PAIRS.forEach(function(p){byName[p.term.toLowerCase()]=p;});
+ var vocab=VOCAB20.map(function(w){var p=byName[w.toLowerCase()];return '<details><summary>'+esc(w)+'</summary><div class="tl">'+(p?esc(p.def):'This word is on the vocabulary list, but its meaning is not written in the science files. Look it up in your ISN or textbook.')+'</div></details>';}).join('');
+ var groups={};SAM_GOALS.forEach(function(g,i){var id='g'+(i+1);(groups[g[1]]=groups[g[1]]||[]).push('<label class="chk"><input type="checkbox" data-g="'+id+'"'+(S.checks[id]?' checked':'')+'><span>'+esc(g[0])+'</span></label>');});
+ var goalHtml=Object.keys(groups).map(function(k){return '<h3>'+esc(k)+'</h3>'+groups[k].join('');}).join('');
+ var terms=SAM_TOPICS.map(function(t){
+  var ps=PAIRS.filter(function(p){return p.topic===t.id;});
+  return '<h3>'+t.emoji+' '+esc(t.name)+' ('+ps.length+' words)</h3>'+ps.map(function(p){return '<div class="tl"><b>'+esc(p.term)+':</b> '+esc(p.def)+'</div>';}).join('');}).join('');
+ var facts=SAM_TOPICS.map(function(t){
+  var fs=ITEMS.filter(function(f){return f.kind==='fact'&&f.topic===t.id;});
+  return '<h3>'+t.emoji+' '+esc(t.name)+' facts ('+fs.length+')</h3>'+fs.map(function(f){return '<div class="tl"><b>'+esc(f.q)+'</b><br>'+esc(f.a)+'</div>';}).join('');}).join('');
+ var seqs=SAM_SEQS.map(function(s){return '<h3>'+esc(s.title)+'</h3><ol>'+s.steps.map(function(x){return '<li class="tl">'+esc(x)+'</li>';}).join('')+'</ol>';}).join('');
+ var sortH='<div class="tl"><b>Biotic (living):</b> '+SAM_SORT.filter(function(s){return s[1]==='biotic';}).map(function(s){return esc(s[0]);}).join(', ')+'<br><b>Abiotic (nonliving):</b> '+SAM_SORT.filter(function(s){return s[1]==='abiotic';}).map(function(s){return esc(s[0]);}).join(', ')+'</div>';
+ var five='<ol>'+SAM_FIVE.right.map(function(x){return '<li class="tl">'+esc(x)+'</li>';}).join('')+'</ol>';
+ shell('Study Guide','<div class="card"><h2>What is on the test</h2>'+goalHtml+'<p class="tl"><b>Not on this test:</b> '+esc(SAM_SKIPPED.text)+'</p></div>'+
+ '<div class="card"><h2>The 20 vocabulary words</h2><p class="tl">Tap a word to see its meaning.</p>'+vocab+'</div>'+
+ '<div class="card"><h2>5 characteristics of living things</h2>'+five+'</div>'+
+ '<div class="card"><h2>Biotic or abiotic examples</h2>'+sortH+'</div>'+
+ '<div class="card"><h2>Steps and orders</h2>'+seqs+'</div>'+
+ '<div class="card"><details><summary>All words and meanings ('+PAIRS.length+')</summary>'+terms+'</details><details><summary>All facts ('+ITEMS.filter(function(f){return f.kind==='fact';}).length+')</summary>'+facts+'</details></div>'+
+ '<div class="card"><h2>Study tips from Sam\'s sheets</h2><ul>'+SAM_TIPS.map(function(t){return '<li class="tl">'+esc(t)+'</li>';}).join('')+'</ul></div>');
+ var cs=app.querySelectorAll('input[data-g]');
+ for(var i=0;i<cs.length;i++)cs[i].onchange=function(){var id=this.getAttribute('data-g');if(this.checked)S.checks[id]=1;else delete S.checks[id];touchDay();checkMastery();save();};
+}
+
+/* ---------- boot + test hooks ---------- */
+window.SamGame={items:ITEMS,makeMC:makeMC,state:function(){return S;},home:home,go:go,
+ coverage:function(){
+  var out={total:ITEMS.length,noPath:[]};
+  ITEMS.forEach(function(it){
+   var ok=false;
+   if(it.kind==='pair'||it.kind==='fact'||it.kind==='sort')ok=!!makeMC(it);
+   else ok=['seq','five','lookup','goal','skipped'].indexOf(it.kind)>=0;
+   if(!ok)out.noPath.push(it.id);
+  });
+  return out;}};
+home();
+})();
+</script>
+</body>
+</html>
