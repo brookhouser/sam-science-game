@@ -415,7 +415,7 @@ function home(){
  $('reset').onclick=function(){if(confirm('Erase all of your progress, XP and badges?')){var snd=S.sound;S=fresh();S.sound=snd;save();home();}};
 }
 function go(m){
- if(m==='flash')return flashcards(filtered(['pair','fact','seq','sort','five','lookup']),'Flashcards');
+ if(m==='flash')return flashcards(filtered(['pair','fact','sort','five','lookup']),'Flashcards');
  if(m==='quiz')return runMC(pick(filtered(['pair','fact','sort']),10),{title:'Quiz',mode:'quiz'});
  if(m==='match')return matching();
  if(m==='speed')return speed();
