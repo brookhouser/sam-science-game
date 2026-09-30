@@ -161,15 +161,15 @@ var SAM_FACTS = [
  ['Why do scientists generally not consider viruses to be living?','They have some characteristics of life but not all of them (for example, they cannot reproduce on their own)','sent','life',['NB'],['They are too big to be alive','They are made of many cells but cannot grow','They are abiotic rocks']],
  ['Brine shrimp are relatives of which animals?','Crabs and lobsters','crab','life',['NB'],['Frogs and snakes','Whales and sea jellies','Mushrooms and trees']],
  ['What is an adaptation?','A trait or behavior that helps a living thing survive in its environment','sent','life',['NB'],['A cell dividing into two new cells','A reaction to a stimulus','Organs working together']],
- ['Why are you and I biotic, but a rock is abiotic?','We are living organisms, but a rock is nonliving and was never alive','sent','life',['NB'],['A rock is a tissue and we are not','We are made of rocks','A rock can respond to a stimulus']],
+ ['Why is a person biotic but a rock abiotic?','We are living organisms, but a rock is nonliving and was never alive','sent','life',['NB'],['A rock is a tissue and we are not','We are made of rocks','A rock can respond to a stimulus']],
  ['What should a strong biotic and abiotic explanation include?','Your criteria (rules for deciding) and at least one biotic and one abiotic example','sent','life',['NB'],['Only the vocabulary words','Just a drawing of a rock','A list of microscope parts']],
  ['What are the levels of organization of life, from simplest to most complex?','Cell, tissue, organ, organ system, organism','order','levels',['NB','S2'],['Organ, cell, tissue, organism, organ system','Tissue, cell, organ system, organ, organism','Cell, organ, tissue, organism, organ system']],
  ['Which level of organization is the simplest?','Cell','lvl','levels',['NB','S2'],['Tissue','Organ','Organ system']],
  ['Which level of organization is the most complex?','Organism','lvl','levels',['NB','S2'],['Cell','Tissue','Organ system']],
  ['The lungs and the heart are examples of which level?','Organ','lvl','levels',['NB'],['Cell','Tissue','Organ system']],
  ['The mouth, esophagus, stomach, pancreas, liver, gallbladder, small intestine, and large intestine working together are an example of which level?','Organ system','lvl','levels',['NB'],['Cell','Tissue','Organ']],
- ['Which of these is an organ in the digestive system?','Pancreas','organs','levels',['NB'],['Red blood cell','Muscle tissue','Nervous system']],
- ['Which of these is an example of a cell (the smallest form of life that can perform all functions of a living organism)?','Bacteria','organs','levels',['NB'],['Lungs','Stomach','Liver']],
+ ['Name an organ in the digestive system.','Pancreas','organs','levels',['NB'],['Red blood cell','Muscle tissue','Nervous system'],'Pancreas (also the stomach, liver, small intestine, and others)'],
+ ['Bacteria are unicellular. What does unicellular mean?','Made of one cell','uni','levels',['NB'],['Made of many cells','Made of one tissue','Made of no cells']],
  ['What is the process of keeping stable internal conditions, like body temperature, even when the outside environment changes?','Homeostasis','term3','levels',['NB','S2'],['Reproduction','Stimulus','Tissue']],
  ['A group of the same cells working together to perform a similar function is a ____.','Tissue','lvl','levels',['NB','S2'],['Organ','Cell','Organism']],
  ['How much does the ocular lens (eyepiece) magnify the specimen?','10x','mag','scope',['NB'],['4x','40x','100x']],
@@ -196,8 +196,8 @@ var SAM_FACTS = [
  ['When putting the microscope away, what do you do with the stage using the coarse adjustment knob?','Lower it','away','scope',['NB'],['Raise it as high as it goes','Leave it where it is','Remove it']],
  ['What should you use to clean a microscope lens?','Lens tissue','clean','scope',['NB'],['A paper towel','Your shirt','Running water']],
  ['What do you do with the cord when putting the microscope away?','Wrap it up neatly so it does not dangle or drag','sent','scope',['NB'],['Leave it on the floor','Wrap it tightly around the eyepiece','Pull on the cord to unplug it']],
- ['What specimen is commonly used in the microscope lab to show that the image is upside down?','The letter "e"','spec','scope',['NB'],['A brine shrimp','A frog','A virus']],
- ['During the lab, the 40X objective would touch the slide, so you cannot rotate it into place. What note goes in the 40X sketch circle?','too close','sent','scope',['NB'],['400x','upside down','100x']]
+ ['In the microscope lab, which letter is viewed to show that the image is upside down and backward?','The letter "e"','spec','scope',['NB'],['The letter "o"','The letter "l"','The letter "t"']],
+ ['What should you do if the high-power objective looks like it will touch the slide as you rotate it into place?','Stop turning and do not force it','sent','scope',['NB'],['Keep turning until it clicks','Raise the stage with the coarse adjustment knob','Look away from the eyepiece']]
 ];
 var SAM_SEQS = [
  {title:'Levels of organization (simplest to most complex)', topic:'levels', src:['NB','S2'], steps:['Cell','Tissue','Organ','Organ system','Organism']},
@@ -260,7 +260,7 @@ var SAM_TIPS = [
 var SAM_ITEMS = (function(){
   var items = [], n;
   SAM_PAIRS.forEach(function(p,i){ items.push({id:'p'+(i+1), kind:'pair', term:p[0], def:p[1], topic:p[2], src:p[3]}); });
-  SAM_FACTS.forEach(function(f,i){ items.push({id:'f'+(i+1), kind:'fact', q:f[0], a:f[1], pool:f[2], topic:f[3], src:f[4], w:f[5]}); });
+  SAM_FACTS.forEach(function(f,i){ items.push({id:'f'+(i+1), kind:'fact', q:f[0], a:f[1], fa:f[6], pool:f[2], topic:f[3], src:f[4], w:f[5]}); });
   SAM_SEQS.forEach(function(s,i){ items.push({id:'s'+(i+1), kind:'seq', title:s.title, steps:s.steps, topic:s.topic, src:s.src}); });
   SAM_SORT.forEach(function(s,i){ items.push({id:'b'+(i+1), kind:'sort', name:s[0], bucket:s[1], topic:'life', src:s[2]}); });
   items.push({id:'five', kind:'five', topic:'life', src:['LT','NB'], right:SAM_FIVE.right, decoys:SAM_FIVE.decoys});
@@ -438,7 +438,7 @@ function flashcards(list,title){
  var q=shuf(list),i=0,back=false;
  function face(it){
   if(it.kind==='pair')return ['Word',it.term,'Meaning',it.def];
-  if(it.kind==='fact')return ['Question',it.q,'Answer',it.a];
+  if(it.kind==='fact')return ['Question',it.q,'Answer',it.fa||it.a];
   if(it.kind==='sort')return ['Biotic or abiotic?',it.name,'Answer',it.bucket==='biotic'?'Biotic (living)':'Abiotic (nonliving)'];
   if(it.kind==='seq')return ['Put in order',it.title,'Steps',it.steps.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
   if(it.kind==='five')return ['Name them','The 5 characteristics of living things',"Answer",it.right.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
