@@ -96,9 +96,16 @@ var SAM_TOPICS = [
 ];
 // [term, definition, topic, sources]
 var SAM_PAIRS = [
+ ['Autotroph','An organism that makes its own food, such as a plant that uses light energy to make sugar.','life',['NB']],
+ ['Heterotroph','An organism that cannot make its own food and gets energy by eating other organisms.','life',['NB']],
+ ['Metabolism','All of the chemical reactions in an organism that use or release energy to carry out life functions.','life',['NB']],
+ ['Evolution','Change in the inherited traits of a population over many generations.','life',['NB']],
+ ['Biology','The scientific study of living things.','life',['NB']],
+ ['Slide','A thin, flat piece of glass that holds a specimen for viewing under a microscope.','scope',['NB']],
+ ['Glass coverslip','A very thin piece of glass placed over a specimen on a slide to flatten it and protect the lens.','scope',['NB']],
  ['Organism','An individual living thing (an individual form of life). Examples: humans, mushrooms, trees, bacteria, sea jellies, and whales.','levels',['S2','NB']],
  ['Biotic','A living part of an environment, such as a plant, animal, or fungus. Example: a person.','life',['S2','NB']],
- ['Abiotic','A nonliving part of an environment, such as water, air, or sunlight. It was never alive. Example: a rock.','life',['S2','NB']],
+ ['Abiotic','A nonliving part of an environment, such as water, air, sunlight, or a rock.','life',['S2','NB']],
  ['Stimulus','A change in an organism\'s environment that causes a reaction (something that causes a response). Example: the brightness of the sun.','life',['LT','S2','NB']],
  ['Response','How an organism reacts to a stimulus. Example: squinting your eyes in bright sun.','life',['LT']],
  ['Respond','To react to a change in the environment.','life',['S2','NB']],
@@ -106,22 +113,22 @@ var SAM_PAIRS = [
  ['Growth','An increase in mass. It also means an increase in size and in the number of cells.','life',['LT']],
  ['Develop','To change over time by becoming more complex or mature.','life',['S2','NB']],
  ['Reproduce','To produce offspring.','life',['S2','NB']],
- ['Reproduction','The process of making more of the same kind of organism. Because all living things eventually die, reproduction allows life to continue.','life',['LT']],
+ ['Reproduction','The process of making more of the same kind of organism. Because individual living things eventually die, reproduction allows the species to continue.','life',['LT']],
  ['Unicellular','Made of one cell.','life',['S2','NB']],
  ['Multicellular','Made of many cells.','life',['S2','NB']],
  ['Homeostasis','The process of keeping stable internal conditions (like body temperature) even when the outside environment changes. In many organisms, organ systems work together to maintain it.','life',['S2','NB']],
- ['Virus','A tiny thing that has some characteristics of life, but not all of them. Most are not living.','life',['NB']],
+ ['Virus','A tiny particle that has some characteristics of life but not all of them. For example, it cannot reproduce on its own. Scientists generally do not consider viruses to be living.','life',['NB']],
  ['Cell','The smallest unit of a living thing and the simplest structure that can carry out all the life functions (the smallest form of life that can perform all functions of a living organism, like bacteria).','levels',['LT','S2','NB']],
  ['Tissue','A group of similar cells that work together to perform a function.','levels',['S2','NB']],
  ['Organ','A structure made of different tissues that works to perform a specific job. Examples: lungs, heart.','levels',['S2','NB']],
  ['Organ system','A group of organs that work together to complete major body functions.','levels',['S2','NB']],
  ['Eyepiece (ocular lens)','The lens you look through. It magnifies the specimen 10x.','scope',['NB','S2']],
- ['Body tube','Connects the objectives.','scope',['NB','S2']],
+ ['Body tube','The tube that connects the eyepiece to the revolving nosepiece and objectives.','scope',['NB','S2']],
  ['Revolving nosepiece','Holds the objectives and rotates between the objective lenses.','scope',['NB','S2']],
  ['Low-power objective','The shortest objective lens, 4X. Start here (total magnification 40X).','scope',['NB','S2']],
  ['Medium-power objective','The 10X objective lens (total magnification 100X).','scope',['NB','S2']],
  ['High-power objective','The longest objective lens, 40X (total magnification 400X). Use only the fine adjustment knob with it.','scope',['NB','S2']],
- ['Stage','The platform that holds the slide. It has a window for light.','scope',['NB','S2']],
+ ['Stage','The flat platform that holds the slide. It has an opening that lets light through.','scope',['NB','S2']],
  ['Stage clips','Hold the slide in place on the stage.','scope',['NB','S2']],
  ['Diaphragm','Under the stage. It turns to adjust the light and contrast.','scope',['NB','S2']],
  ['Light source','Provides light that shines upward.','scope',['NB','S2']],
@@ -130,13 +137,13 @@ var SAM_PAIRS = [
  ['Base','Supports the microscope.','scope',['NB','S2']],
  ['Coarse adjustment knob','The large knob that makes large focus changes. It raises and lowers the stage.','scope',['NB','S2']],
  ['Fine adjustment knob','The small knob that makes small focus adjustments. It is the only knob to use at high power.','scope',['NB','S2']],
- ['Lens tissue','Used to clean the objectives, the slide, and the stage.','scope',['NB']],
+ ['Lens tissue','Soft, lint-free paper used to clean microscope lenses without scratching them.','scope',['NB']],
  ['Compound light microscope','The type of microscope used in most science classes.','scope',['NB','S2']],
  ['Total magnification','The ocular (eyepiece) power multiplied by the objective power.','scope',['NB','S2'] ]
 ];
 // [question, answer, pool, topic, sources, wrong answers]
 var SAM_FACTS = [
- ['How many characteristics of life do all living things share?','5','num','life',['LT','NB'],['3','4','7']],
+ ['In this unit, how many characteristics of life do all living things share?','5','num','life',['LT','NB'],['3','4','7']],
  ['Which characteristic of life is shown when you squint after going from a dark room into bright sunshine?','Respond to the environment','char','life',['LT'],[]],
  ['A butterfly goes through several different stages. Which characteristic of life is this?','Grow and develop','char','life',['NB'],[]],
  ['Without this characteristic, a species would go extinct. Which one is it?','Reproduce','char','life',['NB'],[]],
@@ -147,13 +154,13 @@ var SAM_FACTS = [
  ['A frog uses the energy from its food to jump and catch a fly. Which characteristic of life is this?','Use energy','char','life',['LT'],[]],
  ['A male and female frog produce eggs that hatch into new frogs. Which characteristic of life is this?','Reproduce','char','life',['LT'],[]],
  ['Under a microscope, the body of a frog is seen to be built from tiny building blocks. Which characteristic of life is this?','Made of cells','char','life',['LT'],[]],
- ['Living things take materials from their surroundings, such as food, water, and gases. What do they use the materials for?','To get energy to carry out all of the life functions','sent','life',['LT'],['To stop responding to a stimulus','To turn into a virus','Nothing, only plants use materials']],
- ['Why does reproduction matter for life?','All living things eventually die, so reproduction allows life to continue','sent','life',['LT'],['Living things never die, so they need more room','It is the only way to get energy','It is how living things respond to a stimulus']],
+ ['Living things take materials from their surroundings, such as food, water, and gases. What do they use the materials for?','To get energy and to build and repair their bodies','sent','life',['LT'],['To stop responding to a stimulus','To turn into a virus','Nothing, only plants use materials']],
+ ['Why does reproduction matter for life?','Individual living things eventually die, so reproduction allows the species to continue','sent','life',['LT'],['Living things never die, so they need more room','It is the only way to get energy','It is how living things respond to a stimulus']],
  ['The brightness of the sun is an example of a ____.','stimulus','term2','life',['LT','NB'],['response','organism','tissue']],
  ['Squinting your eyes in bright sun is an example of a ____.','response','term2','life',['LT'],['stimulus','cell','organ']],
- ['Why do scientists generally not consider viruses to be living?','They are tiny things that have some characteristics of life, but not all of them','sent','life',['NB'],['They are too big to be alive','They are made of many cells but cannot grow','They are abiotic rocks']],
+ ['Why do scientists generally not consider viruses to be living?','They have some characteristics of life but not all of them (for example, they cannot reproduce on their own)','sent','life',['NB'],['They are too big to be alive','They are made of many cells but cannot grow','They are abiotic rocks']],
  ['Brine shrimp are relatives of which animals?','Crabs and lobsters','crab','life',['NB'],['Frogs and snakes','Whales and sea jellies','Mushrooms and trees']],
- ['What is an adaptation?','A trait or behavior that helps a living thing survive in its environment','sent','life',['NB'],['When a cell splits into two tissues','When a stimulus causes a response','When organs work together']],
+ ['What is an adaptation?','A trait or behavior that helps a living thing survive in its environment','sent','life',['NB'],['A cell dividing into two new cells','A reaction to a stimulus','Organs working together']],
  ['Why are you and I biotic, but a rock is abiotic?','We are living organisms, but a rock is nonliving and was never alive','sent','life',['NB'],['A rock is a tissue and we are not','We are made of rocks','A rock can respond to a stimulus']],
  ['What should a strong biotic and abiotic explanation include?','Your criteria (rules for deciding) and at least one biotic and one abiotic example','sent','life',['NB'],['Only the vocabulary words','Just a drawing of a rock','A list of microscope parts']],
  ['What are the levels of organization of life, from simplest to most complex?','Cell, tissue, organ, organ system, organism','order','levels',['NB','S2'],['Organ, cell, tissue, organism, organ system','Tissue, cell, organ system, organ, organism','Cell, organ, tissue, organism, organ system']],
@@ -161,7 +168,7 @@ var SAM_FACTS = [
  ['Which level of organization is the most complex?','Organism','lvl','levels',['NB','S2'],['Cell','Tissue','Organ system']],
  ['The lungs and the heart are examples of which level?','Organ','lvl','levels',['NB'],['Cell','Tissue','Organ system']],
  ['The mouth, esophagus, stomach, pancreas, liver, gallbladder, small intestine, and large intestine working together are an example of which level?','Organ system','lvl','levels',['NB'],['Cell','Tissue','Organ']],
- ['Which of these is an organ in the digestive system?','Pancreas','organs','levels',['NB'],['Eyepiece','Stage clips','Diaphragm']],
+ ['Which of these is an organ in the digestive system?','Pancreas','organs','levels',['NB'],['Red blood cell','Muscle tissue','Nervous system']],
  ['Which of these is an example of a cell (the smallest form of life that can perform all functions of a living organism)?','Bacteria','organs','levels',['NB'],['Lungs','Stomach','Liver']],
  ['What is the process of keeping stable internal conditions, like body temperature, even when the outside environment changes?','Homeostasis','term3','levels',['NB','S2'],['Reproduction','Stimulus','Tissue']],
  ['A group of the same cells working together to perform a similar function is a ____.','Tissue','lvl','levels',['NB','S2'],['Organ','Cell','Organism']],
@@ -187,9 +194,9 @@ var SAM_FACTS = [
  ['You want the image to move to the right. Which way do you move the slide?','To the left','dir','scope',['NB'],['To the right','Toward you','Away from you']],
  ['Before you move to a higher power, what must be true about the specimen?','It is centered and focused at low power first','sent','scope',['NB'],['It is already at the edge of the view','The high-power objective is already in place','The stage is at its highest point']],
  ['When putting the microscope away, which objective do you rotate into place first?','The 4X objective','obj2','scope',['NB'],['The 10X objective','The 40X objective','Any objective']],
- ['When putting the microscope away, which way do you turn the coarse adjustment knob to lower the stage?','Away from the arm','away','scope',['NB'],['Toward the arm','Toward the stage clips','Do not touch it']],
- ['What do you use to clean the lens and stage if there is moisture or debris?','Lens tissue','clean','scope',['NB'],['A paper towel','Your shirt','Running water']],
- ['What do you do with the cord when putting the microscope away?','Wrap it up, wrap the cord-keeper around it 2 times, and hang it on the body tube','sent','scope',['NB'],['Leave it on the floor','Hang it on the stage clips','Wrap it around the eyepiece']],
+ ['When putting the microscope away, what do you do with the stage using the coarse adjustment knob?','Lower it','away','scope',['NB'],['Raise it as high as it goes','Leave it where it is','Remove it']],
+ ['What should you use to clean a microscope lens?','Lens tissue','clean','scope',['NB'],['A paper towel','Your shirt','Running water']],
+ ['What do you do with the cord when putting the microscope away?','Wrap it up neatly so it does not dangle or drag','sent','scope',['NB'],['Leave it on the floor','Wrap it tightly around the eyepiece','Pull on the cord to unplug it']],
  ['What specimen is commonly used in the microscope lab to show that the image is upside down?','The letter "e"','spec','scope',['NB'],['A brine shrimp','A frog','A virus']],
  ['During the lab, the 40X objective would touch the slide, so you cannot rotate it into place. What note goes in the 40X sketch circle?','too close','sent','scope',['NB'],['400x','upside down','100x']]
 ];
@@ -200,7 +207,7 @@ var SAM_SEQS = [
   'Make sure the low-power objective (4X) is clicked into place.',
   'Clean the objectives and slide with lens tissue.',
   'Center the slide specimen over the condenser on the stage and secure it with the clips.',
-  'Look through the ocular lens and use the coarse adjustment knob to raise the stage until the specimen is in view.',
+  'Look through the ocular lens and use the coarse adjustment knob to bring the specimen into focus.',
   'Adjust the diaphragm for light and contrast.']},
  {title:'Going from low power to higher power', topic:'scope', src:['NB'], steps:[
   'Center and focus the specimen at low power first.',
@@ -208,10 +215,10 @@ var SAM_SEQS = [
   'Use only the fine adjustment knob to sharpen the focus.']},
  {title:'Putting the microscope away', topic:'scope', src:['NB'], steps:[
   'Slowly rotate the nosepiece so the 4X objective is in place.',
-  'Lower the stage by turning the coarse adjustment knob away from the arm.',
+  'Lower the stage using the coarse adjustment knob.',
   'Remove the slide.',
-  'Use lens tissue to clean the lens and stage if there is moisture or debris.',
-  'Wrap up the cord, wrap the cord-keeper around it 2 times, and hang it on the body tube.',
+  'Use lens tissue to clean the lenses, and wipe the stage if there is moisture or debris.',
+  'Wrap up the cord neatly so it does not dangle or drag.',
   'Use the arm and base to carry the microscope to the cabinet.']}
 ];
 // [name, bucket, sources]
@@ -222,9 +229,9 @@ var SAM_SORT = [
 ];
 var SAM_FIVE = {
  right:['Able to reproduce','Responds to stimuli','Made up of cells','Able to grow and develop','Able to use energy'],
- decoys:['Tissue','Homeostasis','Diaphragm','Stage','Organ']
+ decoys:['Tissue','Has a backbone','Diaphragm','Stage','Organ']
 };
-var SAM_LOOKUP = ['Autotroph','Biology','Evolution','Heterotroph','Metabolism','Slide','Glass coverslip'];
+var SAM_LOOKUP = [];
 // [text, group, sources]
 var SAM_GOALS = [
  ['Name the 5 characteristics of a living organism','Living things',['NB']],
@@ -243,13 +250,13 @@ var SAM_GOALS = [
 ];
 var SAM_SKIPPED = {text:'Introduction to experiments and variables (crossed out on the study guide, so not on this test): variables of an experiment, variables of a fair experiment, why variables matter when designing an experiment, setting up a good experiment.', src:['NB']};
 var SAM_TIPS = [
- 'The best way to prepare for a test is to teach someone, again and again, using your working memory.',
+ 'Teaching someone else is one of the best ways to find out what you really know.',
  'Get a good night\'s sleep before the test.',
  'Eat a nutritious breakfast with protein and healthy fats.',
- 'Rereading your notes gives a false understanding. Quiz yourself instead!',
+ 'Rereading your notes can make you feel like you know it. Quiz yourself instead!',
  'Cramming is ineffective. Study a little bit each day.',
- 'Teach an adult for at least 15 minutes to get ready for the science test.',
- 'Use your ISN (Interactive Science Notebook) and your EdPuzzles to study.'
+ 'Try teaching an adult for 15 minutes to get ready for the test.',
+ 'Use your class notebook and any assigned videos to study.'
 ];
 var SAM_ITEMS = (function(){
   var items = [], n;
@@ -436,7 +443,7 @@ function flashcards(list,title){
   if(it.kind==='sort')return ['Biotic or abiotic?',it.name,'Answer',it.bucket==='biotic'?'Biotic (living)':'Abiotic (nonliving)'];
   if(it.kind==='seq')return ['Put in order',it.title,'Steps',it.steps.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
   if(it.kind==='five')return ['Name them','The 5 characteristics of living things',"Answer",it.right.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
-  if(it.kind==='lookup')return ['On the study guide word list',it.term,'Note','This word is on the vocabulary list, but its meaning is not given in the study materials. Look it up in your ISN or textbook.'];
+  if(it.kind==='lookup')return ['On the study guide word list',it.term,'Note','This word is on the vocabulary list, but its meaning is not given in the study materials. Look it up in your notebook or textbook.'];
   return ['','',' ',''];
  }
  function draw(){
@@ -619,7 +626,7 @@ function review(){
 /* ---------- study guide ---------- */
 function guide(){
  var byName={};PAIRS.forEach(function(p){byName[p.term.toLowerCase()]=p;});
- var vocab=VOCAB20.map(function(w){var p=byName[w.toLowerCase()];return '<details><summary>'+esc(w)+'</summary><div class="tl">'+(p?esc(p.def):'This word is on the vocabulary list, but its meaning is not given in the study materials. Look it up in your ISN or textbook.')+'</div></details>';}).join('');
+ var vocab=VOCAB20.map(function(w){var p=byName[w.toLowerCase()];return '<details><summary>'+esc(w)+'</summary><div class="tl">'+(p?esc(p.def):'This word is on the vocabulary list, but its meaning is not given in the study materials. Look it up in your notebook or textbook.')+'</div></details>';}).join('');
  var groups={};SAM_GOALS.forEach(function(g,i){var id='g'+(i+1);(groups[g[1]]=groups[g[1]]||[]).push('<label class="chk"><input type="checkbox" data-g="'+id+'"'+(S.checks[id]?' checked':'')+'><span>'+esc(g[0])+'</span></label>');});
  var goalHtml=Object.keys(groups).map(function(k){return '<h3>'+esc(k)+'</h3>'+groups[k].join('');}).join('');
  var terms=SAM_TOPICS.map(function(t){
