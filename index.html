@@ -444,6 +444,7 @@ function home(){
  '<div class="bar" style="height:16px;margin-top:10px"><i style="width:'+Math.round(100*m/t)+'%"></i></div>'+
  '<p class="tl">An item is mastered when you get it right 2 times in a row.</p></div>'+
  '<div class="card"><h2>Badges</h2><div class="badges">'+BADGES.map(function(b){return '<div class="badge'+(S.badges[b[0]]?' on':'')+'" title="'+esc(b[3])+'"><b>'+b[1]+'</b>'+esc(b[2])+'<br><span style="font-weight:500">'+esc(b[3])+'</span></div>';}).join('')+'</div></div>'+
+ '<p class="sub"><a href="west-africa/" style="color:#fff;font-weight:800">West Africa study game</a></p>'+
  '<p class="sub"><button class="back" id="reset">Reset my progress</button></p>';
  bindHeader();
  var cs=app.querySelectorAll('.chip');for(var i=0;i<cs.length;i++)cs[i].onclick=function(){S.topic=this.getAttribute('data-t');save();home();};
