@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#9a3412">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect fill=%22%23e0a045%22 width=%2264%22 height=%2264%22 rx=%2212%22/%3E%3Cpath fill=%22%238c3d16%22 d=%22M8 40h48v12H8zM14 28h10v12H14zM40 28h10v12H40zM24 18h16v22H24z%22/%3E%3Ccircle cx=%2232%22 cy=%2214%22 r=%226%22 fill=%22%23fff3d0%22/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>West Africa Study Game</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;background:linear-gradient(165deg,#8c3d16 0%,#e0a045 46%,#2f6b4a 100%);background-attachment:fixed;min-height:100vh;color:#1d1b3a}
+#app{max-width:760px;margin:0 auto;padding:10px 12px 40px}
+.top{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.95);border-radius:18px;padding:10px 12px;box-shadow:0 4px 0 rgba(0,0,0,.15)}
+.top .logo{font-size:26px}
+.top .who{flex:1;min-width:0}
+.top .lvl{font-weight:800;font-size:15px}
+.bar{height:12px;background:#e3e0ff;border-radius:8px;overflow:hidden;margin-top:4px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#ff9f1c,#ff3d81);border-radius:8px;transition:width .4s}
+.tbtn{border:0;background:#efeaff;border-radius:12px;padding:8px 10px;font-size:18px;cursor:pointer}
+h1{color:#fff;text-align:center;margin:16px 0 4px;font-size:28px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.sub{color:#fff;text-align:center;margin:0 0 12px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0 12px}
+.chip{border:0;border-radius:20px;padding:8px 14px;font-weight:800;background:rgba(255,255,255,.35);color:#fff;cursor:pointer;font-size:14px}
+.chip.on{background:#fff;color:#9a3412;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+.mode{border:0;border-radius:20px;padding:14px 8px;color:#fff;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.22);text-align:center;min-height:104px;transition:transform .08s}
+.mode:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.22)}
+.mode .e{display:block;font-size:32px;margin-bottom:4px}
+.mode small{display:block;font-weight:600;font-size:12px;opacity:.95;margin-top:2px}
+.c1{background:#ff3d81}.c2{background:#ff9f1c}.c3{background:#7c4dff}.c4{background:#00b894}.c5{background:#0984e3}.c6{background:#e17055}.c7{background:#d63031}.c8{background:#6c5ce7}.c9{background:#00a8a8}
+.card{background:#fff;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 5px 0 rgba(0,0,0,.15)}
+.card h2{margin:0 0 8px;font-size:20px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.stat{flex:1;min-width:90px;background:#f4f1ff;border-radius:14px;padding:8px;text-align:center}
+.stat b{display:block;font-size:22px;color:#9a3412}
+.stat span{font-size:12px;font-weight:700}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-size:16px;font-weight:800;color:#fff;background:#9a3412;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.btn:active{transform:translateY(2px)}
+.btn.g{background:#00b894}.btn.r{background:#ff3d81}.btn.o{background:#ff9f1c}.btn.w{background:#eee;color:#333}
+.btn[disabled]{opacity:.45}
+.hud{display:flex;gap:8px;align-items:center;color:#fff;font-weight:800;margin:10px 0}
+.hud .sp{flex:1}
+.hud .pill{background:rgba(0,0,0,.25);border-radius:14px;padding:6px 10px}
+.q{font-size:20px;font-weight:800;line-height:1.3}
+.q small{display:block;font-size:13px;color:#6b64a8;margin-bottom:4px}
+.ch{display:block;width:100%;text-align:left;border:3px solid #e3e0ff;background:#fff;border-radius:14px;padding:12px;margin:8px 0;font-size:16px;font-weight:700;cursor:pointer;color:#1d1b3a}
+.ch:active{background:#f4f1ff}
+.ch.ok{background:#c9f7e2;border-color:#00b894}
+.ch.bad{background:#ffd6e3;border-color:#ff3d81}
+.ch[disabled]{cursor:default}
+.fb{margin-top:10px;padding:10px;border-radius:12px;font-weight:700}
+.fb.ok{background:#c9f7e2}.fb.bad{background:#ffe0e9}
+.flash{perspective:900px;margin:12px 0}
+.fc{min-height:230px;border-radius:22px;padding:20px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.2);background:linear-gradient(135deg,#ffd166,#ff9f1c);color:#3a2300;animation:pop .25s}
+.fc.back{background:linear-gradient(135deg,#a0f0d0,#00b894);color:#00332a;font-size:19px}
+.fc small{display:block;font-size:13px;font-weight:700;margin-bottom:8px;opacity:.75}
+@keyframes pop{from{transform:scale(.94);opacity:.5}to{transform:scale(1);opacity:1}}
+.mgrid{display:grid;grid-template-columns:1fr 1.5fr;gap:8px}
+.mt{border:3px solid #e3e0ff;background:#fff;border-radius:12px;padding:10px 8px;font-weight:800;font-size:14px;cursor:pointer;text-align:left;color:#1d1b3a}
+.mt.sel{border-color:#7c4dff;background:#efeaff}
+.mt.done{background:#c9f7e2;border-color:#00b894;opacity:.7}
+.mt.wrong{animation:shake .35s;border-color:#ff3d81;background:#ffd6e3}
+.mt.def{font-weight:600;font-size:13px}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.steps{list-style:none;padding:0;margin:8px 0}
+.steps li{background:#c9f7e2;border-radius:12px;padding:10px;margin:6px 0;font-weight:700}
+.bank{display:flex;flex-direction:column;gap:6px}
+.pill2{display:inline-block;background:#efeaff;border-radius:16px;padding:6px 12px;margin:3px;font-weight:700;font-size:14px}
+.pill2.sel{background:#7c4dff;color:#fff}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.badge{background:#f4f1ff;border-radius:14px;padding:8px;text-align:center;font-size:12px;font-weight:700;opacity:.4;filter:grayscale(1)}
+.badge.on{opacity:1;filter:none;background:#fff3c4}
+.badge b{display:block;font-size:26px}
+.toast{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:#1d1b3a;color:#fff;padding:10px 16px;border-radius:16px;font-weight:800;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.3);max-width:90%;text-align:center;animation:pop .25s}
+.back{color:#fff;background:rgba(0,0,0,.25);border:0;border-radius:14px;padding:8px 12px;font-weight:800;cursor:pointer;font-size:15px}
+label.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eee;font-weight:600;cursor:pointer}
+label.chk input{width:22px;height:22px;flex:none}
+details{margin:6px 0}
+summary{font-weight:800;cursor:pointer;padding:4px 0}
+.tl{margin:4px 0 10px;font-size:14px}
+.tl b{color:#9a3412}
+.hand{font-size:15px}
+.big{font-size:44px;text-align:center}
+.tag{font-size:11px;background:#efeaff;border-radius:8px;padding:2px 6px;margin-left:4px;color:#9a3412;font-weight:800}
+.c10{background:#b33771}
+.tdwrap{color:#1d1b3a}
+.tdbar{display:flex;gap:5px;align-items:center;margin:6px 0}
+.tdbar .sp{flex:1}
+.tdbar .pill{background:rgba(0,0,0,.3);color:#fff;font-weight:800;border-radius:14px;padding:6px 8px;font-size:13px;white-space:nowrap}
+.tdbar .back{padding:6px 10px;font-size:13px}
+.tdmain{display:flex;flex-direction:column;align-items:center;gap:8px}
+.tdcv{position:relative;line-height:0;border-radius:14px;overflow:hidden;box-shadow:0 5px 0 rgba(0,0,0,.2);background:#ece3ff}
+#tdcv{touch-action:none;display:block}
+.tdmsg{position:absolute;left:6px;right:6px;bottom:6px;background:rgba(29,27,58,.88);color:#fff;font-weight:700;font-size:13px;line-height:1.25;border-radius:10px;padding:6px 8px;text-align:center;pointer-events:none;transition:opacity .3s}
+.tdmsg.off{opacity:0}
+.tdside{width:100%}
+.tdctl{display:flex;gap:6px}
+.tdctl .btn{padding:10px 6px;font-size:14px;flex:1;white-space:nowrap}
+.tdans{width:100%;margin:8px 0;background:linear-gradient(90deg,#ff9f1c,#ff3d81);font-size:17px;padding:12px 10px;line-height:1.2}
+.tdans small{display:block;font-weight:700;font-size:12px;margin-top:2px}
+.tdshop{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.tdt{border:3px solid transparent;background:#fff;border-radius:14px;padding:5px 2px;font-weight:800;font-size:12px;cursor:pointer;color:#1d1b3a;text-align:center;box-shadow:0 3px 0 rgba(0,0,0,.2);line-height:1.2}
+.tdt .e{display:block;font-size:22px}
+.tdt.on{border-color:#ff9f1c;background:#fff3c4}
+.tdt.no{opacity:.6}
+.tdinfo{margin:8px 0 0;padding:10px 12px;font-size:14px}
+.tdinfo b{color:#9a3412}
+.tdinfo .row .btn{flex:1;padding:10px 8px;font-size:14px}
+.tdov{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(20,10,60,.72);display:flex;overflow:auto;padding:12px;z-index:40}
+.tdq{margin:auto;width:100%;max-width:520px}
+.tdq .q{font-size:18px;margin-top:6px}
+.tdq .ch{font-size:15px;padding:10px}
+.tdq ul{margin:6px 0;padding-left:20px}
+.wide .tdmain{flex-direction:row;align-items:flex-start;justify-content:center}
+.wide .tdside{width:340px}
+textarea.ans,input.blank{width:100%;border:3px solid #e7d3b0;border-radius:14px;padding:12px;font:16px/1.4 "Trebuchet MS",system-ui,sans-serif;color:#1d1b3a;background:#fff}
+textarea.ans{min-height:130px;resize:vertical}
+.spec{display:flex;gap:8px;align-items:flex-start;padding:5px 0;font-weight:700}
+.spec.ok{color:#0b6b45}.spec.bad{color:#8a2040}
+input.blank.ok{border-color:#0b6b45;background:#e8fff4}
+input.blank.bad{border-color:#c0392b;background:#fff0f3}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+var SAM_SRC = {BK:'Lessons 11 and 12'};
+var SAM_TOPICS = [
+{id:"geo", name:"Geography", emoji:"🏜️"},
+{id:"grow", name:"Villages to Cities", emoji:"🏘️"},
+{id:"king", name:"Kingdoms", emoji:"👑"},
+{id:"ghana", name:"Ghana and Mali", emoji:"🏰"},
+{id:"trade", name:"Gold and Salt", emoji:"⚖️"}
+];
+// [term, definition, topic, sources, highlighted]
+var SAM_PAIRS = [
+["artifact","An item left behind by an earlier culture. Iron tools and iron-smelting furnaces are artifacts of the Nok.","grow",["p. 146"],true],
+["Jenne-jeno","An ancient West African city where the Niger River meets the Bani River. It was built in the third century B.C.E. and lasted more than 1,600 years.","grow",["p. 147"],true],
+["Niger River","The longest river in West Africa. In early times it was a kind of trading highway. People traveled it by canoe.","geo",["p. 144"],true],
+["Nok","A people who lived in what is now central Nigeria. By the 500s B.C.E. they made iron tools.","grow",["p. 146"],true],
+["Sahara","A large, hot desert in North Africa. It covers about 3.5 million square miles.","geo",["p. 144"],true],
+["Sahel","A zone of semidesert just south of the Sahara, where short grasses, small bushes, and a few trees grow.","geo",["p. 144"],true],
+["savanna","A vegetation zone of tall grasses and scattered trees. It has a long rainy season.","geo",["p. 144"],true],
+["smelting","The process of melting ore to extract iron or other metals.","grow",["p. 146"],true],
+["tribute","A payment made by one ruler or country to another for protection, or as a sign of submission.","king",["p. 148"],true],
+["Ghana","A medieval kingdom and empire in West Africa. It lasted from sometime before 500 C.E. until it finally collapsed in the 1200s. The word ghana means \"war chief.\"","ghana",["p. 151"],true],
+["matrilineal","A family line traced through the mother. In Ghana the king's own son did not inherit the throne. The son of the king's sister did.","ghana",["p. 152"],true],
+["trans-Saharan trade","Trade between peoples north and south of the Sahara.","trade",["p. 154"],true],
+["extended family","A farming community of close relatives, such as grandparents, aunts, uncles, and cousins. Early ones south of the Sahara had about 15 to 20 members.","grow",["p. 145"],true],
+["blacksmith","A skilled worker who hammered red-hot iron into tools and weapons. In Jenne-jeno, blacksmiths were the most respected people.","grow",["p. 146"],true],
+["Wangara","The secret gold country south of Ghana. The Wangarans never revealed where their mines were.","trade",["p. 156"],true],
+["Taghaza","A Sahara village where salt was mined. Traders stopped there to load blocks of salt.","trade",["p. 156"],true],
+["Kumbi","The capital of Ghana. It had the busiest market in West Africa.","ghana",["p. 158"],true],
+["silent barter","Trading without speaking or meeting. Wangarans and caravan traders left goods and gold dust by a river and signaled with drums.","trade",["p. 158"],true],
+["Almoravids","Muslim warriors who attacked Ghana in the second half of the 11th century and captured Kumbi.","ghana",["p. 159"],true],
+["Mande","A people whose homeland, Mali, lay south of Kumbi, closer to the Niger River. Around 1240 they conquered Kumbi and built a new empire.","ghana",["p. 159"],true],
+["Ibn Battuta","A Muslim historian and traveler. In 1352 he crossed the Sahara with a trade caravan and wrote about the journey.","trade",["p. 155"],false],
+["camel","An animal Arab traders brought to the Sahara around 300 C.E. A camel can drink up to 25 gallons of water at a time, so it can walk for days in the desert.","trade",["p. 154"],true],
+["cowrie shell","A kind of seashell from North Africa. Traders used cowrie shells as money.","trade",["p. 154"],false],
+["porter","A person who carries goods for a living. At Walata, traders moved salt and other goods from camels onto donkeys and porters.","trade",["p. 155"],false],
+["empire","What a kingdom became when its king conquered more land. The king might send a governor to rule a conquered area, or let the people rule themselves.","king",["p. 148"],true]
+];
+// [question, short answer, pool, topic, sources, wrong answers, flashcard answer, highlighted]
+var SAM_FACTS = [
+["What key question does Lesson 11 ask?","What was the most significant factor in the development of early societies in West Africa?","fact","geo",["p. 143"],["To what extent did trans-Saharan trade lead to Ghana's wealth and success?", "How did ironworking begin in Turkey?", "Who was the king of Mali in 1352?"],"What was the most significant factor in the development of early societies in West Africa?",true],
+["What does Lesson 11 say played a critical role in the growth of West African societies?","Trade","fact","geo",["p. 144"],["Only gold nuggets", "The rainforest", "Royal drums"],"Trade. The lesson says trade played a critical role in the growth and advancement of West African societies.",true],
+["Why was the Sahara a poor place for large settlements?","It is very dry, except for scattered water sources.","fact","geo",["p. 144"],["It rains there all year", "It is mostly swamp", "It is covered by tall forest"],"The Sahara is very dry except for some water sources with a little vegetation, so it was not a good place for large settlements.",true],
+["About how much of the Sahara is sand dunes?","One-quarter","fact","geo",["p. 144"],["Almost all of it", "None of it", "About three-quarters"],"Sand dunes cover about one-quarter of the Sahara. The rest includes bare rock, plains, and even mountains.",false],
+["Which grains grow on the savanna?","Millet, sorghum, and rice","fact","geo",["p. 144"],["Mahogany and teak", "Only dates", "Salt and copper"],"The savanna has a long rainy season, so millet, sorghum, and rice can grow there. Grasses feed cattle, camels, goats, and sheep.",true],
+["How did the Niger River help nearby communities?","It fertilized the land, gave people fish, and served as a trade route.","fact","geo",["p. 144"],["It stopped all trade", "It made the Sahara wet", "It was the only source of gold"],"The Niger River helped fertilize nearby land and provided fish. People also traveled it by canoe to trade. It was a kind of trading highway.",true],
+["What is the forest zone in southern West Africa like?","It is much wetter than the savanna. Its north is woodland, and its south is rainforest.","fact","geo",["p. 144"],["It is drier than the Sahara", "It has no trees", "It is only sand dunes"],"The forest zone is wetter than the savanna. The northern part is a woodland of trees and shrubs. The southern part is rainforest, where rain falls year-round. Mahogany and teak rise above swamps and lagoons.",false],
+["What are the borders of the West Africa region in this lesson?","The Sahara on the north, the Atlantic Ocean on the west and south, and the mountains of present-day Cameroon on the east.","fact","geo",["p. 144"],["Only the Niger River", "The Mediterranean Sea on every side", "The rainforest on the north"],"West Africa begins in the Sahara on the north. The Atlantic Ocean borders it on the west and south. The mountains of present-day Cameroon border it on the east.",false],
+["Why did people in different vegetation zones trade with each other?","Each zone had different resources, so people traded for what they could not produce themselves.","fact","geo",["p. 145"],["Every zone had exactly the same goods", "The king banned local goods", "Trade was only allowed inside one family"],"Different resources are found in each vegetation zone. People traded for items they could not provide for themselves. People on the savanna may have traded grains for yams or mahogany from forest dwellers.",true],
+["How did most early trade in West Africa move?","Most early trade was among settlements. People used canoes on the Niger and other rivers. Some traders also crossed the Sahara.","fact","geo",["p. 145"],["Only by camel from the very beginning", "Only inside one house", "Only by ship across the Atlantic"],"Several rivers were trade routes, and the Niger became a trading highway. People traveled by canoe. Some traders crossed the Sahara from North Africa, but most early trade was among settlements.",true],
+["By about when had some people settled to farm south of the Sahara?","By about 4000 B.C.E.","fact","grow",["p. 145"],["By about 300 C.E.", "In 1352", "In the 500s B.C.E."],"By about 4000 B.C.E.",true],
+["Who lived in the earliest farming communities, and about how many people were in one?","Extended families of about 15 to 20 people, including grandparents, aunts, uncles, and cousins.","fact","grow",["p. 145"],["Only two kings", "About 20,000 strangers", "Armies of 200,000"],"The earliest farming communities were extended families: grandparents, aunts, uncles, and cousins, about 15 to 20 people. They produced most of what they needed and worked together to clear fields, plant, and harvest.",true],
+["Who likely made decisions for an early family community?","One of the male elders","fact","grow",["p. 145"],["A camel driver from North Africa", "The Nok blacksmiths", "Ibn Battuta"],"Very likely, one of the male elders made decisions for the family community.",true],
+["What happened when family communities joined together?","They formed villages of about 100 to 200 people.","fact","grow",["p. 145"],["They all moved into the Sahara", "They became the Nok", "They stopped farming"],"Family-based communities joined to form villages that might contain one- to two-hundred people. The village leader was probably chosen for his wisdom and strength.",true],
+["Why did extended families band together in villages?","To get help: for a flooding river, to mine iron or gold, and for protection.","fact","grow",["p. 146"],["To escape to the rainforest forever", "To stop all trade", "Because the Sahara had become a lake"],"Extended families banded together to get needed help. They might have to deal with a flooding river or mine iron or gold. They also banded together for protection.",true],
+["What ruins were found at the village of Dhar Tichitt, and what do they suggest?","High walls and gates in present-day Mauritania. They suggest the villagers united to defend themselves.","fact","grow",["p. 146"],["A Roman coin factory", "Camels' watering places only", "The king's gold hitching post"],"Archaeologists found ruins of high walls and gates at Dhar Tichitt, in present-day Mauritania. These structures suggest that villagers united to defend themselves from outside attacks.",true],
+["What two changes helped some West African villages grow into towns and cities?","The growth of ironworking and the expansion of trade","fact","grow",["p. 146"],["A year-round freeze and the end of rivers", "A ban on farming and on rivers", "The closing of every market"],"The growth of ironworking and the expansion of trade",true],
+["Who mastered ironworking as long ago as 1500 B.C.E.?","The Hittites, in present-day Turkey","fact","grow",["p. 146"],["The Mande, in 1240", "Ibn Battuta", "The people of Taghaza"],"The Hittites of present-day Turkey mastered ironworking as long ago as 1500 B.C.E. The knowledge spread and eventually reached West Africa.",true],
+["How might ironworking have reached West Africa?","Perhaps with traders who crossed the Sahara. Some scholars think it also grew on its own in northern West Africa.","fact","grow",["p. 146"],["It never left Turkey", "Only by ships from Spain in 1352", "Camels invented it"],"Perhaps with traders who crossed the Sahara. Some scholars think it also grew on its own in northern West Africa.",true],
+["What did the Nok make, and what artifacts have been found?","Iron tools. Archaeologists have found their iron tools and iron-smelting furnaces.","fact","grow",["p. 146"],["Only salt blocks", "Roman coins", "Camel saddles"],"By the 500s B.C.E., the Nok, who lived in what is now central Nigeria, made iron tools. Important artifacts include their iron tools and iron-smelting furnaces.",true],
+["What did Nok furnaces burn, and what did blacksmiths do with the iron?","They burned huge amounts of charcoal. Blacksmiths hammered the red-hot iron into axes, hoes, and spears.","fact","grow",["p. 146"],["They burned gold dust and made only jewelry", "They used no fuel", "They carved iron with ivory"],"Smelting is melting ore to get metal. The Nok used enormous amounts of charcoal to fuel their furnaces. Blacksmiths hammered and bent the red-hot iron into axes, hoes, and weapons such as spears.",true],
+["Why did iron tools let villages grow?","Farmers could clear land and grow food more efficiently than with stone tools, so there was food for more people.","fact","grow",["p. 146"],["Iron tools made farming impossible", "People stopped eating", "Stone tools grew more food than iron"],"With iron tools, farmers could clear land and cultivate crops more efficiently than with stone tools. More food supported larger villages, and more people were free to weave, work metal, and make pottery.",true],
+["How could a village on a trade route become wealthy?","It could become a market center and charge fees for trading.","fact","grow",["p. 146"],["It refused every trader", "It moved into the driest part of the Sahara", "It gave away all of its food"],"Villages on rivers or other easy routes became important trading sites. Villages that controlled trade routes became market centers. Their people grew wealthy by charging fees, and newcomers came to trade, learn crafts, and help build public buildings.",true],
+["What old idea did the discovery of Jenne-jeno prove wrong?","That cities did not exist in West Africa until outsiders arrived and helped build them.","fact","grow",["p. 147"],["That the Niger River exists", "That iron is a metal", "That Ghana charged taxes"],"In 1977, archaeologists began excavating Jenne-jeno. Until that rediscovery, some historians believed cities did not exist in West Africa until outsiders arrived and helped local people build them. Jenne-jeno proved that theory wrong.",true],
+["Why was Jenne-jeno built where it was?","It stood where the Niger River meets the Bani River, a strong place for farming, fishing, and trade.","fact","grow",["p. 147"],["It was in the middle of the sand dunes", "It was on the Mediterranean coast", "It was inside a salt mine"],"It stood where the Niger River meets the Bani River, a strong place for farming, fishing, and trade.",true],
+["What did the people of Jenne-jeno trade?","Surplus goods such as catfish, onions, and rice, for salt, iron ore, copper, and gold.","fact","grow",["p. 147"],["Only royal drums", "Nothing; the city banned trade", "Only sand from the dunes"],"They traded surplus goods, such as catfish, onions, and rice, for salt, iron ore, copper, and gold. The copper came from 600 miles away.",true],
+["How many people lived in Jenne-jeno, and what was the wall like?","About 20,000 people. A wall 10 feet wide and 13 feet high.","fact","grow",["p. 147"],["About 15 people and no wall", "About 200,000 people and a wall of salt", "About 40 people and a wooden fence one foot high"],"Jenne-jeno grew into a busy city of about 20,000 people. It was surrounded by a wall 10 feet wide and 13 feet high. The wall may have been built to give the city more status and to control the coming and going of traders.",true],
+["What were the houses in Jenne-jeno like?","Round houses, first of bent poles and woven mats, and later of mud blocks.","fact","grow",["p. 147"],["Tents made of dune sand", "Stone castles copied from the Hittites", "Houses built only of gold nuggets"],"People lived in circular houses. At first they built them from bent poles and woven mats. Later they used mud blocks.",false],
+["What crafts were practiced in Jenne-jeno?","Farming, fishing, pottery, metalwork, weaving, leatherwork, bead making, and ivory carving.","fact","grow",["p. 147"],["Only salt mining", "Only writing Arab histories", "Only herding in the Sahara"],"Besides farmers and fishers, there were potters, metalsmiths, weavers, leatherworkers, bead makers, and ivory carvers.",false],
+["Why were blacksmiths the most respected people in Jenne-jeno?","People prized iron more than gold and thought blacksmiths had supernatural powers.","fact","grow",["p. 147"],["They owned every camel", "They were the only farmers", "They refused to make tools"],"West Africans prized iron more than gold. They were amazed that blacksmiths could make tools from iron. As in many early cultures, people thought blacksmiths had supernatural, or magical or godlike, powers. Blacksmiths could act as political leaders, judges, and doctors.",true],
+["How close is ancient Jenne-jeno to the modern city of Jenne?","Less than two miles","fact","grow",["p. 147"],["600 miles", "On another continent", "Inside the Atlas Mountains"],"Jenne-jeno's location on the Niger was less than two miles from the modern city of Jenne.",false],
+["Which three kingdoms arose in West Africa between 500 and 1600 C.E.?","Ghana, Mali, and Songhai","fact","king",["p. 143"],["Nok, Hittites, and Taghaza", "Sijilmasa, Walata, and Chad", "Sahara, Sahel, and savanna"],"Between 500 and 1600 C.E., three kingdoms arose in West Africa: Ghana, Mali, and Songhai.",true],
+["How did trade help the first West African kingdoms rise?","Cities grew rich by controlling trade, raised armies, conquered other trading areas, and collected tribute.","fact","king",["p. 148"],["They banned armies and gave away their markets", "They refused all gold and salt", "They moved their cities into the dunes"],"Ghana, Mali, and Songhai were trading powers. A city could grow wealthy by controlling trade. With that wealth its ruler could raise a large army, conquer nearby trading areas, take over their trade, and collect tribute.",true],
+["What two kinds of leaders were West African kings?","Political leaders and religious leaders","fact","king",["p. 148"],["Only camel porters", "Only blacksmiths from Jenne-jeno", "Only North African merchants"],"West African kings were both political and religious leaders. People believed the gods gave them special powers. The kings performed religious ceremonies to please the gods.",true],
+["What is one disadvantage and one advantage of being conquered and brought into a kingdom?","People had to pay tribute and men had to serve in the army, but the king protected the land and the trade routes.","fact","king",["p. 148"],["There were no changes at all", "Conquered people took the king's throne the next day", "Trade routes were closed on purpose"],"Disadvantages included paying tribute and serving in the king's army. Advantages: the king provided protection, armies kept trade routes safe from raiders and foreign armies, wars between small cities ended, and the king gave expensive presents to his governors.",true],
+["What key question does Lesson 12 ask?","To what extent did trans-Saharan trade lead to Ghana's wealth and success?","fact","ghana",["p. 151"],["What was the most significant factor in the development of early societies in West Africa?", "How did the Nok smelt iron in Turkey?", "What did the Nok burn in their furnaces?"],"To what extent did trans-Saharan trade lead to Ghana's wealth and success? The lesson shows that controlling and taxing this trade, especially in gold and salt, made Ghana rich and powerful. War and the loss of natural resources later brought Ghana down.",true],
+["When did the kingdom of Ghana last?","From sometime before 500 C.E. until its final collapse in the 1200s","fact","ghana",["p. 151"],["From 4000 B.C.E. until 1500 B.C.E.", "Only during the year 1352", "From the third century B.C.E. until 300 C.E."],"From sometime before 500 C.E. until its final collapse in the 1200s",true],
+["Where did the kingdom of Ghana arise?","In the Sahel, in the valley between the Senegal and Niger rivers","fact","ghana",["p. 151"],["In the rainforest of southern Cameroon only", "In present-day Turkey", "On the Mediterranean coast at Sijilmasa"],"Ghana arose in the semidesert Sahel and spread over the valley between the Senegal and Niger rivers. Forest lay to the south and the Sahara to the north. Today this region is part of the modern nations of Mali and Mauritania. The modern country of Ghana, far to the south, takes its name from the old kingdom but is not in the same place.",true],
+["What does the word ghana mean?","War chief","fact","ghana",["p. 151"],["Gold dust", "Salt mine", "Camel driver"],"War chief",true],
+["What do archaeologists conclude made Ghana's king and people wealthy?","Control of trade, especially the gold trade","fact","ghana",["p. 151"],["A ban on all markets", "Finding salt in the rainforest", "Refusing every camel"],"Historians are not sure exactly how Ghana became an empire. Possibly warriors used iron weapons to defeat their neighbors. Archaeologists have concluded that control of trade, particularly the gold trade, made the king and his people very wealthy.",true],
+["Who wrote the earliest accounts of the kingdom of Ghana?","Arab scholars, using reports from travelers. By the 9th century Ghana was already flourishing.","fact","ghana",["p. 151"],["The Nok, in the 500s B.C.E.", "The Hittites, in 1500 B.C.E.", "Only the modern country of Ghana"],"The earliest writings about Ghana come from Arab scholars. They recorded what travelers told them. By the 9th century, when they began writing, Ghana was already a flourishing empire.",false],
+["What jobs did Ghana's king hold?","Head of the army, final judge, and leader of religious worship","fact","ghana",["p. 152"],["Only a salt miner", "Only a porter", "Only a Wangaran boatman"],"The king was the head of the army, made the final decisions in matters of justice, and led the people in religious worship.",true],
+["How did Ghana's king keep control of the gold supply?","All gold nuggets had to be given to the king. Ordinary people could have only gold dust.","fact","ghana",["p. 152"],["Ordinary people kept every nugget", "Gold was thrown into the Niger", "Only camels could own gold"],"To preserve his wealth, the king tightly controlled the supply of gold. All the gold nuggets found in the kingdom had to be given to him. Ordinary people could have only gold dust.",true],
+["What legends were told about the king's gold nuggets?","One was said to weigh almost forty pounds. Another was supposedly large enough to be a hitching post for his horse.","fact","ghana",["p. 152"],["They were smaller than grains of sand", "They were made of salt", "They were cowrie shells"],"One of the king's gold nuggets is said to have weighed almost forty pounds. According to legend, another was large enough to be used as a hitching post for his horse.",false],
+["How did people greet the king at court?","They knelt and threw dust on their heads as he approached to the sound of royal drums.","fact","ghana",["p. 152"],["They turned their backs and left", "They traded in silence by the river", "They hid in the salt mines"],"Each day the king held court, dressed in colorful robes, gold jewelry, and a cap decorated with gold. He arrived to the beating of royal drums. People showed respect by kneeling and throwing dust on their heads.",false],
+["Who inherited the throne when Ghana's king died?","The son of the king's sister","fact","ghana",["p. 152"],["The king's own son", "A North African merchant", "The oldest porter"],"The king's son did not inherit the throne. Royal inheritance was matrilineal, traced through women rather than men. The son of the king's sister was the heir.",true],
+["What were the three parts of Ghana's military?","A regular army, reserve forces, and elite soldiers","fact","ghana",["p. 153"],["Only Wangaran miners", "Only camel caravans", "Only the king's dogs"],"Ghana's military included a regular army of career soldiers, extra reserve forces called up in wartime, and elite soldiers chosen for courage, honesty, and intelligence.",false],
+["What did Ghana's regular soldiers do, and how were they treated?","They guarded the borders, put down small revolts, and kept order. They were well paid and highly respected.","fact","ghana",["p. 153"],["They were unpaid and banned from the kingdom", "They only mined salt", "They never trained"],"The regular army kept the borders secure, suppressed minor revolts, and maintained peace and order. These soldiers were well paid and highly respected. Every man in the empire had to complete military training so he could serve when called.",false],
+["What weapons did Ghana's soldiers use?","Spears, daggers, swords, battle clubs, and bows and arrows","fact","ghana",["p. 153"],["Only camel stomachs", "Only gold collars", "Only woven mats"],"Soldiers used spears, daggers, swords, battle clubs, and bows and arrows. They wore knee-length cotton pants, sleeveless tunics, sandals, and headdresses with feathers. The color of the tunic and the number of feathers showed rank.",false],
+["What should you remember about the story of 200,000 warriors?","The number surely grew as the story was retold, but the king could call up a large army, including archers on foot.","fact","ghana",["p. 153"],["The book says the number is an exact count from a census", "The army had only 15 people", "Ghana had no soldiers"],"Stories describe a king who could call up 200,000 warriors. That number no doubt grew as the story was passed on, but the king certainly could summon a sizable army, including infantry archers.",false],
+["What was the job of Ghana's elite soldiers?","They served the king as bodyguards, escorts, and military advisors.","fact","ghana",["p. 153"],["They kept the gold mines of Wangara secret", "They carried goods as porters only", "They wrote the Arab histories"],"Special groups were chosen for courage, honesty, and intelligence. These soldiers served as bodyguards, escorts, and military advisors.",false],
+["What goods did traders from North Africa bring across the Sahara?","Salt, copper, and cowrie shells","fact","trade",["p. 154"],["Mahogany and teak logs only", "Only mud blocks", "Only Nok furnaces"],"Traders from North Africa crossed the Sahara with salt, copper, and cowrie shells, a type of seashell used as money.",true],
+["What did those traders take from the southern forests?","Kola nuts, hides, leather goods, ivory, slaves, and gold","fact","trade",["p. 154"],["Only sand dunes", "Only royal drums", "Only camels from Turkey"],"Merchants traded their goods for kola nuts, hides, leather goods, ivory, slaves, and gold from the southern part of West Africa. Then they carried those goods back to markets in North Africa.",true],
+["Why did Ghana's location make it rich?","Traders going to and from the south had to pass through Ghana and pay heavy taxes each time.","fact","trade",["p. 154"],["Ghana was so far from every route that no trader came", "Ghana banned taxes", "Ghana had no markets"],"Ghana lay between North Africa and West Africa, so it could control trans-Saharan trade. Traders paid heavy taxes on their goods each time they passed through. Those taxes helped make Ghana rich.",true],
+["How early did North Africans bring gold out of the southern forests?","As long ago as 400 to 500 B.C.E., though crossing the desert was especially hard then.","fact","trade",["p. 154"],["Not until 1352", "Only after 1600 C.E.", "Never"],"Trans-Saharan trade has a long history. Archaeologists have found evidence that North Africans brought gold back from the southern forests as long ago as 400 to 500 B.C.E. Travel across the Sahara was especially challenging for these early people.",false],
+["What two changes helped trans-Saharan trade grow?","The introduction of the camel, and the spread of Islam","fact","trade",["p. 154"],["The end of the Niger River, and a ban on gold", "The invention of iron by the Nok only", "The wall around Jenne-jeno"],"The introduction of the camel, and the spread of Islam",true],
+["Why could camels cross the Sahara?","A camel can drink up to 25 gallons at a time and then travel for several days. Double eyelashes and hairy ears help keep out the sand.","fact","trade",["p. 154"],["Camels needed a river under them the whole way", "Camels could not drink water", "Camels were used only as food and never for travel"],"Arab traders first brought camels to the Sahara around 300 C.E. A camel can drink up to 25 gallons of water at a time and travel several days without stopping. Double rows of eyelashes and hairy ear openings help keep out blowing sand.",true],
+["What was happening to West African gold by the 4th century C.E.?","Large amounts were being made into Roman coins in North Africa. That gold likely came from West Africa.","fact","trade",["p. 154"],["It was all thrown away", "It was used only as roof tiles in Jenne-jeno", "It had not been discovered yet"],"Camels let traders open caravan routes. By the 4th century C.E., large amounts of gold were being made into Roman coins in North Africa. It is likely that gold came from West Africa.",false],
+["What happened when Muslims invaded Ghana in the 7th century?","Ghana turned the invaders back, but many Muslims stayed, settled in towns, and became merchants.","fact","trade",["p. 154"],["Ghana disappeared that same year", "No Muslim ever entered West Africa", "The Nok left Nigeria"],"In the 7th century, Muslims invaded Ghana's empire. They wanted to convert West Africans to Islam and to control trade. Ghana turned back the invaders, but many Muslims settled in West African towns and became merchants. Trade kept expanding because of the spread of Islam.",true],
+["What was true of Ghana's power by the year 1000?","Ghana dominated the trade routes between North Africa and West Africa, and the empire was near its height.","fact","trade",["p. 154"],["Ghana had not yet begun", "Ghana had already ended in 1203", "Ghana had left Africa"],"By the year 1000, Ghana's empire dominated the trade routes between North and West Africa. The empire reached its height around the year 1000.",true],
+["Who crossed the Sahara in 1352, and why does his writing matter?","Ibn Battuta, a Muslim historian and traveler. His account describes what the traders' journeys were like.","fact","trade",["p. 155"],["A Nok blacksmith", "A Hittite king", "The son of Ghana's king in 4000 B.C.E."],"In 1352 Ibn Battuta crossed the Sahara with a trade caravan. He was a Muslim historian and traveler, and his account describes the journey.",false],
+["Where did Battuta's caravan begin its desert crossing?","At Sijilmasa, an oasis city on the northern edge of the Sahara, in the foothills of the Atlas Mountains.","fact","trade",["p. 155"],["At Jenne-jeno", "At Dhar Tichitt", "In central Nigeria"],"The caravan started at the oasis city of Sijilmasa. Donkeys had carried goods from the Mediterranean coast, from Europe, Arabia, and Egypt, to Sijilmasa. Then camels took the goods south.",false],
+["How did the caravan cross the desert day by day?","After the rains, they walked from oasis to oasis until afternoon, then rested until sunset.","fact","trade",["p. 155"],["They rode the Niger the whole way", "They walked only at noon with no stops", "They flew from city to city"],"They stayed in Sijilmasa until the rainy season ended, when watering places were full and there was grass for the animals. Each day the traders walked until the afternoon, when the sun was high, and then rested until sunset.",false],
+["What danger does Battuta describe in the desert?","Caravans could get lost, and some traders died. Once his group killed camels and drank the water stored in the animals' stomachs.","fact","trade",["p. 155"],["The desert was too muddy to walk", "They were never short of water", "The only danger was too much rain"],"Walking across the Sahara was hard and dangerous. Caravans sometimes lost their way, and some traders died. During one stretch they could not find water, so they slaughtered some camels and drank the water stored in the animals' stomachs.",false],
+["What did the caravan do at Taghaza and at Walata?","At Taghaza they loaded salt. At Walata they moved the goods from camels to donkeys and porters.","fact","trade",["p. 155"],["They built Jenne-jeno", "They turned around and went to Turkey", "They dumped the salt into the sea"],"On the way through the desert the caravan stopped at Taghaza, where the salt mines were, and took on a load of salt. At Walata, on the edge of the desert, they transferred the salt and other goods from camels to donkeys and to porters, people who carry goods for a living.",false],
+["How long did the full trip to the markets near the Gulf of Guinea take?","About two months","fact","trade",["p. 155"],["About two hours", "About two days", "About 1,600 years"],"From Sijilmasa the routes stretched across the desert, through Ghana, south to the Gulf of Guinea, and east toward present-day Chad. The entire journey took about two months.",false],
+["Why did people south of the desert crave salt?","They had no local salt. Hot climates make people sweat out salt, and they also used salt to preserve food, feed cattle, and season meals.","fact","trade",["p. 156"],["They already had more salt than they could use", "Salt was useless in a hot climate", "They used gold dust as their only food"],"Salt is important in the diet because people and animals lose salt when they sweat. People in hot West Africa had to replace it. They also needed salt to keep food from spoiling, to give to their cattle, and because they liked the taste. For many of them, salt was more precious than gold. They had little use for gold except as something to trade.",true],
+["Where did West Africans get salt, and how was it produced?","From Taghaza and other places in the Sahara, by evaporating salty water or by mining blocks.","fact","trade",["p. 156"],["From the rainforest trees", "From the Niger's fish", "From gold nuggets"],"West Africans had no local source of salt, so they got it from Taghaza and other places in the Sahara. One method: water was poured into holes in salty earth, drew out the salt, and evaporated in the sun. The salt was packed into blocks. The other method was mining.",true],
+["How was salt mined at Taghaza?","Workers enslaved by Arab merchants dug tunnels and cut the salt out in large blocks.","fact","trade",["p. 156"],["Salt fell from the rainforest", "Camels licked it off the sand with no digging", "The Nok smelted it from iron ore"],"At Taghaza, salt deposits were below the surface. Workers enslaved by Arab merchants reached the salt by digging tunnels, then cut it out in large blocks.",false],
+["What were Taghaza's houses built from, and how did people there get food?","Houses were built of salt blocks. Little food grew there, so people depended on caravans for food such as dates and millet.","fact","trade",["p. 157"],["Houses were built of mahogany, and farms fed everyone", "Houses were gold, and no one needed food", "Houses were mud, and the Niger provided all the grain"],"Even the houses in Taghaza were built of salt blocks. Because no food was produced there, people relied on caravans to bring food, such as dates and millet. If the caravans did not arrive, the miners starved.",false],
+["What salt tax did Ghana charge?","One-sixth of an ounce of gold on each load entering from the north, and one-third of an ounce on each load going south.","fact","trade",["p. 157"],["No tax at all", "One camel per load", "Half of every person in the caravan"],"Traders paid taxes on goods both when they entered Ghana and when they left. Ghana charged one-sixth of an ounce of gold for each load of salt that came in from the north, and one-third of an ounce of gold for each load taken south.",true],
+["What did Ghana charge on copper and on general merchandise?","Five-eighths of an ounce of gold per load of copper, and a little more than one ounce of gold per load of general merchandise.","fact","trade",["p. 157"],["One grain of sand", "Nothing, because copper was free", "The same as a drink of water"],"For every load of copper, traders were charged five-eighths of an ounce of gold. They paid slightly more than one ounce of gold per load of general merchandise.",false],
+["What did Ghana's tax money pay for?","It filled the treasury and helped pay for armies that protected the kingdom and the trade routes.","fact","trade",["p. 157"],["It was buried and never used", "It paid only for camel stomachs", "It was given to the Wangarans as a secret"],"The taxes enriched Ghana's treasury and helped pay for armies. Those armies protected the kingdom, let the king conquer other territory, and guarded trade routes against raiders who might rob the caravans.",true],
+["How did the Wangarans protect the secret of their gold mines?","Miners would die rather than tell. One story says they stopped trading for three years so no one could follow them home.","fact","trade",["p. 156"],["They printed maps for every trader", "They moved the mines to Sijilmasa", "They told every captured miner to draw a map"],"The Wangarans kept the location of their gold mines secret. Stories say merchants sometimes captured a miner and tried to force him to reveal Wangara. The miners would give their lives rather than tell. In one tale, after a miner was captured, the Wangarans stopped trading for three years so no one would discover the way to Wangara. To this day, no one knows for certain exactly where the mines were.",true],
+["What was Kumbi's market like?","It was the busiest market in West Africa. People paid for goods, including enslaved people, with gold dust.","fact","trade",["p. 158"],["It was empty because trade was banned", "It sold only sand", "It accepted no gold"],"Caravans brought goods to the great market in Kumbi, then many went on to trade with the Wangarans. Ironsmiths sold weapons and tools, goldsmiths and coppersmiths sold jewelry, weavers sold cloth, and leatherworkers sold leather goods. Shoppers could also find blue blouses from Spain, robes from Morocco, cattle, sheep, honey, wheat, raisins, dried fruit, ivory, pearls, and slaves. All goods were paid for with gold dust.",false],
+["What does the lesson say about Kumbi's slave market?","Kumbi had one of the largest slave markets in West Africa. Raiders captured people along the southern border. Arab merchants bought many of them and sold them north of the desert.","fact","trade",["p. 158"],["The book says Kumbi had no slave market", "Enslaved people were paid for with salt blocks only", "Only the Nok ran the market in the 500s B.C.E."],"Kumbi had one of the largest slave markets in West Africa. Raiders captured people along the southern border of Ghana. Many were bought at Kumbi by Arab merchants, who took them across the Sahara and sold them to North Africans or Europeans.",false],
+["What goods did caravans lay out for the Wangarans?","Wool, silk, cotton, dates, figs, grains, leather, and salt","fact","trade",["p. 158"],["Only iron-smelting furnaces", "Only gold nuggets for the king", "Only dune sand"],"Trade with the Wangarans happened along a river in the southern forests. The caravans brought wool, silk, cotton, dates, figs, grains, leather, and salt.",false],
+["How did silent barter work?","Traders laid out goods, beat a drum, and walked away. Wangarans came by boat, left gold dust, and left. The groups bargained without meeting.","fact","trade",["p. 158"],["They met in the king's court and shook hands", "They shouted prices across Kumbi", "They refused to use drums or gold"],"Traders spread their goods along the river, beat a drum to announce an offer, and walked several miles away. When the Wangarans heard the drum, they came by boat, put some gold dust next to the goods, beat a drum, and left. If the gold was enough, the traders took it. If not, they waited for the Wangarans to leave more. They bargained back and forth without ever meeting.",true],
+["What were two advantages of silent barter?","People who spoke different languages could trade, and the Wangarans could hide where the gold mines were.","fact","trade",["p. 158"],["It made the mines easy to find, and it required one shared language", "It ended all trade", "It let the king take the gold without paying"],"Silent barter had two advantages. First, people who spoke different languages could trade. Second, it let the Wangarans protect the secret location of their gold mines.",true],
+["What did the Almoravids do to Ghana?","In the second half of the 11th century they attacked the empire and captured Kumbi. The king won the city back, but the empire had already broken apart.","fact","ghana",["p. 159"],["They built Jenne-jeno in the third century B.C.E.", "They brought the first camels in 300 C.E.", "They were the Nok blacksmiths"],"Ghana reached its height around the year 1000. In the second half of the 11th century, Muslim warriors called the Almoravids began attacking and captured Kumbi. Ghana's king regained the capital, but the old empire had already broken apart.",true],
+["How did the loss of trees and water weaken Ghana?","People cut trees for charcoal to smelt iron, and water became so scarce that farmers could not raise crops or keep flocks.","fact","ghana",["p. 159"],["The rivers flooded the Sahara and made too much food", "No one cut any trees", "Water became so plentiful that people left for fun"],"The loss of natural resources weakened Ghana further. A growing population put great stress on scarce resources such as trees and water. Trees were cut down to provide charcoal for iron-smelting furnaces. Water became so scarce that farmers could no longer grow crops or keep flocks. People left to search for better conditions.",true],
+["When did Ghana's empire come to an end?","In 1203, when a rival kingdom conquered Kumbi","fact","ghana",["p. 159"],["In 4000 B.C.E.", "In the third century B.C.E.", "In 300 C.E."],"In 1203, when a rival kingdom conquered Kumbi",true],
+["How did the empire of Mali begin?","Around 1240 the Mande conquered Kumbi. Their homeland was south of Kumbi, closer to the Niger.","fact","ghana",["p. 159"],["The Hittites founded it in 1500 B.C.E.", "Ibn Battuta founded it in 1352", "The Nok founded it in central Nigeria"],"Around 1240 a group of West Africans called the Mande conquered Kumbi. Their homeland of Mali was south of Kumbi, closer to the Niger River. They built an empire that reached from the Atlantic Ocean to beyond the Niger River, and from the southern forests to the salt and copper mines of the Sahara.",true],
+["How was Mali's wealth like Ghana's?","Mali grew rich by controlling trade, especially gold. Its leaders had accepted Islam.","fact","ghana",["p. 159"],["Mali refused all trade and all gold", "Mali's wealth came only from dune sand", "Mali banned Islam and merchants"],"Like Ghana, Mali gained much of its wealth from control of trade, particularly gold. Its leaders had accepted Islam, and under their rule Islam became even more influential in West Africa.",true],
+["What does the Lesson 12 summary say brought Ghana down?","Years of war and the loss of natural resources, in the 13th century","fact","ghana",["p. 159"],["A sudden end to the savanna rains in 4000 B.C.E.", "The discovery of Jenne-jeno", "A decision to stop taxing trade"],"The summary says years of war and the loss of natural resources led to Ghana's downfall in the 13th century. The next powerful West African empire, Mali, also built its wealth on trade.",true],
+["What does Lesson 11's summary say about geography?","Geography was a major factor. Settlements flourished south of the Sahara, where people could farm, and rivers such as the Niger were trade routes.","fact","geo",["p. 149"],["Geography did not matter at all", "Everyone settled in the driest dunes", "Rivers were useless for trade"],"The summary says geography was a major factor in the development of West African societies. Settlements flourished south of the Sahara, where the land permitted farming. Communities traded for items they could not produce locally. Rivers such as the Niger served as trade routes.",true],
+["What city does the caravan picture at the start of Lesson 11 show?","Timbuktu, a city in the early West African kingdom of Mali","fact","king",["p. 143"],["Taghaza", "Sijilmasa", "Dhar Tichitt"],"The caption says that behind the caravan is Timbuktu, a city in the early West African kingdom of Mali.",false],
+["What was the horse-and-rider brass weight used for?","Trans-Saharan traders used it to weigh gold dust. The Ashanti people of Ghana made it.","fact","trade",["p. 154"],["It was a weapon for the Nok", "It was a hitching post", "It was a salt block"],"A brass weight shaped like a horse and rider was made by the Ashanti people of Ghana. Trans-Saharan traders used this artifact to weigh gold dust.",false],
+["What did the map of early kingdoms say they all relied on?","Trans-Saharan trade, not only local trade. Gold was especially important to Mali, and Songhai also traded with distant lands.","fact","king",["p. 149"],["Only farming inside one village", "Only the rainforest, with no trade", "Only tribute from the Hittites"],"The great kingdoms did not rely only on local trade. By the time Ghana was a significant power, trans-Saharan trade was bringing new wealth from other regions, such as the present-day Middle East. Control of trade, particularly in West African gold, was also crucial to the power of Mali. Songhai, too, relied on trade with distant lands.",false],
+["When did archaeologists begin excavating Jenne-jeno?","1977","fact","grow",["p. 147"],["1352","1203","4000 B.C.E."],"In 1977, archaeologists began excavating the ancient West African city of Jenne-jeno. Until that rediscovery, some historians believed cities did not exist in West Africa until outsiders arrived.",true],
+["What did Ghana do with their military?","Elite soldiers were chosen for courage, honesty, and intelligence. Stories say the king could call up 200,000 warriors, but that number grew as it was retold.","fact","ghana",["p. 153"],["Ghana had no soldiers", "The army only mined salt at Taghaza", "Only Ibn Battuta served in the army"],"Ghana's military had a regular army, reserve forces, and elite soldiers. The regular army guarded the borders, put down small revolts, and kept order. Soldiers wore knee-length cotton pants, sleeveless tunics, sandals, and headdresses with feathers. Tunic color and the number of feathers showed rank. Weapons included spears, daggers, swords, battle clubs, and bows and arrows. Elite soldiers were chosen for courage, honesty, and intelligence, and served as bodyguards, escorts, and advisors. Every man had to train. Stories say one king could call up 200,000 warriors. The book says that number grew as the story was passed on, but he could summon a large army, including archers on foot. Armies also kept trade routes safe from raiders.",true],
+["How did Ghana get rich?","By controlling and taxing trans-Saharan trade, especially gold from the south and salt passing through from the north.","fact","ghana",["p. 154"],["Ghana had lots of its own salt", "Good farmland in the Sahel made Ghana rich", "Ghana banned markets"],"Ghana got rich by controlling trans-Saharan trade, especially gold, and by taxing goods that passed through. Gold came from secret mines in the forests to the south, in Wangara. Salt came from the Sahara to the north, especially Taghaza. Ghana did not have its own salt. It charged one-sixth of an ounce of gold for each load of salt entering from the north, and one-third of an ounce for each load going south. The king kept gold nuggets and let ordinary people keep only gold dust. Ghana arose in the semidesert Sahel. The book does not say good farmland made Ghana rich. It says Ghana's location let it control the trade, and that wealth paid for a strong army.",true],
+["What is special about Jenne-jeno?","Archaeologists began excavating it in 1977 and found a city from the third century B.C.E. People there prized iron more than gold, and blacksmiths were the most respected.","fact","grow",["p. 147"],["It was a salt mine in the Sahara", "Outsiders built it for the local people", "People there prized gold more than iron"],"Jenne-jeno is special because, in 1977, archaeologists began excavating it and showed that a West African city existed before outsiders arrived to build one. It was built in the third century B.C.E. where the Niger meets the Bani, lasted more than 1,600 years, and grew to about 20,000 people inside a wall 10 feet wide and 13 feet high. The people prized iron more than gold. Blacksmiths were the most respected people. Many thought blacksmiths had supernatural powers, and blacksmiths could act as political leaders, judges, and doctors.",true]
+];
+var SAM_SEQS = [
+{title:"Vegetation zones of West Africa, from north to south", topic:"geo", src:["p. 144"], hi:true, steps:["Sahara, the hot desert in the north", "Sahel, the semidesert just south of the Sahara", "Savanna, tall grasses and scattered trees with a long rainy season", "Forest zone, wetter land in the south, woodland and then rainforest"]},
+{title:"How villages grew into trading cities and kingdoms", topic:"grow", src:["p. 146"], hi:true, steps:["By about 4000 B.C.E., extended families farmed south of the Sahara.", "Families joined into villages of about 100 to 200 people for work and protection.", "Iron tools helped farmers grow more food, so villages could get larger.", "Villages traded surplus food and crafts. Those on trade routes became market centers.", "Some market centers grew into towns and cities, such as Jenne-jeno.", "Rulers of rich cities raised armies, conquered neighbors, collected tribute, and built kingdoms."]},
+{title:"How ironworking spread", topic:"grow", src:["p. 146"], hi:true, steps:["The Hittites in present-day Turkey mastered ironworking by about 1500 B.C.E.", "The knowledge spread, perhaps with traders across the Sahara. It may also have grown on its own in northern West Africa.", "By the 500s B.C.E., the Nok of central Nigeria made iron tools and used smelting furnaces.", "Blacksmiths shaped red-hot iron into axes, hoes, and spears.", "Ironworking spread quickly, and iron tools replaced stone tools for farming."]},
+{title:"How trans-Saharan trade grew", topic:"trade", src:["p. 154"], hi:true, steps:["As early as 400 to 500 B.C.E., North Africans brought gold from the southern forests, but the desert crossing was very hard.", "Around 300 C.E., Arab traders brought camels to the Sahara.", "Camels made caravan routes possible. By the 4th century C.E., West African gold was likely being made into Roman coins.", "In the 7th century, Islam spread. Ghana turned back an invasion, and many Muslims stayed as merchants.", "By the year 1000, Ghana controlled the trade routes between North Africa and West Africa."]},
+{title:"Ibn Battuta's journey south in 1352", topic:"trade", src:["p. 155"], hi:false, steps:["Donkeys carried goods from the Mediterranean coast to the oasis city of Sijilmasa.", "After the rainy season, camel caravans headed south from oasis to oasis.", "Each day the travelers walked until afternoon, then rested until sunset.", "At Taghaza they loaded salt from the mines.", "At Walata they moved the goods from camels to donkeys and porters.", "They continued through Ghana toward markets near the Gulf of Guinea. The trip took about two months."]},
+{title:"Steps of silent barter with the Wangarans", topic:"trade", src:["p. 158"], hi:true, steps:["Caravans spread wool, silk, cotton, dates, figs, grains, leather, and salt along a river.", "The traders beat a drum and walked several miles away.", "Wangarans came by boat, left some gold dust, beat a drum, and left.", "If the gold was enough, the traders took it. If not, they waited while the Wangarans added more.", "The two groups bargained this way without ever meeting in person."]},
+{title:"Ghana's rise and Mali's rise", topic:"ghana", src:["p. 159"], hi:true, steps:["Sometime before 500 C.E., Ghana was underway in the Sahel and grew rich by controlling trade, especially gold.", "Around the year 1000, Ghana dominated the trans-Saharan routes and the empire was at its height.", "In the second half of the 11th century, the Almoravids captured Kumbi. The king won it back, but the empire had broken apart.", "Loss of trees and water, plus war, weakened Ghana. In 1203 a rival kingdom conquered Kumbi.", "Around 1240 the Mande conquered Kumbi and built the empire of Mali, which also grew rich from trade."]},
+{title:"One way salt was collected in the Sahara", topic:"trade", src:["p. 156"], hi:true, steps:["Water was poured into holes in the salty earth.", "The water drew the salt out of the ground.", "The water evaporated in the sun.", "The salt that remained was packed into blocks."]},
+{title:"A timeline from the two lessons", topic:"king", src:["p. 143"], hi:false, steps:["About 4000 B.C.E.: families settle to farm south of the Sahara.", "About 1500 B.C.E.: the Hittites master ironworking.", "The 500s B.C.E.: the Nok make iron tools.", "The third century B.C.E.: Jenne-jeno is built.", "Around 300 C.E.: camels arrive in the Sahara.", "Sometime before 500 C.E.: the kingdom of Ghana is underway.", "Around the year 1000: Ghana's empire is at its height.", "1203: a rival kingdom conquers Kumbi and Ghana's empire ends.", "Around 1240: the Mande conquer Kumbi and Mali rises.", "1352: Ibn Battuta crosses the Sahara with a caravan."]}
+];
+// [name, bucket north|south, sources, note, highlighted]
+var SAM_SORT = [
+["Salt","north",["p. 156"],"Salt came from Taghaza and other places in the Sahara and was carried south.",true],
+["Copper","north",["p. 154"],"Traders from North Africa brought copper across the Sahara.",true],
+["Cowrie shells","north",["p. 154"],"Cowrie shells were seashells from North Africa, used as money.",false],
+["Dates","north",["p. 158"],"Caravans brought dates south to trade, including with the Wangarans.",false],
+["Gold","south",["p. 156"],"Gold came from secret mines in Wangara, in the forests south of Ghana.",true],
+["Kola nuts","south",["p. 154"],"Traders picked up kola nuts in the southern part of West Africa.",false],
+["Ivory","south",["p. 154"],"Ivory was one of the goods from the southern forests.",false],
+["Hides","south",["p. 154"],"Hides were traded from the southern part of West Africa.",false]
+];
+var SAM_FIVE = {
+ right:["Sahara", "Sahel", "savanna", "forest"],
+ decoys:["tribute", "smelting", "Kumbi", "matrilineal", "camel"],
+ src:["p. 144"]
+};
+var SAM_LOOKUP = [];
+var SAM_GOALS = [
+["Geography was a major factor. People settled south of the Sahara, where they could farm, and traded for what they could not produce. Rivers such as the Niger were trade routes.","Lesson 11 summary, p. 149",["p. 149"]],
+["Family communities formed villages to use resources and to defend themselves. Ironworking and trade helped some villages grow into towns and cities.","Lesson 11 summary, p. 149",["p. 149"]],
+["Trade made some cities rich. Their rulers conquered neighbors. Kingdoms and empires collected tribute and controlled trade.","Lesson 11 summary, p. 149",["p. 149"]],
+["Ghana was located to control trans-Saharan trade and used that wealth to build a strong army, conquer other peoples, and make an empire.","Lesson 12 summary, p. 159",["p. 159"]],
+["Ghana grew rich by taxing goods, especially gold and salt. Gold was mined in secret forest locations south of Ghana. Salt was produced in the Sahara and carried south.","Lesson 12 summary, p. 159",["p. 159"]],
+["The Wangarans used silent barter. Years of war and the loss of natural resources brought Ghana down in the 13th century. Mali also built its wealth on trade.","Lesson 12 summary, p. 159",["p. 159"]]
+];
+var SAM_TIPS = ["The test is three short answers, at least three sentences each, and one longer answer. You have the whole class period. Bring a free reading book.", "Study the practice questions from homework and class, and your active reading notes for chapters 11 and 12. Both chapters are on the test.", "A clear correct answer can earn a B. Specifics from the book are what raise that to an A.", "If it was not covered in homework or in class, it is not on the test.", "The cards in this game use only Lessons 11 and 12. Salt came from the Sahara to the north. Ghana taxed it. Ghana did not have its own salt.", "Yellow highlights in the book marked ideas your class treated as important. Those ideas show up most often.", "Say the answer out loud before you flip a card.", "When you miss one, it comes back in Missed Items."];
+var SAM_ITEMS = (function(){
+  var items = [];
+  SAM_PAIRS.forEach(function(p,i){ items.push({id:'p'+(i+1), kind:'pair', term:p[0], def:p[1], topic:p[2], src:p[3], hi:!!p[4]}); });
+  SAM_FACTS.forEach(function(f,i){ items.push({id:'f'+(i+1), kind:'fact', q:f[0], a:f[1], pool:f[2], topic:f[3], src:f[4], w:f[5], fa:f[6], hi:!!f[7]}); });
+  SAM_SEQS.forEach(function(s,i){ items.push({id:'s'+(i+1), kind:'seq', title:s.title, steps:s.steps, topic:s.topic, src:s.src, hi:!!s.hi}); });
+  SAM_SORT.forEach(function(s,i){ items.push({id:'b'+(i+1), kind:'sort', name:s[0], bucket:s[1], topic:'trade', src:s[2], note:s[3], hi:!!s[4]}); });
+  items.push({id:'zones', kind:'five', topic:'geo', src:SAM_FIVE.src, right:SAM_FIVE.right, decoys:SAM_FIVE.decoys, hi:true});
+  SAM_GOALS.forEach(function(g,i){ items.push({id:'g'+(i+1), kind:'goal', text:g[0], group:g[1], topic:'goal', src:g[2]}); });
+  return items;
+})();
+if (typeof module !== 'undefined') { module.exports = {SAM_SRC:SAM_SRC, SAM_TOPICS:SAM_TOPICS, SAM_ITEMS:SAM_ITEMS, SAM_FIVE:SAM_FIVE, SAM_TIPS:SAM_TIPS, SAM_SEQS:SAM_SEQS, SAM_SORT:SAM_SORT}; }
+
+</script>
+<script>
+(function(){
+"use strict";
+var KEY='samWestAfrica.v1';
+var VOCAB20=['Abiotic','Autotroph','Biology','Biotic','Cell','Develop','Evolution','Grow','Heterotroph','Homeostasis','Metabolism','Multicellular','Organ','Organ system','Organism','Reproduce','Respond','Stimulus','Tissue','Unicellular'];
+var LEVELNAMES=['Sahara Scout','Sahel Walker','Village Elder','Ironworker','Market Trader','City Builder','Caravan Leader','Kingdom Keeper'];
+var SRCNAME={LT:'Living Things',NB:'Notebook 1-9',S2:'Science Notes 2'};
+var BADGES=[
+ ['first','\uD83C\uDFDC\uFE0F','First Steps','Answer your first question'],
+ ['s5','\uD83D\uDD25','Hot Streak','5 right in a row'],
+ ['s10','\u26A1','Lightning','10 right in a row'],
+ ['s20','\uD83D\uDE80','Unstoppable','20 right in a row'],
+ ['perfect','\uD83C\uDFAF','Perfect Quiz','10 out of 10 in a quiz'],
+ ['speed150','\u23F1\uFE0F','Speed Demon','150 points in a speed round'],
+ ['speed300','\uD83C\uDFC6','Speed Legend','300 points in a speed round'],
+ ['match','\uD83E\uDDE9','Match Maker','Finish matching with no mistakes'],
+ ['sorter','\u2696\uFE0F','Trade Sorter','Sort 10 in a row: north or south'],
+ ['order','\uD83D\uDCCB','Order Ace','Put a whole list in order with no mistakes'],
+ ['five','\uD83C\uDF3F','Zone Finder','Name the 4 vegetation zones'],
+ ['comeback','\uD83D\uDCAA','Comeback Kid','Fix a missed item'],
+ ['half','\uD83D\uDCDC','Halfway There','Master half of all items'],
+ ['all','\uD83D\uDC51','Kingdom Keeper','Master every item'],
+ ['days3','\uD83D\uDCC5','3 Day Streak','Study on 3 days'],
+ ['lvl5','\uD83E\uDD47','Level 5','Reach level 5'],
+ ['tdboss','\u2694\uFE0F','Route Boss','Beat the boss wave in Tower Defense'],
+ ['tdwin','\uD83C\uDFF0','Kumbi Stands','Win all 10 waves of Tower Defense']
+];
+var ITEMS=SAM_ITEMS, BYID={};
+ITEMS.forEach(function(it){BYID[it.id]=it;});
+var PAIRS=ITEMS.filter(function(i){return i.kind==='pair';});
+
+/* ---------- storage ---------- */
+var S;
+function fresh(){return {xp:0,stats:{},best:{speed:0,match:0},bestStreak:0,badges:{},days:[],checks:{},sound:false,topic:'all',answered:0,vk:{}};}
+function load(){try{var r=localStorage.getItem(KEY);S=r?JSON.parse(r):fresh();}catch(e){S=fresh();}
+ var f=fresh();for(var k in f){if(S[k]===undefined)S[k]=f[k];}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+load();
+function stat(id){return S.stats[id]||(S.stats[id]={c:0,w:0,s:0,miss:false,seen:0});}
+function isMastered(it){
+ if(it.kind==='skipped')return true;
+ if(it.kind==='goal')return !!S.checks[it.id];
+ return stat(it.id).s>=2;}
+function masteredCount(){var n=0;ITEMS.forEach(function(i){if(i.kind!=='skipped'&&isMastered(i))n++;});return n;}
+function totalCount(){return ITEMS.filter(function(i){return i.kind!=='skipped';}).length;}
+function missedItems(){return ITEMS.filter(function(i){var s=S.stats[i.id];return s&&s.miss;});}
+
+/* ---------- audio ---------- */
+var AC=null;
+function beep(f,d,t){if(!S.sound)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var o=AC.createOscillator(),g=AC.createGain();o.type=t||'sine';o.frequency.value=f;g.gain.value=0.07;o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+d);o.stop(AC.currentTime+d);}catch(e){}}
+function sOk(){beep(660,.12);setTimeout(function(){beep(880,.14);},110);}
+function sBad(){beep(180,.25,'square');}
+function sWin(){[523,659,784,1047].forEach(function(f,i){setTimeout(function(){beep(f,.18);},i*120);});}
+
+/* ---------- helpers ---------- */
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function pick(a,n){return shuf(a).slice(0,n);}
+function level(){return Math.floor(Math.sqrt(S.xp/50))+1;}
+function lname(l){return LEVELNAMES[Math.min(l,LEVELNAMES.length)-1];}
+function toast(msg){var t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},2300);}
+function today(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function touchDay(){var t=today();if(S.days.indexOf(t)<0){S.days.push(t);}
+ if(S.days.length>=3)badge('days3');}
+function badge(id){if(S.badges[id])return;S.badges[id]=1;var b=BADGES.filter(function(x){return x[0]===id;})[0];if(b){toast(b[1]+' Badge: '+b[2]+'!');sWin();}save();}
+function addXP(n){var l0=level();S.xp+=n;var l1=level();if(l1>l0){toast('\uD83C\uDF89 Level '+l1+': '+lname(l1)+'!');sWin();}if(l1>=5)badge('lvl5');save();}
+function checkMastery(){var m=masteredCount(),t=totalCount();if(m>=t/2)badge('half');if(m>=t)badge('all');}
+function record(it,ok){
+ var s=stat(it.id);S.answered++;touchDay();badge('first');
+ if(ok){s.c++;s.s++;if(s.miss&&s.s>=2){s.miss=false;badge('comeback');}}
+ else{s.w++;s.s=0;s.miss=true;}
+ checkMastery();save();}
+function filtered(kinds){
+ return ITEMS.filter(function(i){
+  if(kinds.indexOf(i.kind)<0)return false;
+  return S.topic==='all'||i.topic===S.topic;});}
+function topicName(){if(S.topic==='all')return 'All topics';var t=SAM_TOPICS.filter(function(x){return x.id===S.topic;})[0];return t.emoji+' '+t.name;}
+
+/* ---------- multiple choice builder ---------- */
+function pre(s){return s.toLowerCase().replace(/[^a-z]/g,'').slice(0,4);}
+function makeMC(it){
+ if(it.kind==='pair'){
+  var others=PAIRS.filter(function(p){return p.id!==it.id&&pre(p.term)!==pre(it.term);});
+  var same=others.filter(function(p){return p.topic===it.topic;});
+  var dis=pick(same,3);
+  if(dis.length<3){dis=dis.concat(pick(others.filter(function(p){return dis.indexOf(p)<0;}),3-dis.length));}
+  if(Math.random()<0.6){
+   return {hint:'Which word matches?',text:it.def,choices:shuf([{t:it.term,ok:true}].concat(dis.map(function(p){return {t:p.term};}))),why:it.term+': '+it.def};
+  }
+  return {hint:'What does this word mean?',text:it.term,choices:shuf([{t:it.def,ok:true}].concat(dis.map(function(p){return {t:p.def};}))),why:it.term+': '+it.def};
+ }
+ if(it.kind==='fact'){
+  var w=it.w.slice();
+  if(w.length<3){
+   var pool=[];ITEMS.forEach(function(f){if(f.kind==='fact'&&f.pool===it.pool&&f.a!==it.a&&pool.indexOf(f.a)<0)pool.push(f.a);});
+   w=w.concat(pick(pool,3-w.length));
+  }
+  var th=SAM_TOPICS.filter(function(x){return x.id===it.topic;})[0];
+  return {hint:th?th.name:'West Africa',text:it.q,choices:shuf([{t:it.a,ok:true}].concat(w.slice(0,3).map(function(x){return {t:x};}))),why:'Answer: '+it.a};
+ }
+ if(it.kind==='sort'){
+  return {hint:'North or south of the Sahara trade?',text:'Where did traders get '+it.name+'?',choices:[{t:'North, across the Sahara',ok:it.bucket==='north'},{t:'South, in the forests of West Africa',ok:it.bucket==='south'}],why:it.note||it.name};
+ }
+ return null;
+}
+
+/* ---------- views ---------- */
+var app=$('app');
+var timer=null;
+function stopTimer(){if(timer){clearInterval(timer);timer=null;}tdStop();}
+function header(){
+ var l=level(),lo=50*(l-1)*(l-1),hi=50*l*l,pct=Math.round(100*(S.xp-lo)/(hi-lo));
+ return '<div class="top"><div class="logo">\uD83D\uDC2A</div><div class="who"><div class="lvl">Level '+l+': '+lname(l)+' <span class="tag">'+S.xp+' XP</span></div><div class="bar"><i style="width:'+pct+'%"></i></div></div><button class="tbtn" id="snd" title="Sound">'+(S.sound?'\uD83D\uDD0A':'\uD83D\uDD07')+'</button></div>';
+}
+function bindHeader(){var b=$('snd');if(b)b.onclick=function(){S.sound=!S.sound;save();b.textContent=S.sound?'\uD83D\uDD0A':'\uD83D\uDD07';sOk();};}
+
+function home(){
+ stopTimer();
+ var m=masteredCount(),t=totalCount(),miss=missedItems().length;
+ var chips='<button class="chip'+(S.topic==='all'?' on':'')+'" data-t="all">All</button>'+SAM_TOPICS.map(function(x){return '<button class="chip'+(S.topic===x.id?' on':'')+'" data-t="'+x.id+'">'+x.emoji+' '+x.name+'</button>';}).join('');
+ app.innerHTML=header()+
+ '<h1>West Africa</h1><p class="sub">Lessons 11 and 12: early societies, Ghana, and the gold-salt trade.</p>'+
+ '<div class="chips">'+chips+'</div>'+
+ '<div class="grid">'+
+ '<button class="mode c1" data-m="flash"><span class="e">\uD83C\uDCCF</span>Flashcards<small>Flip and learn</small></button>'+
+ '<button class="mode c2" data-m="quiz"><span class="e">\u2753</span>Quiz<small>10 questions</small></button>'+
+ '<button class="mode c3" data-m="match"><span class="e">\uD83E\uDDE9</span>Matching<small>Words and meanings</small></button>'+
+ '<button class="mode c4" data-m="speed"><span class="e">\u23F1\uFE0F</span>Speed Round<small>60 seconds, streaks</small></button>'+
+ '<button class="mode c5" data-m="sort"><span class="e">\u2696\uFE0F</span>North or South<small>Where did the goods come from?</small></button>'+
+ '<button class="mode c6" data-m="order"><span class="e">\uD83D\uDCCB</span>Put in Order<small>Timelines and trade</small></button>'+
+ '<button class="mode c7" data-m="zones"><span class="e">\uD83C\uDF3F</span>Four Zones<small>Sahara to forest</small></button>'+
+ '<button class="mode c8" data-m="review"><span class="e">\uD83D\uDD01</span>Missed Items<small>'+miss+' to review</small></button>'+
+ '<button class="mode c9" data-m="guide"><span class="e">\uD83D\uDCD8</span>Study Guide<small>Words, summaries, tips</small></button>'+
+ '<button class="mode" data-m="test" style="grid-column:1/-1;min-height:84px;background:#6d28d9"><span class="e">\u270D\uFE0F</span>Test Prep<small>3 short answers and 1 longer answer, like the real test</small></button>'+
+ '<button class="mode c10" data-m="td" style="grid-column:1/-1;min-height:84px"><span class="e">\uD83D\uDC2B</span>Defend Kumbi<small>Answer questions, earn gold dust, stop the raiders'+(S.best.td?' (best: '+S.best.td+'/10 waves)':'')+'</small></button>'+
+ '</div>'+
+ '<div class="card"><h2>My Progress</h2><div class="row"><div class="stat"><b>'+m+'/'+t+'</b><span>Mastered</span></div><div class="stat"><b>'+S.bestStreak+'</b><span>Best streak</span></div><div class="stat"><b>'+S.best.speed+'</b><span>Best speed score</span></div><div class="stat"><b>'+S.days.length+'</b><span>Study days</span></div></div>'+
+ '<div class="bar" style="height:16px;margin-top:10px"><i style="width:'+Math.round(100*m/Math.max(1,t))+'%"></i></div>'+
+ '<p class="tl">An item is mastered when you get it right 2 times in a row. Highlighted ideas from the book come up more often in the quiz.</p></div>'+
+ '<div class="card"><h2>Badges</h2><div class="badges">'+BADGES.map(function(b){return '<div class="badge'+(S.badges[b[0]]?' on':'')+'" title="'+esc(b[3])+'"><b>'+b[1]+'</b>'+esc(b[2])+'<br><span style="font-weight:500">'+esc(b[3])+'</span></div>';}).join('')+'</div></div>'+
+ '<p class="sub"><a href="../" style="color:#fff;font-weight:800">Science lab game</a></p>'+
+ '<p class="sub"><button class="back" id="reset">Reset my progress</button></p>';
+ bindHeader();
+ var cs=app.querySelectorAll('.chip');for(var i=0;i<cs.length;i++)cs[i].onclick=function(){S.topic=this.getAttribute('data-t');save();home();};
+ var ms=app.querySelectorAll('.mode');for(var j=0;j<ms.length;j++)ms[j].onclick=function(){go(this.getAttribute('data-m'));};
+ $('reset').onclick=function(){if(confirm('Erase all of your progress, XP and badges?')){var snd=S.sound;S=fresh();S.sound=snd;save();home();}};
+}
+function pickWeighted(list,n){
+ var hi=shuf(list.filter(function(i){return i.hi;})), lo=shuf(list.filter(function(i){return !i.hi;}));
+ var take=Math.min(hi.length, Math.ceil(Math.min(n,list.length)*0.65));
+ var out=hi.slice(0,take).concat(hi.slice(take), lo);
+ return shuf(out).slice(0, Math.min(n, list.length));
+}
+function go(m){
+ if(m==='flash')return flashcards(filtered(['pair','fact','sort','five','seq','lookup']),'Flashcards');
+ if(m==='quiz')return runMC(pickWeighted(filtered(['pair','fact','sort']),10),{title:'Quiz',mode:'quiz'});
+ if(m==='match')return matching();
+ if(m==='speed')return speed();
+ if(m==='sort')return runMC(pick(filtered(['sort']).length?filtered(['sort']):ITEMS.filter(function(i){return i.kind==='sort';}),10),{title:'North or South',mode:'sort'});
+ if(m==='order')return runOrder();
+ if(m==='zones')return five();
+ if(m==='review')return review();
+ if(m==='guide')return guide();
+ if(m==='test')return testPrep();
+ if(m==='td')return tdRun();
+}
+function shell(title,inner,onBack){
+ stopTimer();
+ app.innerHTML=header()+'<div class="hud"><button class="back" id="bk">\u2190 Home</button><div class="sp"></div><div class="pill">'+esc(title)+'</div></div>'+inner;
+ bindHeader();$('bk').onclick=function(){home();};
+}
+function empty(title,msg){shell(title,'<div class="card"><h2>Nothing here yet</h2><p>'+esc(msg)+'</p><button class="btn" onclick="void 0" id="eh">Back home</button></div>');$('eh').onclick=home;}
+
+/* ---------- flashcards ---------- */
+function flashcards(list,title){
+ if(!list.length)return empty(title,'No cards for this topic. Try another topic.');
+ var q=shuf(list),i=0,back=false;
+ function face(it){
+  if(it.kind==='pair')return ['Word',it.term,'Meaning',it.def];
+  if(it.kind==='fact')return ['Question',it.q,'Answer',it.fa||it.a];
+  if(it.kind==='sort')return ['Where did this trade good come from?',it.name,'Answer',(it.bucket==='north'?'From north of the Sahara. ':'From the southern forests of West Africa. ')+(it.note||'')];
+  if(it.kind==='seq')return ['Put in order',it.title,'Steps',it.steps.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
+  if(it.kind==='five')return ['Name them','The 4 vegetation zones of West Africa','Answer',it.right.join(', ')];
+  if(it.kind==='lookup')return ['On the study guide word list',it.term,'Note','This word is on the vocabulary list, but its meaning is not given in the study materials. Look it up in your notebook or textbook.'];
+  return ['','',' ',''];
+ }
+ function draw(){
+  if(i>=q.length){addXP(10);return shell(title,'<div class="card"><div class="big">\uD83C\uDF89</div><h2>Deck done!</h2><p>You went through '+q.length+' cards. +10 XP</p><button class="btn g" id="again">Go again</button> <button class="btn w" id="hm">Home</button></div>'),$('again').onclick=function(){flashcards(list,title);},$('hm').onclick=home;}
+  var it=q[i],f=face(it);
+  var inner='<div class="hud"><div class="pill">Card '+(i+1)+' of '+q.length+'</div><div class="sp"></div><div class="pill">'+esc(topicName())+'</div></div>'+
+  '<div class="flash"><div class="fc'+(back?' back':'')+'" id="fc"><div><small>'+esc(back?f[2]:f[0])+'</small>'+(back?(it.kind==='seq'?f[3]:esc(f[3])):esc(f[1]))+'<small style="margin-top:12px">'+(back?'':'Tap to flip')+'</small></div></div></div>'+
+  '<div class="row"><button class="btn r" id="again" style="flex:1">Study again</button><button class="btn g" id="got" style="flex:1">Got it</button></div>';
+  shell(title,inner);
+  var fc=$('fc');
+  if(back){var src=(it.src||[]).join(' '); var sm=document.createElement('small'); sm.style.marginTop='10px'; sm.textContent=src; fc.querySelector('div').appendChild(sm);}
+  fc.onclick=function(){back=!back;draw();};
+  $('again').onclick=function(){var s=stat(it.id);s.miss=true;s.s=0;save();i++;back=false;draw();};
+  $('got').onclick=function(){var s=stat(it.id);s.seen++;if(it.kind==='lookup'){s.s=2;}else if(s.s<1){s.s=1;}checkMastery();addXP(1);i++;back=false;draw();};
+ }
+ draw();
+}
+
+/* ---------- multiple choice runner ---------- */
+function runMC(list,cfg){
+ if(!list.length)return empty(cfg.title,'No questions for this topic yet.');
+ var i=0,score=0,right=0,streak=0,bestS=0,timed=cfg.timed||0,left=timed,over=false,queue=list.slice(),miss=[],cur=null,answered=false,sortStreak=0,sortBest=0;
+ function fin(){
+  if(over)return;over=true;stopTimer();
+  var msg='',xp=0;
+  if(cfg.mode==='speed'){
+   if(score>S.best.speed){S.best.speed=score;msg='New best score! ';}
+   if(score>=150)badge('speed150');if(score>=300)badge('speed300');
+   xp=Math.round(score/5);
+  }else{xp=right*3;if(cfg.mode==='quiz'&&right===queue.length&&queue.length>=10)badge('perfect');}
+  if(cfg.mode==='sort'&&sortBest>=10)badge('sorter');
+  addXP(xp);save();
+  var st=(cfg.mode==='speed')?'<div class="stat"><b>'+score+'</b><span>Points</span></div>':'';
+  shell(cfg.title,'<div class="card"><div class="big">'+(right>=queue.length*0.8||cfg.mode==='speed'?'\uD83C\uDFC6':'\uD83D\uDCAA')+'</div><h2>'+msg+'Round complete!</h2><div class="row">'+st+'<div class="stat"><b>'+right+'/'+(cfg.mode==='speed'?i:queue.length)+'</b><span>Correct</span></div><div class="stat"><b>'+bestS+'</b><span>Best streak</span></div><div class="stat"><b>+'+xp+'</b><span>XP</span></div></div>'+
+  (miss.length?'<p><b>Missed:</b> '+miss.map(function(m){return esc(m);}).join('; ')+'</p><p class="tl">Missed items are saved in Missed Items mode.</p>':'<p>No misses. Amazing!</p>')+
+  '<button class="btn g" id="again">Play again</button> <button class="btn w" id="hm">Home</button></div>');
+  $('again').onclick=function(){go(cfg.mode==='review'?'review':cfg.mode);};$('hm').onclick=home;
+ }
+ function next(){
+  if(over)return;
+  if(cfg.mode==='speed'&&i>=queue.length){queue=queue.concat(shuf(list));}
+  if(i>=queue.length)return fin();
+  var it=queue[i],mc=makeMC(it);cur=it;answered=false;
+  if(!mc){i++;return next();}
+  var hud='<div class="hud">'+(cfg.mode==='speed'?'<div class="pill" id="tm">\u23F1 '+left+'s</div>':'<div class="pill">Q '+(i+1)+'/'+queue.length+'</div>')+'<div class="sp"></div><div class="pill">\uD83D\uDD25 '+streak+'</div><div class="pill">\u2B50 '+score+'</div></div>';
+  var body='<div class="card"><div class="q"><small>'+esc(mc.hint)+'</small>'+esc(mc.text)+'</div><div id="chs">'+mc.choices.map(function(c,k){return '<button class="ch" data-k="'+k+'">'+esc(c.t)+'</button>';}).join('')+'</div><div id="fb"></div></div>';
+  shell(cfg.title,hud+body);
+  var bs=app.querySelectorAll('.ch');
+  for(var b=0;b<bs.length;b++)bs[b].onclick=function(){
+   if(answered||over)return;answered=true;
+   var k=+this.getAttribute('data-k'),ok=!!mc.choices[k].ok;
+   for(var z=0;z<bs.length;z++){bs[z].disabled=true;if(mc.choices[z].ok)bs[z].classList.add('ok');}
+   if(!ok)this.classList.add('bad');
+   record(it,ok);
+   if(ok){streak++;right++;if(streak>bestS)bestS=streak;if(streak>S.bestStreak)S.bestStreak=streak;
+    var pts=10+Math.min(streak,10)*2;score+=pts;addXP(cfg.mode==='speed'?1:2);sOk();
+    if(streak===5)badge('s5');if(streak===10)badge('s10');if(streak===20)badge('s20');
+    sortStreak++;if(sortStreak>sortBest)sortBest=sortStreak;
+   }else{streak=0;sortStreak=0;sBad();if(miss.indexOf(it.term||it.q||it.name)<0)miss.push(it.term||it.q||it.name);if(cfg.mode==='speed'){left=Math.max(0,left-3);}}
+   save();
+   var fbEl=$('fb');
+   if(cfg.mode==='speed'){
+    setTimeout(function(){i++;next();},ok?350:1100);
+    if(!ok)fbEl.innerHTML='<div class="fb bad">'+esc(mc.why)+' (-3s)</div>';
+    else fbEl.innerHTML='<div class="fb ok">+'+(10+Math.min(streak,10)*2)+'</div>';
+   }else{
+    fbEl.innerHTML='<div class="fb '+(ok?'ok':'bad')+'">'+(ok?'\u2705 Correct! ':'\u274C Not quite. ')+esc(mc.why)+'</div><p><button class="btn" id="nx">'+(i+1>=queue.length?'Finish':'Next')+'</button></p>';
+    $('nx').onclick=function(){i++;next();};
+   }
+  };
+ }
+ if(timed){timer=setInterval(function(){left--;var t=$('tm');if(t)t.textContent='\u23F1 '+Math.max(0,left)+'s';if(left<=0)fin();},1000);}
+ next();
+}
+function speed(){
+ var l=filtered(['pair','fact','sort']);
+ if(!l.length)return empty('Speed Round','No questions for this topic yet.');
+ runMC(shuf(l),{title:'Speed Round',mode:'speed',timed:60});
+}
+
+/* ---------- matching ---------- */
+function matching(){
+ var pool=filtered(['pair']);if(pool.length<4)pool=PAIRS;
+ var round=[],seen={};
+ shuf(pool).forEach(function(p){if(round.length<6&&!seen[pre(p.term)]){seen[pre(p.term)]=1;round.push(p);}});
+ var terms=shuf(round),defs=shuf(round),selT=null,selD=null,done={},mist=0,flagged={},total=round.length;
+ function draw(){
+  var inner='<div class="hud"><div class="pill">Matched '+Object.keys(done).length+'/'+total+'</div><div class="sp"></div><div class="pill">Mistakes '+mist+'</div></div><div class="card"><div class="q"><small>Tap a word, then tap its meaning</small></div><div class="mgrid"><div class="bank">'+
+  terms.map(function(p){return '<button class="mt'+(done[p.id]?' done':'')+(selT===p.id?' sel':'')+'" data-id="'+p.id+'" data-s="t">'+esc(p.term)+'</button>';}).join('')+'</div><div class="bank">'+
+  defs.map(function(p){return '<button class="mt def'+(done[p.id]?' done':'')+(selD===p.id?' sel':'')+'" data-id="'+p.id+'" data-s="d">'+esc(p.def)+'</button>';}).join('')+'</div></div></div>';
+  shell('Matching',inner);
+  var bs=app.querySelectorAll('.mt');
+  for(var i=0;i<bs.length;i++)bs[i].onclick=function(){
+   var id=this.getAttribute('data-id'),side=this.getAttribute('data-s');
+   if(done[id])return;
+   if(side==='t')selT=(selT===id?null:id);else selD=(selD===id?null:id);
+   if(selT&&selD){
+    if(selT===selD){done[selT]=1;record(BYID[selT],!flagged[selT]);sOk();addXP(3);selT=selD=null;
+     if(Object.keys(done).length===total)return finish();
+    }else{mist++;sBad();var a=selT,b=selD;if(!flagged[a]){flagged[a]=1;record(BYID[a],false);}selT=selD=null;draw();
+     var w=app.querySelectorAll('.mt');for(var k=0;k<w.length;k++){var wid=w[k].getAttribute('data-id');if(wid===a||wid===b)w[k].classList.add('wrong');}return;}
+   }
+   draw();
+  };
+ }
+ function finish(){
+  var xp=Math.max(10,30-mist*5);if(mist===0)badge('match');addXP(xp);
+  var sc=Math.max(0,100-mist*15);if(sc>S.best.match)S.best.match=sc;save();sWin();
+  shell('Matching','<div class="card"><div class="big">\uD83E\uDDE9</div><h2>All matched!</h2><div class="row"><div class="stat"><b>'+mist+'</b><span>Mistakes</span></div><div class="stat"><b>+'+xp+'</b><span>XP</span></div></div><p><button class="btn g" id="again">New round</button> <button class="btn w" id="hm">Home</button></p></div>');
+  $('again').onclick=matching;$('hm').onclick=home;
+ }
+ draw();
+}
+
+/* ---------- order ---------- */
+function runOrder(queue){
+ var list=queue||shuf(filtered(['seq']).length?filtered(['seq']):ITEMS.filter(function(i){return i.kind==='seq';}));
+ var idx=0,perfect=true,total=list.length;
+ function one(){
+  if(idx>=list.length){addXP(10);sWin();return shell('Put in Order','<div class="card"><div class="big">\uD83D\uDCCB</div><h2>All lists done!</h2><p>+10 XP</p><button class="btn g" id="again">Again</button> <button class="btn w" id="hm">Home</button></div>'),$('again').onclick=function(){runOrder();},$('hm').onclick=home;}
+  var it=list[idx],order=shuf(it.steps.map(function(s,k){return k;})),n=0,mist=0;
+  if(it.steps.length>1){var tries=0;while(order.join()===it.steps.map(function(s,k){return k;}).join()&&tries++<5)order=shuf(order);}
+  function draw(){
+   var doneList=it.steps.slice(0,n).map(function(s){return '<li>'+esc(s)+'</li>';}).join('');
+   var bank=order.filter(function(k){return k>=n;}).map(function(k){return '<button class="ch" data-k="'+k+'">'+esc(it.steps[k])+'</button>';}).join('');
+   shell('Put in Order','<div class="hud"><div class="pill">List '+(idx+1)+' of '+total+'</div><div class="sp"></div><div class="pill">Mistakes '+mist+'</div></div><div class="card"><div class="q"><small>Tap the steps in the right order, first to last</small>'+esc(it.title)+'</div><ol class="steps">'+doneList+'</ol><div>'+bank+'</div></div>');
+   var bs=app.querySelectorAll('.ch');
+   for(var b=0;b<bs.length;b++)bs[b].onclick=function(){
+    var k=+this.getAttribute('data-k');
+    if(k===n){n++;sOk();addXP(1);if(n===it.steps.length){record(it,mist===0);if(mist===0)badge('order');else perfect=false;idx++;return finishStep(it,mist);}}
+    else{mist++;sBad();}
+    draw();
+   };
+  }
+  function finishStep(it,mist){
+   shell('Put in Order','<div class="card"><h2>'+(mist===0?'\u2705 Perfect order!':'Done, with '+mist+' mistake'+(mist>1?'s':''))+'</h2><ol class="steps">'+it.steps.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ol><button class="btn" id="nx">'+(idx>=list.length?'Finish':'Next list')+'</button></div>');
+   $('nx').onclick=one;
+  }
+  draw();
+ }
+ one();
+}
+
+/* ---------- give me 5 ---------- */
+function five(){
+ var it=BYID.five,chips=shuf(it.right.concat(it.decoys)),sel={},checked=false;
+ function draw(){
+  var n=Object.keys(sel).length;
+  shell('Four Zones','<div class="card"><div class="q"><small>Lesson 11 geography</small>Which 4 are vegetation zones of West Africa?</div><div style="margin:10px 0">'+chips.map(function(c,k){
+    var cls='pill2'+(sel[c]?' sel':'');var st='';
+    if(checked){if(it.right.indexOf(c)>=0){st='background:#c9f7e2;color:#004d3a;';}else if(sel[c]){st='background:#ffd6e3;color:#7a0030;';}}
+    return '<button class="'+cls+'" style="border:0;cursor:pointer;font-size:15px;'+st+'" data-c="'+k+'">'+esc(c)+'</button>';}).join('')+'</div>'+
+   (checked?'':'<button class="btn g" id="chk"'+(n===4?'':' disabled')+'>Check my '+n+'/4</button>')+
+   '<div id="fb"></div></div>');
+  if(checked)return;
+  var bs=app.querySelectorAll('.pill2');
+  for(var b=0;b<bs.length;b++)bs[b].onclick=function(){var c=chips[+this.getAttribute('data-c')];if(sel[c])delete sel[c];else if(Object.keys(sel).length<4)sel[c]=1;draw();};
+  $('chk').onclick=function(){
+   checked=true;var ok=it.right.every(function(r){return sel[r];})&&Object.keys(sel).length===4;
+   record(it,ok);
+   if(ok){badge('five');addXP(15);sWin();}else{sBad();}
+   draw();
+   $('fb').innerHTML='<div class="fb '+(ok?'ok':'bad')+'">'+(ok?'\u2705 Yes! From north to south: Sahara, Sahel, savanna, forest. +15 XP. ':'\u274C Not quite. ')+'The zones are: '+it.right.map(esc).join(', ')+'.</div><p><button class="btn" id="again">Play again</button> <button class="btn w" id="hm">Home</button></p>';
+   $('again').onclick=function(){five();};$('hm').onclick=home;
+  };
+ }
+ draw();
+}
+
+/* ---------- review missed ---------- */
+function review(){
+ var m=missedItems();
+ if(!m.length)return empty('Missed Items','You have no missed items right now. Play other modes and anything you miss will show up here.');
+ var mc=m.filter(function(i){return i.kind==='pair'||i.kind==='fact'||i.kind==='sort';});
+ var special=m.filter(function(i){return i.kind==='seq'||i.kind==='five';});
+ var other=m.filter(function(i){return i.kind==='lookup';});
+ if(mc.length)return runMC(shuf(mc),{title:'Missed Items ('+m.length+')',mode:'review',after:special});
+ if(special.length){var sq=special.filter(function(i){return i.kind==='seq';});if(sq.length)return runOrder(sq);return five();}
+ return flashcards(other,'Missed Items');
+}
+
+/* ---------- test prep: written test, like the study guide ---------- */
+function waSentences(text){
+ var bits=String(text||'').split(/[.!?]+/), n=0;
+ bits.forEach(function(b){ var w=b.trim().split(/\s+/).filter(Boolean); if(w.length>=3) n++; });
+ return n;
+}
+function waHit(text, keys){
+ var t=String(text||'').toLowerCase();
+ for(var i=0;i<keys.length;i++) if(t.indexOf(keys[i])>=0) return true;
+ return false;
+}
+function waSaltTrap(text){
+ var t=String(text||'').toLowerCase();
+ var claims=/\blots of salt\b|\bown salt\b|\bplenty of salt\b|\bghana had salt\b|\bhad lots of salt\b|\bproduced salt\b|\bsalt mines in ghana\b|\bghana's salt\b/.test(t);
+ var fromNorth=/taghaza|from the north|across the sahara|\bsahara\b/.test(t);
+ return claims && !fromNorth;
+}
+function waLandTrap(text){
+ var t=String(text||'').toLowerCase();
+ if(/good land|good farmland|fertile land|rich soil|good soil/.test(t) && !/not because|did not|does not|wasn't|was not/.test(t)) return true;
+ return false;
+}
+var WA_PROMPTS=[
+ {label:'Short answer 1', need:3, src:'p. 153',
+  q:'What did Ghana do with their military?',
+  model:'Ghana had a regular army, reserve forces, and elite soldiers. The regular army guarded the borders, put down small revolts, and kept order. Soldiers wore knee-length cotton pants, sleeveless tunics, sandals, and headdresses with feathers, and the color and feathers showed rank. Weapons included spears, daggers, swords, battle clubs, and bows and arrows. Elite soldiers were chosen for courage, honesty, and intelligence, and they served as bodyguards, escorts, and advisors. Every man had to train. Stories say one king could call up 200,000 warriors, but the book says that number grew as the story was passed on. He could still summon a large army, including archers on foot.',
+  specs:[
+   {label:'Names the regular army, the reserves, or the elite soldiers', keys:['regular','reserve','elite']},
+   {label:'Says what soldiers did: borders, revolts, order, bodyguards, escorts, or advisors', keys:['border','revolt','order','bodyguard','escort','advisor']},
+   {label:'Includes a uniform detail: cotton, sandals, feathers, or tunics', keys:['cotton','sandal','feather','tunic']},
+   {label:'Names a weapon: spear, sword, bow, arrow, dagger, or club', keys:['spear','sword','bow','arrow','dagger','club']},
+   {label:'Says elite soldiers were chosen for courage, honesty, or intelligence (brave or smart counts)', keys:['courage','honest','intelligen','brave','smart']},
+   {label:'Includes 200,000 warriors', keys:['200,000','200000','200 000','two hundred thousand']},
+   {label:'Adds the book\'s caution: the number grew as the story was retold', keys:['grew','retold','passed on','story','stories','no doubt']}
+  ],
+  notes:function(text){
+   var out=[];
+   if(waHit(text,['200,000','200000','200 000','two hundred thousand']) && !waHit(text,['grew','retold','passed on','story','stories','no doubt']))
+    out.push('You used 200,000. Keep it, and add the book\'s caution: that number grew as the story was passed on. The king could still call up a large army.');
+   return out;
+  }},
+ {label:'Short answer 2', need:3, src:'pp. 151, 154, 156, and 157',
+  q:'How did Ghana get rich?',
+  model:'Ghana got rich by controlling trans-Saharan trade and by taxing goods that passed through. Gold came from secret mines in the forests to the south, in Wangara. The king kept the gold nuggets, and ordinary people could have only gold dust. Salt did not come from Ghana. It came from the Sahara to the north, especially Taghaza. Ghana charged one-sixth of an ounce of gold for each load of salt entering from the north, and one-third of an ounce for each load going south. Ghana arose in the semidesert Sahel. The book does not say good farmland made Ghana rich. The location let Ghana control the trade, and that wealth paid for a strong army.',
+  specs:[
+   {label:'Says Ghana taxed trade or controlled the trade routes', keys:['tax','control']},
+   {label:'Says gold came from the south or from Wangara', keys:['wangara','south','forest']},
+   {label:'Says the king kept gold nuggets, or people kept only gold dust', keys:['nugget','gold dust']},
+   {label:'Says salt came from the north, the Sahara, or Taghaza', keys:['taghaza','sahara','north']}
+  ],
+  notes:function(text){
+   var out=[];
+   if(waSaltTrap(text)) out.push('The practice sheet says Ghana had lots of salt. The textbook says the opposite. People south of the desert had no local salt. Salt came from Taghaza and other places in the Sahara, and Ghana taxed it as it passed through.');
+   if(waLandTrap(text)) out.push('The practice sheet says Ghana had good land. The book says Ghana arose in the semidesert Sahel, and that its wealth came from location and from taxing trade, not from good farmland.');
+   if(waHit(text,['gold']) && !waHit(text,['tax','wangara','nugget','dust','south']))
+    out.push('Trading gold is part of the answer. Add where the gold came from, and that Ghana taxed the trade. The king kept the nuggets.');
+   return out;
+  }},
+ {label:'Short answer 3', need:3, src:'p. 147',
+  q:'What is special about Jenne-jeno?',
+  model:'In 1977, archaeologists began excavating Jenne-jeno. Until that rediscovery, some historians believed cities did not exist in West Africa until outsiders arrived and helped build them. Jenne-jeno proved that wrong. It was built in the third century B.C.E. where the Niger meets the Bani, lasted more than 1,600 years, and grew to about 20,000 people inside a wall 10 feet wide and 13 feet high. People there prized iron more than gold. Blacksmiths were the most respected people. Many thought blacksmiths had supernatural powers, and blacksmiths could act as political leaders, judges, and doctors.',
+  specs:[
+   {label:'Says archaeologists began excavating in 1977', keys:['1977']},
+   {label:'Says the city was built in the third century B.C.E., or that it showed a city existed before outsiders built one', keys:['third','3rd','outsider','before outsiders','rediscover']},
+   {label:'Says people prized iron more than gold', keys:['iron']},
+   {label:'Says blacksmiths were the most respected, or describes their role', keys:['blacksmith']}
+  ],
+  notes:function(text){
+   var out=[];
+   var t=String(text||'').toLowerCase();
+   if(/no one knew|nobody knew|unknown until/.test(t))
+    out.push('The practice sheet says no one knew about Jenne-jeno until 1977. The book is a little more careful. Archaeologists began excavating in 1977. Until that rediscovery, some historians believed West African cities did not exist until outsiders arrived.');
+   if(/amazing/.test(t) && !/supernatural|respected|leader|judge|doctor|prized/.test(t))
+    out.push('Blacksmiths being amazing is the right idea, but the book is more specific. They were the most respected people. People thought they had supernatural powers, and they could act as political leaders, judges, and doctors.');
+   return out;
+  }},
+ {label:'Longer answer (practice)', need:5, src:'pp. 145 to 148 and 151 to 159',
+  q:'Practice only: the study guide says the test has one longer answer, but it does not print that question. Write at least five sentences. Explain how villages grew into kingdoms, how trans-Saharan trade made Ghana wealthy, and how Mali rose after Ghana. Use specifics from both lessons.',
+  model:'Early communities were extended families of about 15 to 20 people. They joined into villages of about 100 to 200 people so they could farm, mine, and protect themselves. Iron tools, including those the Nok made by the 500s B.C.E., helped farmers grow more food, so some villages became towns and cities such as Jenne-jeno. Rulers of rich trading cities raised armies, conquered neighbors, and collected tribute. Ghana arose in the Sahel and got rich by taxing trans-Saharan trade. Gold came from Wangara, to the south. Salt came from Taghaza, to the north, and Ghana taxed the salt as it passed through. Around 1240 the Mande conquered Kumbi and built the empire of Mali, which also grew rich by controlling trade, especially gold.',
+  specs:[
+   {label:'Families or villages, and how they grew', keys:['family','village','15','100']},
+   {label:'Ironworking or the Nok', keys:['iron','nok']},
+   {label:'A city or kingdom step: Jenne-jeno, tribute, or conquering neighbors', keys:['jenne','tribute','conquer','kingdom']},
+   {label:'Ghana taxed trade or controlled gold', keys:['tax','gold']},
+   {label:'Salt came from the north, the Sahara, or Taghaza', keys:['taghaza','sahara','north']},
+   {label:'Mali or the Mande rose after Ghana', keys:['mali','mande']}
+  ],
+  notes:function(text){
+   var out=[];
+   if(waSaltTrap(text)) out.push('Do not write that Ghana had lots of its own salt. Salt came from the north.');
+   if(waLandTrap(text)) out.push('Do not use good farmland as the reason Ghana got rich. The book uses location and taxes.');
+   return out;
+  }}
+];
+var WA_BLANKS=[
+ {prompt:'The _____ is dry and arid, but not as dry as the Sahara.', answer:'Sahel', accept:['sahel'], src:'p. 144',
+  note:'The book calls the Sahel a semidesert just south of the Sahara, with short grasses, bushes, and a few trees.'},
+ {prompt:'The forest zone is _____ than the savanna.', answer:'wetter', accept:['wetter'], src:'p. 144',
+  note:'The study-guide line continues, "is bordered to the north by" a handwritten word. That word did not read clearly. The textbook says the northern part of the forest is woodland and the southern part is rainforest. It does not say the Niger River is the forest\'s northern border.'},
+ {prompt:'By the 500s B.C.E. the _____ had mastered ironworking.', answer:'Nok', accept:['nok','the nok'], src:'p. 146',
+  note:'The Hittites mastered ironworking about 1500 B.C.E. in present-day Turkey. By the 500s B.C.E., the people in this blank are the Nok of central Nigeria.'},
+ {prompt:'The most respected people in the ancient third-century city of Jenne-jeno were the _____.', answer:'blacksmiths', accept:['blacksmith','blacksmiths'], src:'p. 147',
+  note:'People prized iron more than gold and thought blacksmiths had supernatural powers.'},
+ {prompt:'The class fill-in says Ghana lasted for about _____ years. On the test, also give the dates from the book.', answer:'700', accept:['700','seven hundred','about 700'], src:'pp. 151 and 159',
+  note:'The textbook does not print the number 700. It says Ghana lasted from sometime before 500 C.E. until its collapse in the 1200s, and that the empire ended in 1203 when a rival kingdom conquered Kumbi. About 700 years matches that span.'},
+ {prompt:'Stories say the army of Ghana could call upon _____ warriors.', answer:'200,000', accept:['200,000','200000','200 000','two hundred thousand'], src:'p. 153',
+  note:'Add the caution: that number grew as the story was passed on. The king could still call up a large army, including archers on foot.'},
+ {prompt:'Ibn Battuta\'s caravan in 1352 started at _____, an oasis in the foothills of the Atlas Mountains.', answer:'Sijilmasa', accept:['sijilmasa'], src:'p. 155',
+  note:'The handwriting for who "got travelers through the Atlas" did not read clearly. The book says donkeys carried goods from the Mediterranean coast to Sijilmasa. Camels took the goods south after that.'},
+ {prompt:'From Sijilmasa the routes went through _____ toward the Gulf of Guinea.', answer:'Ghana', accept:['ghana'], src:'p. 155',
+  note:'The handwriting for where Ibn Battuta "traveled to" did not read clearly. This chapter says he crossed the Sahara with a caravan and that the routes went through Ghana. It does not say he traveled to the kingdom of Mali.'}
+];
+function testPrep(){
+ shell('Test Prep',
+  '<div class="card"><h2>How the test works</h2>'+
+  '<p>Format: <b>three short answers</b> (at least three sentences each) and <b>one longer answer</b>.</p>'+
+  '<p>Duration: the whole class period. Bring a free reading book.</p>'+
+  '<ul><li class="tl">Study the practice questions from homework and class.</li>'+
+  '<li class="tl">Review your active reading notes for chapters 11 and 12. Both are on the test.</li>'+
+  '<li class="tl">A clear correct answer can be a B. Specifics raise it to an A.</li>'+
+  '<li class="tl">If it was not covered in homework or in class, it is not on the test.</li></ul></div>'+
+  '<div class="card"><h2>Practice the real format</h2><p>Write the three homework questions as short answers, then one longer practice answer. The teacher did not print the exact longer question, so that last box is practice in the longer-answer format.</p>'+
+  '<button class="btn g" id="starttest">Start the practice test</button></div>'+
+  '<div class="card"><h2>Practice those specifics</h2><p>Fill-in lines from the bottom of the study guide. Answers follow the textbook when the handwriting and the book disagree.</p>'+
+  '<button class="btn" id="startblanks">Fill in the specifics</button></div>');
+ $('starttest').onclick=testWrite;
+ $('startblanks').onclick=testBlanks;
+}
+function testWrite(){
+ var html=WA_PROMPTS.map(function(p,i){
+  return '<div class="card"><h2>'+esc(p.label)+'</h2><p><b>'+esc(p.q)+'</b></p>'+
+   '<p class="tl">Write at least '+p.need+' sentences. A sentence needs a period, question mark, or exclamation point, and at least three words.</p>'+
+   '<textarea class="ans" id="ta'+i+'" placeholder="Write in your own words. Use specifics from the book."></textarea></div>';
+ }).join('');
+ shell('Practice test', html+'<button class="btn g" id="checktest">Check my answers</button><div id="testout"></div>');
+ $('checktest').onclick=function(){ testScore(); };
+}
+function testScore(){
+ var awarded=testScore.awarded;
+ var allLen=true, specHit=0, specAll=0;
+ var html=WA_PROMPTS.map(function(p,i){
+  var text=$('ta'+i).value, n=waSentences(text), okLen=n>=p.need;
+  if(!okLen) allLen=false;
+  var specHtml=p.specs.map(function(sp){
+   specAll++;
+   var got=waHit(text, sp.keys);
+   if(got) specHit++;
+   return '<div class="spec '+(got?'ok':'bad')+'">'+(got?'\u2705':'\u2B1C')+' '+esc(sp.label)+'</div>';
+  }).join('');
+  var notes=(p.notes(text)||[]).map(function(m){return '<p class="tl"><b>Check this:</b> '+esc(m)+'</p>';}).join('');
+  return '<div class="card"><h2>'+esc(p.label)+'</h2><p class="tl">'+(okLen?'\u2705 ':'\u274C ')+n+' of '+p.need+' sentences.</p>'+
+   specHtml+notes+'<p class="tl"><b>Textbook answer ('+esc(p.src)+'):</b> '+esc(p.model)+'</p></div>';
+ }).join('');
+ var xp=0;
+ if(allLen && !awarded){ xp=10+specHit; addXP(xp); testScore.awarded=true; }
+ $('testout').innerHTML=html+'<div class="card"><h2>Specifics '+specHit+' of '+specAll+'</h2>'+
+  '<p>The quiz in this game is for practice. The real test is writing, like these boxes. A missing specific is the difference the study guide describes between a clear B and a clear A.</p>'+
+  (xp?'<p>+'+xp+' XP for finishing every box with enough sentences.</p>':'')+
+  '<button class="btn" id="backtest">Back to Test Prep</button></div>';
+ $('backtest').onclick=testPrep;
+ var box=app.querySelector('#testout');
+ if(box) box.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function testBlanks(){
+ var html=WA_BLANKS.map(function(b,i){
+  return '<div class="card"><p><b>'+esc(b.prompt)+'</b> <span class="tag">'+esc(b.src)+'</span></p>'+
+   '<input class="blank" id="bl'+i+'" autocomplete="off" aria-label="'+esc(b.prompt)+'"></div>';
+ }).join('');
+ shell('Specifics', html+'<button class="btn g" id="checkbl">Check the blanks</button><div id="blout"></div>');
+ $('checkbl').onclick=function(){
+  var right=0;
+  WA_BLANKS.forEach(function(b,i){
+   var el=$('bl'+i);
+   var got=String(el.value||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+   var ok=b.accept.indexOf(got)>=0;
+   el.className='blank '+(ok?'ok':'bad');
+   if(ok) right++;
+  });
+  var notes=WA_BLANKS.map(function(b,i){
+   var el=$('bl'+i);
+   var ok=el.className.indexOf('ok')>=0;
+   return '<div class="spec '+(ok?'ok':'bad')+'">'+(ok?'\u2705':'\u274C')+' '+esc(b.answer)+(b.note?' — '+esc(b.note):'')+'</div>';
+  }).join('');
+  $('blout').innerHTML='<div class="card"><h2>'+right+' of '+WA_BLANKS.length+'</h2>'+notes+'</div>';
+  if(right===WA_BLANKS.length){ if(!testBlanks.awarded){ testBlanks.awarded=true; addXP(12); } sWin(); }
+  else sBad();
+ };
+}
+
+/* ---------- study guide ---------- */
+function guide(){
+ var terms=SAM_TOPICS.map(function(t){
+  var ps=PAIRS.filter(function(p){return p.topic===t.id;});
+  return '<h3>'+t.emoji+' '+esc(t.name)+' ('+ps.length+' words)</h3>'+ps.map(function(p){return '<div class="tl"><b>'+esc(p.term)+':</b> '+esc(p.def)+' <span class="tag">'+(p.src||[]).join(' ')+'</span></div>';}).join('');}).join('');
+ var facts=SAM_TOPICS.map(function(t){
+  var fs=ITEMS.filter(function(f){return f.kind==='fact'&&f.topic===t.id;});
+  return '<h3>'+t.emoji+' '+esc(t.name)+' ('+fs.length+')</h3>'+fs.map(function(f){return '<div class="tl"><b>'+esc(f.q)+'</b><br>'+esc(f.fa||f.a)+' <span class="tag">'+(f.src||[]).join(' ')+'</span></div>';}).join('');}).join('');
+ var seqs=SAM_SEQS.map(function(s){return '<h3>'+esc(s.title)+' <span class="tag">'+(s.src||[]).join(' ')+'</span></h3><ol>'+s.steps.map(function(x){return '<li class="tl">'+esc(x)+'</li>';}).join('')+'</ol>';}).join('');
+ var groups={};
+ SAM_GOALS.forEach(function(g,i){var id='g'+(i+1);(groups[g[1]]=groups[g[1]]||[]).push('<label class="chk"><input type="checkbox" data-g="'+id+'"'+(S.checks[id]?' checked':'')+'><span>'+esc(g[0])+'</span></label>');});
+ var goalHtml=Object.keys(groups).map(function(k){return '<h3>'+esc(k)+'</h3>'+groups[k].join('');}).join('');
+ var north=SAM_SORT.filter(function(s){return s[1]==='north';}).map(function(s){return esc(s[0]);}).join(', ');
+ var south=SAM_SORT.filter(function(s){return s[1]==='south';}).map(function(s){return esc(s[0]);}).join(', ');
+ shell('Study Guide','<div class="card"><h2>The test</h2><p>Three short answers, at least three sentences each, and one longer answer. You have the whole class period. Bring a free reading book. Study the practice questions and your notes for chapters 11 and 12. Specifics are what raise a clear B to an A. Use Test Prep to write the practice test.</p></div>'+
+ '<div class="card"><h2>Lesson summaries</h2><p class="tl">These points are the summaries at the ends of Lessons 11 and 12. Check one off when you can say it without looking.</p>'+goalHtml+'</div>'+
+ '<div class="card"><h2>North or south</h2><div class="tl"><b>From north of the Sahara:</b> '+north+'<br><b>From the southern forests:</b> '+south+'</div></div>'+
+ '<div class="card"><h2>Orders and timelines</h2>'+seqs+'</div>'+
+ '<div class="card"><details open><summary>Words ('+PAIRS.length+')</summary>'+terms+'</details><details><summary>Questions ('+ITEMS.filter(function(f){return f.kind==='fact';}).length+')</summary>'+facts+'</details></div>'+
+ '<div class="card"><h2>How to study</h2><ul>'+SAM_TIPS.map(function(t){return '<li class="tl">'+esc(t)+'</li>';}).join('')+'</ul></div>');
+ var cs=app.querySelectorAll('input[data-g]');
+ for(var i=0;i<cs.length;i++)cs[i].onchange=function(){var id=this.getAttribute('data-g');if(this.checked)S.checks[id]=1;else delete S.checks[id];touchDay();checkMastery();save();};
+}
+
+/* ---------- tower defense ---------- */
+var TD_COLS=8,TD_ROWS=10,TD_WAVES_N=10,TD_QCAP=6,TD_DISC=0.3;
+var TD_WP=[[-0.5,1.5],[6.5,1.5],[6.5,4.5],[1.5,4.5],[1.5,7.5],[6.5,7.5],[6.5,9.5]];
+var TD_SEG=[],TD_LEN=0,TD_PATHSET={},TD_TILES=[];
+(function(){
+ var acc=0,i,k;
+ for(i=1;i<TD_WP.length;i++){
+  var a=TD_WP[i-1],b=TD_WP[i],l=Math.abs(b[0]-a[0])+Math.abs(b[1]-a[1]);
+  TD_SEG.push({x0:a[0],y0:a[1],x1:b[0],y1:b[1],l:l,s:acc});acc+=l;
+  var n=Math.ceil(l*4);
+  for(k=0;k<=n;k++){var t=k/n,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t,c=Math.floor(x),r=Math.floor(y);if(c>=0&&c<TD_COLS&&r>=0&&r<TD_ROWS)TD_PATHSET[c+','+r]=1;}
+ }
+ TD_LEN=acc;
+ for(var r2=0;r2<TD_ROWS;r2++)for(var c2=0;c2<TD_COLS;c2++)if(!TD_PATHSET[c2+','+r2])TD_TILES.push([c2,r2]);
+})();
+function tdPathPos(d){
+ var s=TD_SEG,i;
+ for(i=0;i<s.length;i++){if(d<=s[i].s+s[i].l||i===s.length-1){var t=Math.max(0,Math.min(1,(d-s[i].s)/s[i].l));return [s[i].x0+(s[i].x1-s[i].x0)*t,s[i].y0+(s[i].y1-s[i].y0)*t,Math.atan2(s[i].y1-s[i].y0,s[i].x1-s[i].x0)];}}
+ return [0,0,0];
+}
+var TD_TOWERS={
+ ab:{name:'Archer',emoji:'\uD83C\uDFF9',color:'#6b3e26',cost:40,mode:'first',desc:'Fast shots at the first raider. Ghana\'s soldiers used bows and arrows.',
+  lv:[{dmg:8,rate:0.45,range:2.6},{dmg:13,rate:0.4,range:2.8},{dmg:20,rate:0.34,range:3}],up:[45,70]},
+ wbc:{name:'Gate Guard',emoji:'\uD83D\uDEA7',color:'#c4a574',cost:50,mode:'first',desc:'Slows every raider nearby. Cities like Jenne-jeno built walls and gates.',
+  lv:[{dmg:2,rate:1,range:2.2,slow:0.5,dur:1.6},{dmg:4,rate:0.9,range:2.5,slow:0.6,dur:2},{dmg:7,rate:0.8,range:2.8,slow:0.7,dur:2.4}],up:[40,60]},
+ laser:{name:'Iron Spear',emoji:'\uD83D\uDD31',color:'#3d342b',cost:90,mode:'strong',desc:'Slow, heavy hit on the toughest raider. Blacksmiths shaped iron into spears.',
+  lv:[{dmg:45,rate:1.6,range:4.2},{dmg:85,rate:1.5,range:4.6},{dmg:150,rate:1.35,range:5}],up:[80,120]},
+ vac:{name:'Horsemen',emoji:'\uD83D\uDC0E',color:'#c47b2b',cost:75,mode:'first',desc:'A charge that hits a whole group. Armies kept raiders off the trade routes.',
+  lv:[{dmg:16,rate:1.3,range:2.6,rad:0.9},{dmg:26,rate:1.2,range:2.8,rad:1.1},{dmg:40,rate:1.1,range:3,rad:1.3}],up:[65,100]}
+};
+var TD_KEYS=['ab','wbc','laser','vac'];
+var TD_ENEMIES={
+ germ:{name:'Raider',hp:30,sp:1,r:0.28,rew:2,lives:1,col:'#6b3e26'},
+ speedy:{name:'Fast Raider',hp:18,sp:2,r:0.24,rew:2,lives:1,col:'#c47b2b'},
+ virus:{name:'Shield Raider',hp:100,sp:0.8,r:0.32,rew:4,lives:1,col:'#3d4c3a'},
+ splitter:{name:'Raiding Band',hp:55,sp:1,r:0.3,rew:3,lives:1,col:'#7a2e2e',split:2},
+ mini:{name:'Scout',hp:18,sp:1.5,r:0.18,rew:1,lives:1,col:'#a0673a'},
+ boss1:{name:'Great Raider',hp:800,sp:0.6,r:0.52,rew:30,lives:3,col:'#4a1c12',boss:1},
+ boss2:{name:'Almoravid Band',hp:1900,sp:0.55,r:0.55,rew:50,lives:3,col:'#1e3a5f',boss:1}
+};
+/* groups: [type, count, gap seconds, start delay seconds] */
+var TD_WAVES=[
+ {hm:1,g:[['germ',8,1.2,0]]},
+ {hm:1,g:[['germ',8,1.1,0],['speedy',4,1,5]]},
+ {hm:1,g:[['germ',10,1,0],['speedy',6,0.8,4]]},
+ {hm:1,g:[['virus',4,2,0],['germ',10,1,3]]},
+ {hm:1,g:[['boss1',1,1,0],['germ',10,1.2,4]]},
+ {hm:1,g:[['splitter',8,1.4,0],['speedy',8,0.7,6]]},
+ {hm:1,g:[['virus',8,1.6,0],['germ',12,0.9,2]]},
+ {hm:1,g:[['splitter',10,1.2,0],['virus',6,1.8,3],['speedy',10,0.6,8]]},
+ {hm:1,g:[['virus',10,1.4,0],['splitter',12,1,2],['speedy',12,0.6,8]]},
+ {hm:1,g:[['boss2',1,1,0],['virus',8,1.5,3],['splitter',10,1.1,6],['speedy',10,0.6,12]]}
+];
+/* health scaling per wave (tuned by simulation) */
+TD_WAVES.forEach(function(w,i){w.hm=Math.round((1+0.8*i)*100)/100;});
+function tdNew(o){
+ o=o||{};
+ return {coins:o.coins!=null?o.coins:90,lives:10,wave:0,phase:'build',t:0,wt:0,towers:[],enemies:[],projs:[],fx:[],spawns:[],events:[],
+  streak:0,qWave:0,asked:0,right:0,missed:[],kills:0,lost:0,nid:1,noFx:!!o.noFx,hurt:0,bestStreak:0};
+}
+function tdStats(t){return TD_TOWERS[t.key].lv[t.lvl];}
+function tdReward(g,ok){return ok?12+3*Math.min(g.streak+1,5):3;}
+function tdPaidLeft(g){return Math.max(0,TD_QCAP-g.qWave);}
+function tdAnswer(g,ok,coinsOn){
+ var paid=coinsOn!==false&&g.qWave<TD_QCAP,rew=0;
+ g.asked++;
+ if(coinsOn!==false)g.qWave++;
+ if(ok){g.right++;rew=paid?tdReward(g,true):0;g.streak++;if(g.streak>g.bestStreak)g.bestStreak=g.streak;}
+ else{g.streak=0;rew=paid?3:0;}
+ g.coins+=rew;
+ return {reward:rew,paid:paid};
+}
+function tdTileFree(g,c,r){
+ if(c<0||r<0||c>=TD_COLS||r>=TD_ROWS||TD_PATHSET[c+','+r])return false;
+ for(var i=0;i<g.towers.length;i++)if(g.towers[i].c===c&&g.towers[i].r===r)return false;
+ return true;
+}
+function tdTowerAt(g,c,r){for(var i=0;i<g.towers.length;i++)if(g.towers[i].c===c&&g.towers[i].r===r)return g.towers[i];return null;}
+function tdPlace(g,key,c,r){
+ var d=TD_TOWERS[key];
+ if(!d||!tdTileFree(g,c,r)||g.coins<d.cost)return null;
+ g.coins-=d.cost;
+ var t={id:g.nid++,key:key,c:c,r:r,x:c+0.5,y:r+0.5,lvl:0,cd:0.2,ang:-1.57,spent:d.cost};
+ g.towers.push(t);return t;
+}
+function tdUpCost(t){var u=TD_TOWERS[t.key].up;return t.lvl<u.length?u[t.lvl]:0;}
+function tdDisc(cost){return Math.ceil(cost*(1-TD_DISC));}
+function tdUpgrade(g,t,price){
+ if(t.lvl>=TD_TOWERS[t.key].up.length||g.coins<price)return false;
+ g.coins-=price;t.spent+=price;t.lvl++;return true;
+}
+function tdSellValue(t){return Math.floor(t.spent*0.7);}
+function tdSell(g,t){var i=g.towers.indexOf(t);if(i<0)return 0;g.towers.splice(i,1);var v=tdSellValue(t);g.coins+=v;return v;}
+function tdStartWave(g){
+ if(g.phase!=='build'||g.wave>=TD_WAVES_N)return false;
+ g.wave++;g.phase='wave';g.wt=0;g.spawns=[];
+ var w=TD_WAVES[g.wave-1];
+ w.g.forEach(function(gr){for(var i=0;i<gr[1];i++)g.spawns.push({t:gr[3]+i*gr[2],type:gr[0],hm:w.hm});});
+ g.spawns.sort(function(a,b){return a.t-b.t;});
+ return true;
+}
+function tdSpawn(g,type,d,hm){
+ var b=TD_ENEMIES[type],e={type:type,hp:b.hp*hm,max:b.hp*hm,d:d,sp:b.sp,r:b.r,rew:b.rew,lives:b.lives,slow:0,slowT:0,flash:0,dead:false,x:0,y:0,a:0,ph:Math.random()*6.28,hm:hm};
+ var p=tdPathPos(d);e.x=p[0];e.y=p[1];e.a=p[2];g.enemies.push(e);return e;
+}
+function tdFxAdd(g,f){if(!g.noFx&&g.fx.length<300)g.fx.push(f);}
+function tdBurst(g,x,y,col,n,sp){
+ if(g.noFx)return;
+ for(var i=0;i<n;i++){var a=Math.random()*6.28,v=(0.4+Math.random())*sp;tdFxAdd(g,{k:'p',x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:0.45,max:0.45,c:col,s:0.05+Math.random()*0.05});}
+}
+function tdHit(g,e,dmg){
+ if(e.dead)return;
+ e.hp-=dmg;e.flash=0.08;
+ if(e.hp<=0){
+  e.dead=true;g.coins+=e.rew;g.kills++;
+  var b=TD_ENEMIES[e.type];
+  tdBurst(g,e.x,e.y,b.col,b.boss?26:9,b.boss?3:2);
+  tdFxAdd(g,{k:'t',x:e.x,y:e.y-0.2,text:'+'+e.rew,life:0.8,max:0.8,c:'#b8860b'});
+  if(b.split){for(var i=0;i<b.split;i++)tdSpawn(g,'mini',Math.max(0,e.d-0.25*i),e.hm);}
+ }
+}
+function tdAim(g,t,st){
+ var best=null,bv=-1,mode=TD_TOWERS[t.key].mode;
+ for(var i=0;i<g.enemies.length;i++){
+  var e=g.enemies[i];if(e.dead)continue;
+  var dx=e.x-t.x,dy=e.y-t.y,rr=st.range+e.r*0.6;
+  if(dx*dx+dy*dy<=rr*rr){var v=mode==='strong'?e.hp:e.d;if(v>bv){bv=v;best=e;}}
+ }
+ return best;
+}
+function tdStepFx(g,dt){
+ g.hurt=Math.max(0,g.hurt-dt);
+ for(var i=g.fx.length-1;i>=0;i--){var f=g.fx[i];f.life-=dt;if(f.k==='p'){f.x+=f.vx*dt;f.y+=f.vy*dt;}else if(f.k==='t'){f.y-=0.5*dt;}if(f.life<=0)g.fx.splice(i,1);}
+}
+function tdStep(g,dt){
+ tdStepFx(g,dt);
+ if(g.phase!=='wave')return;
+ g.t+=dt;g.wt+=dt;
+ var i,j,e;
+ while(g.spawns.length&&g.spawns[0].t<=g.wt){var s=g.spawns.shift();tdSpawn(g,s.type,0,s.hm);}
+ for(i=0;i<g.enemies.length;i++){
+  e=g.enemies[i];if(e.dead)continue;
+  var f=1;if(e.slowT>0){f=1-e.slow;e.slowT-=dt;}
+  e.flash-=dt;e.ph+=dt*6;
+  e.d+=e.sp*f*dt;
+  var p=tdPathPos(e.d);e.x=p[0];e.y=p[1];e.a=p[2];
+  if(e.d>=TD_LEN){
+   e.dead=true;g.lives-=e.lives;g.lost+=e.lives;g.hurt=0.5;
+   tdBurst(g,e.x,e.y,'#ff4757',10,2);
+   if(g.lives<=0){g.lives=0;g.phase='lost';g.events.push({t:'lost'});}
+  }
+ }
+ if(g.phase!=='wave'){return;}
+ for(i=0;i<g.towers.length;i++){
+  var t=g.towers[i],st=tdStats(t);
+  t.cd-=dt;if(t.cd>0)continue;
+  if(t.key==='wbc'){
+   var any=false;
+   for(j=0;j<g.enemies.length;j++){e=g.enemies[j];if(e.dead)continue;var dx=e.x-t.x,dy=e.y-t.y,rr=st.range+e.r*0.6;
+    if(dx*dx+dy*dy<=rr*rr){any=true;if(st.slow>=e.slow||e.slowT<=0){e.slow=st.slow;}e.slowT=Math.max(e.slowT,st.dur);tdHit(g,e,st.dmg);}}
+   if(any){t.cd=st.rate;tdFxAdd(g,{k:'r',x:t.x,y:t.y,r0:0.3,r1:st.range,life:0.35,max:0.35,c:'#e6c07a'});}else t.cd=0;
+   continue;
+  }
+  var tg=tdAim(g,t,st);
+  if(!tg){t.cd=0;continue;}
+  t.ang=Math.atan2(tg.y-t.y,tg.x-t.x);t.cd=st.rate;
+  if(t.key==='laser'){
+   tdFxAdd(g,{k:'b',x:t.x,y:t.y,x1:tg.x,y1:tg.y,life:0.14,max:0.14,c:'#d4b483'});
+   tdHit(g,tg,st.dmg);
+  }else if(t.key==='ab'){
+   g.projs.push({k:'b',x:t.x+Math.cos(t.ang)*0.3,y:t.y+Math.sin(t.ang)*0.3,e:tg,dmg:st.dmg,sp:10});
+  }else{
+   g.projs.push({k:'s',x:t.x,y:t.y,e:tg,tx:tg.x,ty:tg.y,dmg:st.dmg,rad:st.rad,sp:5});
+  }
+ }
+ for(i=g.projs.length-1;i>=0;i--){
+  var q=g.projs[i],rm=false;
+  if(q.k==='b'){
+   if(q.e.dead)rm=true;else{
+    var ddx=q.e.x-q.x,ddy=q.e.y-q.y,dist=Math.sqrt(ddx*ddx+ddy*ddy),stp=q.sp*dt;
+    if(dist<=stp+0.08){tdHit(g,q.e,q.dmg);tdBurst(g,q.x,q.y,'#e6c07a',3,1.2);rm=true;}
+    else{q.x+=ddx/dist*stp;q.y+=ddy/dist*stp;}
+   }
+  }else{
+   if(!q.e.dead){q.tx=q.e.x;q.ty=q.e.y;}
+   var sx=q.tx-q.x,sy=q.ty-q.y,sd=Math.sqrt(sx*sx+sy*sy),ss=q.sp*dt;
+   if(sd<=ss+0.05){
+    for(j=0;j<g.enemies.length;j++){e=g.enemies[j];if(e.dead)continue;var ex=e.x-q.tx,ey=e.y-q.ty;if(ex*ex+ey*ey<=q.rad*q.rad)tdHit(g,e,q.dmg);}
+    tdFxAdd(g,{k:'r',x:q.tx,y:q.ty,r0:0.1,r1:q.rad,life:0.3,max:0.3,c:'#fdcb6e'});tdBurst(g,q.tx,q.ty,'#fdcb6e',8,2);
+    rm=true;
+   }else{q.x+=sx/sd*ss;q.y+=sy/sd*ss;}
+  }
+  if(rm)g.projs.splice(i,1);
+ }
+ for(i=g.enemies.length-1;i>=0;i--)if(g.enemies[i].dead)g.enemies.splice(i,1);
+ if(g.phase==='wave'&&!g.spawns.length&&!g.enemies.length){
+  if(g.wave>=TD_WAVES_N){g.phase='won';g.events.push({t:'won'});}
+  else{g.phase='build';g.qWave=0;var bonus=10+2*g.wave;g.coins+=bonus;g.projs=[];g.events.push({t:'clear',w:g.wave,bonus:bonus});}
+ }
+}
+var TD={WAVES:TD_WAVES,TOWERS:TD_TOWERS,ENEMIES:TD_ENEMIES,TILES:TD_TILES,PATH:TD_PATHSET,LEN:TD_LEN,QCAP:TD_QCAP,newGame:tdNew,step:tdStep,place:tdPlace,upgrade:tdUpgrade,upCost:tdUpCost,disc:tdDisc,sell:tdSell,startWave:tdStartWave,answer:tdAnswer,reward:tdReward,free:tdTileFree,stats:tdStats};
+
+/* --- tower defense screen --- */
+var tdUI=null;
+function tdStop(){
+ if(!tdUI)return;
+ var u=tdUI;tdUI=null;
+ if(u.raf)cancelAnimationFrame(u.raf);
+ window.removeEventListener('resize',u.onResize);
+ document.removeEventListener('visibilitychange',u.onVis);
+ if(u.ov&&u.ov.parentNode)u.ov.parentNode.removeChild(u.ov);
+ document.body.classList.remove('tdon');
+}
+function tdPickItem(){
+ var u=tdUI,kinds=['pair','fact','sort'];
+ var ok=function(i){return kinds.indexOf(i.kind)>=0&&i.pool!=='order'&&!i.fa;};
+ var pool=filtered(kinds).filter(ok);if(!pool.length)pool=ITEMS.filter(ok);
+ var main=pool.filter(function(i){return i.kind!=='sort';}),sorts=pool.filter(function(i){return i.kind==='sort';});
+ var missed=missedItems().filter(function(i){return (i.kind==='pair'||i.kind==='fact')&&ok(i);});
+ var cand,tries=0,it=null;
+ while(tries++<12){
+  var r=Math.random();
+  if(missed.length&&r<0.25)cand=missed;else if(sorts.length&&r<0.35)cand=sorts;else cand=main.length?main:pool;
+  if(Math.random()<0.62){var hi=cand.filter(function(i){return i.hi;}); if(hi.length)cand=hi;}
+  it=cand[Math.floor(Math.random()*cand.length)];
+  if(u.recent.indexOf(it.id)<0)break;
+ }
+ u.recent.push(it.id);if(u.recent.length>14)u.recent.shift();
+ return it;
+}
+function tdAsk(purpose,after){
+ var u=tdUI,g=u.g,it=tdPickItem(),mc=makeMC(it);
+ if(!mc){return tdAsk(purpose,after);}
+ u.asking=true;
+ var ov=document.createElement('div');ov.className='tdov';u.ov=ov;
+ var tagT=purpose==='upgrade'?'Quiz discount: answer right to save '+Math.round(TD_DISC*100)+'%':(tdPaidLeft(g)>0?'Answer for gold dust':'Practice question (no gold dust)');
+ ov.innerHTML='<div class="tdq"><div class="card"><span class="tag" style="margin:0 0 6px">'+esc(tagT)+'</span><div class="q"><small>'+esc(mc.hint)+'</small>'+esc(mc.text)+'</div><div id="tdchs">'+mc.choices.map(function(c,k){return '<button class="ch" data-k="'+k+'">'+esc(c.t)+'</button>';}).join('')+'</div><div id="tdfb"></div></div></div>';
+ document.body.appendChild(ov);
+ var bs=ov.querySelectorAll('.ch'),done=false;
+ for(var b=0;b<bs.length;b++)bs[b].onclick=function(){
+  if(done)return;done=true;
+  var k=+this.getAttribute('data-k'),ok=!!mc.choices[k].ok,z;
+  for(z=0;z<bs.length;z++){bs[z].disabled=true;if(mc.choices[z].ok)bs[z].classList.add('ok');}
+  if(!ok)this.classList.add('bad');
+  record(it,ok);
+  var res=null,msg;
+  if(purpose==='upgrade'){
+   g.asked++;if(ok){g.right++;g.streak++;if(g.streak>g.bestStreak)g.bestStreak=g.streak;}else g.streak=0;
+   msg=ok?'\u2705 Correct! Upgrade discount earned.':'\u274C Not quite. You pay the full price.';
+  }else{
+   res=tdAnswer(g,ok,true);
+   msg=ok?'\u2705 Correct! '+(res.paid?'+'+res.reward+' gold dust':'No gold dust this time, but great practice')+(g.streak>1?' (streak '+g.streak+')':''):'\u274C Not quite. '+(res.paid?'+'+res.reward+' gold dust. ':'');
+  }
+  if(ok){addXP(2);sOk();if(g.streak===5)badge('s5');if(g.streak===10)badge('s10');if(g.streak===20)badge('s20');if(g.streak>S.bestStreak)S.bestStreak=g.streak;}
+  else{sBad();var key=it.id,found=false;g.missed.forEach(function(m){if(m.id===key)found=true;});
+   if(!found){var right=mc.choices.filter(function(c){return c.ok;})[0];g.missed.push({id:key,q:mc.text,a:right?right.t:''});}}
+  save();
+  $('tdfb').innerHTML='<div class="fb '+(ok?'ok':'bad')+'">'+esc(msg)+' '+(ok?'':esc(mc.why))+'</div><p><button class="btn" id="tdnx">Continue</button></p>';
+  $('tdnx').onclick=function(){if(ov.parentNode)ov.parentNode.removeChild(ov);u.ov=null;u.asking=false;u.last=0;after(ok);tdSync();};
+ };
+}
+function tdSay(text,ms){
+ var u=tdUI;if(!u)return;var m=$('tdmsg');if(!m)return;
+ m.textContent=text;m.className='tdmsg';
+ if(u.msgT)clearTimeout(u.msgT);
+ u.msgT=setTimeout(function(){var mm=$('tdmsg');if(mm)mm.className='tdmsg off';},ms||3200);
+}
+function tdEnemyLine(w){
+ var seen={},names=[];
+ TD_WAVES[w-1].g.forEach(function(gr){if(!seen[gr[0]]){seen[gr[0]]=1;names.push(TD_ENEMIES[gr[0]].name);}});
+ return names.join(', ');
+}
+function tdFinish(kind){
+ var u=tdUI;if(!u)return;
+ var g=u.g,won=kind==='won',cleared=won?TD_WAVES_N:(g.phase==='build'?g.wave:Math.max(0,g.wave-1));
+ var xp=cleared*4+(won?30:0);
+ if(cleared>(S.best.td||0))S.best.td=cleared;
+ if(won){badge('tdwin');badge('tdboss');}
+ addXP(xp);save();
+ var missed=g.missed.slice(),asked=g.asked,right=g.right,lives=g.lives,lost=g.lost;
+ tdStop();
+ if(won)sWin();else sBad();
+ shell('Defend Kumbi','<div class="card"><div class="big">'+(won?'\uD83C\uDFF0':'\uD83D\uDC2B')+'</div><h2>'+(won?(lost===0?'Flawless! Kumbi is safe!':'Kumbi stands!'):'The raiders reached Kumbi!')+'</h2>'+
+  '<div class="row"><div class="stat"><b>'+cleared+'/'+TD_WAVES_N+'</b><span>Waves cleared</span></div><div class="stat"><b>'+lives+'</b><span>Lives left</span></div><div class="stat"><b>'+right+'/'+asked+'</b><span>Questions right</span></div><div class="stat"><b>+'+xp+'</b><span>XP</span></div></div>'+
+  (missed.length?'<h3>Questions to review</h3><ul style="padding-left:18px">'+missed.map(function(m){return '<li class="tl"><b>'+esc(m.q)+'</b><br>Answer: '+esc(m.a)+'</li>';}).join('')+'</ul><p class="tl">These are saved in Missed Items.</p>':(asked?'<p>You answered every question right. Amazing!</p>':'<p class="tl">Answer questions to earn coins next time.</p>'))+
+  '<p><button class="btn g" id="tdagain">Play again</button> <button class="btn w" id="hm">Home</button>'+(missed.length?' <button class="btn o" id="tdrev">Review missed</button>':'')+'</p></div>');
+ $('tdagain').onclick=function(){go('td');};$('hm').onclick=home;
+ var rv=$('tdrev');if(rv)rv.onclick=function(){go('review');};
+}
+function tdRun(){
+ stopTimer();
+ var g=tdNew();
+ var u={g:g,selType:'ab',selTower:null,hover:null,recent:[],asking:false,paused:false,speed:1,raf:0,last:0,T:40,dpr:1,infoKey:'',ov:null,quitT:0,msgT:0,sig:'',time:0};
+ tdUI=u;
+ document.body.classList.add('tdon');
+ app.innerHTML='<div class="tdwrap" id="tdw"><div class="tdbar"><button class="back" id="tdquit">\u2715 Quit</button><div class="sp"></div><span class="pill" id="tdwv"></span><span class="pill" id="tdco"></span><span class="pill" id="tdli"></span><span class="pill" id="tdst"></span></div>'+
+  '<div class="tdmain"><div class="tdcv" id="tdcw"><canvas id="tdcv"></canvas><div class="tdmsg" id="tdmsg"></div></div>'+
+  '<div class="tdside"><button class="btn tdans" id="tdans"></button><div class="tdctl"><button class="btn g" id="tdgo"></button><button class="btn o" id="tdsp">Speed 1x</button><button class="btn w" id="tdps">\u23F8 Pause</button></div>'+
+  '<div class="tdshop" id="tdshop" style="margin-top:8px"></div><div class="card tdinfo" id="tdinfo"></div></div></div></div>';
+ $('tdshop').innerHTML=TD_KEYS.map(function(k){var d=TD_TOWERS[k];return '<button class="tdt" data-k="'+k+'"><span class="e">'+d.emoji+'</span>'+esc(d.name)+'<br>\u2726 '+d.cost+'</button>';}).join('');
+ u.cv=$('tdcv');u.ctx=u.cv.getContext('2d');
+ u.onResize=function(){tdResize();};
+ u.onVis=function(){if(document.hidden&&tdUI){tdUI.paused=true;tdSync();}};
+ window.addEventListener('resize',u.onResize);
+ document.addEventListener('visibilitychange',u.onVis);
+ tdResize();
+ /* input */
+ function tileOf(ev){var r=u.cv.getBoundingClientRect();return [Math.floor((ev.clientX-r.left)/r.width*TD_COLS),Math.floor((ev.clientY-r.top)/r.height*TD_ROWS)];}
+ u.cv.addEventListener('pointerdown',function(ev){
+  ev.preventDefault();if(u.asking||u.done)return;
+  var t=tileOf(ev),c=t[0],r=t[1];
+  if(c<0||r<0||c>=TD_COLS||r>=TD_ROWS)return;
+  var tw=tdTowerAt(g,c,r);
+  if(tw){u.selTower=tw;u.selType=null;u.infoKey='';tdSync();return;}
+  if(u.selType){
+   if(TD_PATHSET[c+','+r]){tdSay('Defenses go on the open ground beside the trail.');return;}
+   var d=TD_TOWERS[u.selType];
+   if(g.coins<d.cost){tdSay('You need '+d.cost+' gold dust. Tap Answer a question to earn more!');return;}
+   var nt=tdPlace(g,u.selType,c,r);
+   if(nt){u.selTower=nt;u.selType=null;u.infoKey='';tdBurst(g,nt.x,nt.y,'#ffeaa7',10,1.5);sOk();tdSync();}
+   return;
+  }
+  u.selTower=null;u.infoKey='';tdSync();
+ });
+ u.cv.addEventListener('pointermove',function(ev){if(ev.pointerType==='mouse')u.hover=tileOf(ev);});
+ u.cv.addEventListener('pointerleave',function(){u.hover=null;});
+ $('tdshop').onclick=function(ev){
+  var b=ev.target;while(b&&b!==this&&!b.getAttribute('data-k'))b=b.parentNode;
+  if(!b||b===this||u.asking)return;
+  var k=b.getAttribute('data-k');
+  u.selType=(u.selType===k?null:k);u.selTower=null;u.infoKey='';
+  if(u.selType&&g.coins<TD_TOWERS[k].cost)tdSay('You need '+TD_TOWERS[k].cost+' gold dust. Answer a question to earn more!');
+  else if(u.selType)tdSay('Now tap a tile with a gold dot to build.');
+  tdSync();
+ };
+ $('tdans').onclick=function(){if(u.asking||u.done)return;tdAsk('coins',function(){});};
+ $('tdgo').onclick=function(){
+  if(u.asking||u.done)return;
+  if(tdStartWave(g)){u.selType=null;u.infoKey='';tdSay('Wave '+g.wave+': '+tdEnemyLine(g.wave)+(TD_WAVES[g.wave-1].g[0][0].indexOf('boss')===0?'. BOSS!':''),3600);tdSync();}
+ };
+ $('tdsp').onclick=function(){u.speed=u.speed===1?2:1;tdSync();};
+ $('tdps').onclick=function(){if(u.asking||u.done)return;u.paused=!u.paused;tdSync();};
+ $('tdquit').onclick=function(){
+  if(u.asking)return;
+  if(!u.quitT||Date.now()-u.quitT>3000){u.quitT=Date.now();this.textContent='Sure? Tap again';return;}
+  var cl=g.phase==='build'?g.wave:Math.max(0,g.wave-1);
+  if(cl>(S.best.td||0))S.best.td=cl;
+  addXP(cl*4);save();home();
+ };
+ tdSay('Answer a question to earn gold dust, then build defenses beside the trail. Stop raiders from reaching Kumbi!',5200);
+ tdSync();
+ u.raf=requestAnimationFrame(tdLoop);
+}
+function tdResize(){
+ var u=tdUI;if(!u)return;
+ var wide=window.innerWidth>=860,w=$('tdw');if(!w)return;
+ w.className='tdwrap'+(wide?' wide':'');
+ var availW=Math.max(240,app.clientWidth-24),cssW;
+ if(wide){var h=Math.max(420,Math.min(720,window.innerHeight-110));cssW=Math.min(h*TD_COLS/TD_ROWS,availW-360);}
+ else cssW=Math.min(availW,460,Math.max(240,(window.innerHeight-170)*TD_COLS/TD_ROWS));
+ cssW=Math.floor(cssW);var cssH=Math.floor(cssW*TD_ROWS/TD_COLS),dpr=Math.min(window.devicePixelRatio||1,2);
+ u.T=cssW/TD_COLS;u.dpr=dpr;
+ u.cv.width=Math.round(cssW*dpr);u.cv.height=Math.round(cssH*dpr);u.cv.style.width=cssW+'px';u.cv.style.height=cssH+'px';
+ $('tdcw').style.width=cssW+'px';
+}
+function tdLoop(now){
+ var u=tdUI;if(!u)return;
+ if(!u.last)u.last=now;
+ var dt=Math.min(0.05,(now-u.last)/1000);u.last=now;
+ u.time+=dt;
+ var g=u.g;
+ if(!u.paused&&!u.asking&&!u.done){
+  var total=dt*u.speed,n=Math.max(1,Math.ceil(total/(1/60))),h=total/n;
+  for(var i=0;i<n;i++)tdStep(g,h);
+ }
+ while(g.events.length){
+  var ev=g.events.shift();
+  if(ev.t==='clear'){if(ev.w===5)badge('tdboss');tdSay('Wave '+ev.w+' cleared! +'+ev.bonus+' gold dust. Answer questions and build, then start the next wave.',4200);sWin();
+   var nx=g.wave+1;if(nx===5||nx===10)tdSay('Wave '+ev.w+' cleared! Next up: a BOSS wave. Get ready!',4500);}
+  else if(ev.t==='won'||ev.t==='lost'){u.done=true;var kind=ev.t;setTimeout(function(){if(tdUI===u)tdFinish(kind);},kind==='won'?700:900);}
+ }
+ tdDraw();
+ tdSync();
+ u.raf=requestAnimationFrame(tdLoop);
+}
+function tdSetTxt(id,txt){var e=$(id);if(e&&e.textContent!==txt)e.textContent=txt;}
+function tdInfoStats(t,lv){
+ var s=TD_TOWERS[t].lv[lv],o='Damage '+s.dmg+', range '+s.range+', '+(1/s.rate).toFixed(1)+' shots/s';
+ if(t==='wbc')o='Slows '+Math.round(s.slow*100)+'% for '+s.dur+'s, range '+s.range+', pulse every '+s.rate+'s';
+ if(t==='vac')o+=', blast size '+s.rad;
+ return o;
+}
+function tdSync(){
+ var u=tdUI;if(!u||!$('tdwv'))return;
+ var g=u.g,q=(g.phase==='build'?g.wave+1:g.wave);
+ tdSetTxt('tdwv','\uD83D\uDC2B Wave '+Math.min(q,TD_WAVES_N)+'/'+TD_WAVES_N);
+ tdSetTxt('tdco','\u2726 '+g.coins+' dust');
+ tdSetTxt('tdli','\u2764\uFE0F '+g.lives);
+ tdSetTxt('tdst','\uD83D\uDD25 '+g.streak);
+ var go=$('tdgo');
+ var gt=g.phase==='build'?'\u25B6 Start Wave '+(g.wave+1):(g.phase==='wave'?'Wave '+g.wave+' running...':'Done');
+ tdSetTxt('tdgo',gt);go.disabled=(g.phase!=='build'||u.asking);
+ tdSetTxt('tdsp','Speed '+u.speed+'x');
+ tdSetTxt('tdps',u.paused?'\u25B6 Resume':'\u23F8 Pause');
+ var left=tdPaidLeft(g),a=$('tdans'),html;
+ if(left>0)html='\uD83E\uDDE0 Answer a question for gold dust<small>Right answer: +'+tdReward(g,true)+' gold dust ('+left+' paid question'+(left>1?'s':'')+' left this wave)</small>';
+ else html='\uD83E\uDDE0 Practice question<small>No more gold dust this wave, but you still earn XP and learn!</small>';
+ if(a.getAttribute('data-h')!==html){a.innerHTML=html;a.setAttribute('data-h',html);}
+ a.disabled=!!u.asking;
+ var qb=$('tdquit');if(u.quitT&&Date.now()-u.quitT>3000){u.quitT=0;qb.textContent='\u2715 Quit';}
+ var sb=$('tdshop').children,i;
+ for(i=0;i<sb.length;i++){var k=sb[i].getAttribute('data-k');sb[i].className='tdt'+(u.selType===k?' on':'')+(g.coins<TD_TOWERS[k].cost?' no':'');}
+ /* info panel */
+ var key=(u.selTower?'t'+u.selTower.id+'_'+u.selTower.lvl:'s'+u.selType),info=$('tdinfo');
+ if(u.infoKey!==key){
+  u.infoKey=key;
+  if(u.selTower){
+   var t=u.selTower,d=TD_TOWERS[t.key],maxed=t.lvl>=d.up.length;
+   info.innerHTML='<b>'+d.emoji+' '+esc(d.name)+'</b> <span class="tag">Level '+(t.lvl+1)+'/3</span><br>'+esc(tdInfoStats(t.key,t.lvl))+
+    (maxed?'<br><b>Max level!</b>':'<br>Next level: '+esc(tdInfoStats(t.key,t.lvl+1)))+
+    '<div class="row" style="margin-top:8px">'+(maxed?'':'<button class="btn g" id="tdup"></button>')+'<button class="btn r" id="tdsell"></button></div>';
+   var ub=$('tdup');
+   if(ub)ub.onclick=function(){
+    if(u.asking||u.done)return;
+    var cost=tdUpCost(t),dc=tdDisc(cost);
+    if(g.coins<dc){tdSay('Upgrade needs '+dc+' gold dust (or '+cost+' without the quiz). Answer questions to earn more!');return;}
+    tdAsk('upgrade',function(ok){
+     var price=ok?dc:cost;
+     if(g.coins<price){tdSay('The full price is '+cost+' gold dust and you have '+g.coins+'. Earn more coins and try again.',4200);return;}
+     if(tdUpgrade(g,t,price)){tdBurst(g,t.x,t.y,'#55efc4',14,2);tdFxAdd(g,{k:'r',x:t.x,y:t.y,r0:0.2,r1:0.9,life:0.4,max:0.4,c:'#55efc4'});tdSay(d.name+' is now level '+(t.lvl+1)+'! You paid '+price+' gold dust.');u.infoKey='';}
+    });
+   };
+   $('tdsell').onclick=function(){if(u.asking)return;var v=tdSell(g,t);u.selTower=null;u.infoKey='';tdSay('Sold for '+v+' gold dust.');tdSync();};
+  }else if(u.selType){
+   var d2=TD_TOWERS[u.selType];
+   info.innerHTML='<b>'+d2.emoji+' '+esc(d2.name)+'</b> costs \u2726 '+d2.cost+' gold dust<br>'+esc(d2.desc)+'<br>'+esc(tdInfoStats(u.selType,0))+'<br><span class="tl">Tap a tile with a gold dot to build. Tap a defense to upgrade or sell it.</span>';
+  }else{
+   info.innerHTML='<b>How to play</b><br>1. Answer questions to earn gold dust.<br>2. Pick a defense and tap a tile beside the caravan trail.<br>3. Start the wave. Right answers pay more when your streak grows.<br>4. Tap a defense to upgrade it (quiz discount) or sell it.<br><span class="tl">Kumbi was Ghana\'s capital. Its armies guarded trade routes from raiders.</span>';
+  }
+ }
+ if(u.selTower){
+  var t2=u.selTower,d3=TD_TOWERS[t2.key],ub2=$('tdup'),sl=$('tdsell');
+  if(ub2){var c2=tdUpCost(t2);tdSetTxt('tdup','\u2B06 Upgrade \u2726'+c2+' (quiz: '+tdDisc(c2)+' if right)');ub2.style.opacity=g.coins<tdDisc(c2)?0.5:1;}
+  if(sl)tdSetTxt('tdsell','Sell +'+tdSellValue(t2));
+ }
+}
+/* --- drawing --- */
+function tdText(c,u,s,x,y,px,col,bold){c.save();c.setTransform(u.dpr,0,0,u.dpr,0,0);c.font=(bold?'bold ':'')+px+'px "Trebuchet MS",sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillStyle=col;c.fillText(s,x*u.T,y*u.T);c.restore();}
+function tdCircle(c,x,y,r,fill,stroke,lw){c.beginPath();c.arc(x,y,r,0,6.2832);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.lineWidth=lw||0.05;c.strokeStyle=stroke;c.stroke();}}
+function tdDrawTower(c,u,t,x,y,ang,alpha){
+ var d=TD_TOWERS[t.key||t],key=t.key||t;
+ c.save();c.globalAlpha=alpha||1;
+ c.fillStyle='rgba(90,50,20,.28)';c.beginPath();c.rect(x-0.44,y-0.4,0.88,0.88);c.fill();
+ c.fillStyle='#f3e0c0';c.strokeStyle='#6b3e26';c.lineWidth=0.05;
+ c.beginPath();c.rect(x-0.42,y-0.44,0.84,0.84);c.fill();c.stroke();
+ c.translate(x,y);c.rotate(ang);
+ if(key==='ab'){
+  c.fillStyle='#6b3e26';c.fillRect(0.05,-0.05,0.42,0.1);
+  tdCircle(c,0,0,0.16,'#c4a574','#4a2c1a',0.04);
+  c.strokeStyle='#3d342b';c.lineWidth=0.045;c.beginPath();c.arc(0.05,0,0.22, -1.2, 1.2);c.stroke();
+ }else if(key==='laser'){
+  c.fillStyle='#5c4033';c.fillRect(0,-0.045,0.55,0.09);
+  c.fillStyle='#d4b483';c.beginPath();c.moveTo(0.5,-0.09);c.lineTo(0.68,0);c.lineTo(0.5,0.09);c.fill();
+  tdCircle(c,0,0,0.2,'#3d342b','#1a120c',0.04);
+ }else if(key==='vac'){
+  c.rotate(-ang);
+  c.fillStyle='#8d5a2b';c.fillRect(-0.22,-0.08,0.46,0.1);
+  tdCircle(c,-0.16,0.02,0.1,'#c47b2b','#6b3e26',0.03);
+  tdCircle(c,0.2,-0.02,0.08,'#f3e0c0','#6b3e26',0.03);
+ }else{
+  c.rotate(-ang);
+  c.fillStyle='#c4a574';c.fillRect(-0.28,-0.22,0.56,0.44);
+  c.fillStyle='#3d342b';c.fillRect(-0.08,-0.16,0.16,0.32);
+  c.strokeStyle='#6b3e26';c.lineWidth=0.04;c.strokeRect(-0.28,-0.22,0.56,0.44);
+ }
+ c.restore();
+ if(t.lvl!=null){for(var i=0;i<=t.lvl;i++)tdCircle(c,x-0.15+i*0.15,y+0.36,0.05,'#e0a045','#8c3d16',0.02);}
+}
+function tdPerson(c,x,y,s,col,shield){
+ c.fillStyle=col;
+ tdCircle(c,x,y-s*0.55,s*0.28,col,'#2b1810',0.03);
+ c.fillRect(x-s*0.16,y-s*0.28,s*0.32,s*0.55);
+ c.fillRect(x-s*0.28,y+s*0.22,s*0.18,s*0.32);
+ c.fillRect(x+s*0.1,y+s*0.22,s*0.18,s*0.32);
+ if(shield){c.beginPath();c.ellipse(x+s*0.42,y,s*0.16,s*0.32,0,0,6.28);c.fillStyle='#d4b483';c.fill();c.strokeStyle='#2b1810';c.lineWidth=0.03;c.stroke();}
+}
+function tdDrawEnemy(c,u,e){
+ var b=TD_ENEMIES[e.type],col=e.flash>0?'#fff8ee':b.col,r=e.r,x=e.x,y=e.y;
+ if(e.slowT>0)tdCircle(c,x,y,r+0.1,'rgba(224,160,69,.28)','#e0a045',0.03);
+ c.save();c.translate(x,y);
+ if(e.type==='boss1'||e.type==='boss2'){
+  tdPerson(c,0,0.05,r*1.15,col,true);
+  c.fillStyle='#2b1810';
+  for(var i=0;i<5;i++){c.beginPath();c.moveTo(-r*0.25+i*r*0.12, -r*0.95);c.lineTo(-r*0.18+i*r*0.12,-r*0.7);c.strokeStyle='#2b1810';c.lineWidth=0.03;c.stroke();}
+ }else if(e.type==='virus'){
+  tdPerson(c,0,0,r,col,true);
+ }else if(e.type==='splitter'){
+  tdPerson(c,-0.08,0,r*0.7,col,false);tdPerson(c,0.1,0.02,r*0.62,col,false);
+ }else if(e.type==='speedy'){
+  c.rotate(Math.sin(e.ph)*0.1);tdPerson(c,0.05,0,r*0.95,col,false);
+ }else{
+  tdPerson(c,0,0,r,col,false);
+ }
+ c.restore();
+ if(e.hp<e.max||b.boss){
+  var bw=b.boss?0.9:0.5,by=y-r-(b.boss?0.34:0.22);
+  c.fillStyle='rgba(0,0,0,.55)';c.fillRect(x-bw/2-0.02,by-0.02,bw+0.04,0.12);
+  var f=Math.max(0,e.hp/e.max);c.fillStyle=f>0.5?'#2ecc71':(f>0.25?'#f1c40f':'#e74c3c');c.fillRect(x-bw/2,by,bw*f,0.08);
+ }
+}
+function tdDraw(){
+ var u=tdUI;if(!u)return;
+ var g=u.g,c=u.ctx,T=u.T,dpr=u.dpr,i,j;
+ c.setTransform(dpr*T,0,0,dpr*T,0,0);
+ c.clearRect(0,0,TD_COLS,TD_ROWS);
+ var sky=c.createLinearGradient(0,0,0,TD_ROWS);
+ sky.addColorStop(0,'#f6d7a2');sky.addColorStop(1,'#e7c27a');
+ c.fillStyle=sky;c.fillRect(0,0,TD_COLS,TD_ROWS);
+ for(j=0;j<TD_ROWS;j++)for(i=0;i<TD_COLS;i++){
+  if(TD_PATHSET[i+','+j])continue;
+  c.fillStyle=((i+j)%2)?'rgba(255,236,196,.45)':'rgba(214,164,84,.28)';c.fillRect(i,j,1,1);
+  if((i*3+j*5)%7===0){c.strokeStyle='#2f6b4a';c.lineWidth=0.03;c.beginPath();c.moveTo(i+0.25,j+0.72);c.lineTo(i+0.25,j+0.48);c.moveTo(i+0.25,j+0.55);c.lineTo(i+0.16,j+0.46);c.moveTo(i+0.25,j+0.55);c.lineTo(i+0.36,j+0.46);c.stroke();}
+ }
+ c.lineCap='round';c.lineJoin='round';
+ c.beginPath();c.moveTo(TD_WP[0][0],TD_WP[0][1]);for(i=1;i<TD_WP.length;i++)c.lineTo(TD_WP[i][0],TD_WP[i][1]);
+ c.strokeStyle='#8a6236';c.lineWidth=0.98;c.stroke();
+ c.strokeStyle='#d7b074';c.lineWidth=0.72;c.stroke();
+ c.setLineDash([0.16,0.28]);c.lineDashOffset=-(u.time*0.45);c.strokeStyle='rgba(255,248,230,.8)';c.lineWidth=0.08;c.stroke();c.setLineDash([]);
+ var ce=TD_WP[TD_WP.length-1];
+ c.fillStyle='#a56b3c';c.fillRect(ce[0]-0.7,ce[1]-0.85,1.4,0.95);
+ c.fillStyle='#6b3e26';c.fillRect(ce[0]-0.16,ce[1]-0.42,0.32,0.52);
+ c.fillStyle='#e0a045';c.beginPath();c.moveTo(ce[0]-0.85,ce[1]-0.8);c.lineTo(ce[0],ce[1]-1.25);c.lineTo(ce[0]+0.85,ce[1]-0.8);c.fill();
+ c.strokeStyle='#4a2c1a';c.lineWidth=0.05;c.strokeRect(ce[0]-0.7,ce[1]-0.85,1.4,0.95);
+ tdText(c,u,'KUMBI',ce[0],ce[1]+0.32,Math.max(8,T*0.22),'#4a2c1a',true);
+ tdText(c,u,String(g.lives),ce[0],ce[1]-0.55,Math.max(11,T*0.32),'#fff8ee',true);
+ tdText(c,u,'trail',0.7,1.05,Math.max(8,T*0.18),'#6b3e26',true);
+ if(u.selType&&!u.asking){for(i=0;i<TD_TILES.length;i++){var tl=TD_TILES[i];if(tdTileFree(g,tl[0],tl[1])){tdCircle(c,tl[0]+0.5,tl[1]+0.5,0.07+0.02*Math.sin(u.time*4),'rgba(224,160,69,.85)');}}}
+ if(u.hover&&u.selType&&tdTileFree(g,u.hover[0],u.hover[1])){
+  var hx=u.hover[0]+0.5,hy=u.hover[1]+0.5,hs=TD_TOWERS[u.selType].lv[0];
+  tdCircle(c,hx,hy,hs.range,'rgba(154,52,18,.12)','rgba(154,52,18,.45)',0.03);tdDrawTower(c,u,u.selType,hx,hy,-1.57,0.7);
+ }
+ if(u.selTower){var st=tdStats(u.selTower);tdCircle(c,u.selTower.x,u.selTower.y,st.range,'rgba(154,52,18,.12)','rgba(154,52,18,.6)',0.04);}
+ for(i=0;i<g.towers.length;i++){var t=g.towers[i];tdDrawTower(c,u,t,t.x,t.y,t.ang,1);if(t===u.selTower){c.strokeStyle='#e0a045';c.lineWidth=0.07;c.strokeRect(t.x-0.46,t.y-0.48,0.92,0.92);}}
+ for(i=0;i<g.enemies.length;i++)if(g.enemies[i].d>0.1)tdDrawEnemy(c,u,g.enemies[i]);
+ for(i=0;i<g.projs.length;i++){var p=g.projs[i];if(p.k==='b'){tdCircle(c,p.x,p.y,0.07,'#f6e7c1','#6b3e26',0.03);}else{tdCircle(c,p.x,p.y,0.13,'#e0a045','#8c3d16',0.04);}}
+ for(i=0;i<g.fx.length;i++){
+  var f=g.fx[i],k=f.life/f.max;
+  if(f.k==='p'){c.globalAlpha=Math.max(0,k);c.fillStyle=f.c;c.fillRect(f.x-f.s/2,f.y-f.s/2,f.s,f.s);c.globalAlpha=1;}
+  else if(f.k==='r'){var rr=f.r0+(f.r1-f.r0)*(1-k);c.globalAlpha=Math.max(0,k)*0.8;c.beginPath();c.arc(f.x,f.y,rr,0,6.2832);c.strokeStyle=f.c;c.lineWidth=0.08;c.stroke();c.globalAlpha=1;}
+  else if(f.k==='b'){c.globalAlpha=Math.max(0,k);c.beginPath();c.moveTo(f.x,f.y);c.lineTo(f.x1,f.y1);c.strokeStyle=f.c;c.lineWidth=0.12;c.stroke();c.strokeStyle='#fff8ee';c.lineWidth=0.04;c.stroke();c.globalAlpha=1;}
+  else if(f.k==='t'){c.globalAlpha=Math.max(0,k);tdText(c,u,f.text,f.x,f.y,Math.max(10,T*0.28),f.c,true);c.globalAlpha=1;}
+ }
+ if(g.hurt>0){c.fillStyle='rgba(160,30,20,'+(g.hurt*0.28)+')';c.fillRect(0,0,TD_COLS,TD_ROWS);}
+ if(u.paused){c.fillStyle='rgba(74,44,26,.55)';c.fillRect(0,0,TD_COLS,TD_ROWS);tdText(c,u,'PAUSED',TD_COLS/2,TD_ROWS/2,Math.max(24,T*0.7),'#fff8ee',true);}
+}
+
+/* ---------- boot + test hooks ---------- */
+window.SamGame={TD:TD,tdUI:function(){return tdUI;},items:ITEMS,makeMC:makeMC,state:function(){return S;},home:home,go:go,
+ coverage:function(){
+  var out={total:ITEMS.length,noPath:[]};
+  ITEMS.forEach(function(it){
+   var ok=false;
+   if(it.kind==='pair'||it.kind==='fact'||it.kind==='sort')ok=!!makeMC(it);
+   else ok=['seq','five','lookup','goal','skipped'].indexOf(it.kind)>=0;
+   if(!ok)out.noPath.push(it.id);
+  });
+  return out;}};
+window.SamGame.pickWeighted=pickWeighted;
+if(/selftest=1/.test(location.search)){
+ var lines=[];
+ try{
+  var cov=window.SamGame.coverage();
+  lines.push('items '+cov.total);
+  lines.push('nopath '+cov.noPath.length+(cov.noPath.length?(' '+cov.noPath.join(',')):''));
+  var g=TD.newGame({noFx:true,coins:500});
+  var placed=0, keys=['ab','wbc','laser','vac'];
+  TD.TILES.forEach(function(tl){ if(placed<4 && TD.free(g,tl[0],tl[1])){ if(TD.place(g,keys[placed],tl[0],tl[1]))placed++; }});
+  lines.push('placed '+placed+' dust '+g.coins);
+  if(!TD.startWave(g))lines.push('wave failed to start');
+  var n; for(n=0;n<8000 && g.phase==='wave';n++)TD.step(g,0.05);
+  lines.push('phase '+g.phase+' wave '+g.wave+' lives '+g.lives+' kills '+g.kills+' left '+g.enemies.length+' steps '+n);
+  var bad=0;
+  ITEMS.forEach(function(it){
+   if(it.kind==='pair'||it.kind==='fact'||it.kind==='sort'){
+    var mc=makeMC(it);
+    if(!mc||!mc.choices||mc.choices.length<2){bad++;lines.push('mc fail '+it.id);return;}
+    var oks=mc.choices.filter(function(c){return c.ok;});
+    if(oks.length!==1){bad++;lines.push('okcount '+it.id+' '+oks.length);}
+    var seen={};
+    mc.choices.forEach(function(c){ if(!c.t){bad++;lines.push('empty '+it.id);} if(seen[c.t]){bad++;lines.push('dup '+it.id);} seen[c.t]=1; });
+   }
+  });
+  lines.push('mcbad '+bad);
+  var hi=ITEMS.filter(function(i){return i.hi;}).length;
+  lines.push('highlighted '+hi);
+  lines.push(bad===0 && placed===4 && g.phase!=='wave' ? 'SELFTEST OK' : 'SELFTEST ISSUE');
+ }catch(err){ lines.push('EX '+err.message); }
+ document.body.innerHTML='<pre id="selftest">'+lines.join('\n')+'</pre>';
+} else home();
+})();
+</script>
+</body>
+</html>
