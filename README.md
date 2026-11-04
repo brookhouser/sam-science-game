@@ -5,3 +5,5 @@ Modes: flashcards, quiz, matching, speed round, biotic or abiotic, put in order,
 Progress saves in the browser (localStorage). No external dependencies.
 
 Lessons 11 and 12 (West Africa) have their own game at `west-africa/`: https://brookhouser.github.io/sam-science-game/west-africa/
+
+Cells, organelles, and ecosystems have their own game at `cells-ecosystems/`: https://brookhouser.github.io/sam-science-game/cells-ecosystems/

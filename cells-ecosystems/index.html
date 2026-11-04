@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#5b3df5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%237bed9f' stroke='%231e8449' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%236c5ce7' stroke='%233d2fa8' stroke-width='3'/%3E%3C/svg%3E">
+<title>Cells and Ecosystems</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;background:linear-gradient(160deg,#5b3df5 0%,#1fa2ff 55%,#12d8a4 100%);background-attachment:fixed;min-height:100vh;color:#1d1b3a}
+#app{max-width:760px;margin:0 auto;padding:10px 12px 40px}
+.top{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.95);border-radius:18px;padding:10px 12px;box-shadow:0 4px 0 rgba(0,0,0,.15)}
+.top .logo{font-size:26px}
+.top .who{flex:1;min-width:0}
+.top .lvl{font-weight:800;font-size:15px}
+.bar{height:12px;background:#e3e0ff;border-radius:8px;overflow:hidden;margin-top:4px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#ff9f1c,#ff3d81);border-radius:8px;transition:width .4s}
+.tbtn{border:0;background:#efeaff;border-radius:12px;padding:8px 10px;font-size:18px;cursor:pointer}
+h1{color:#fff;text-align:center;margin:16px 0 4px;font-size:28px;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.sub{color:#fff;text-align:center;margin:0 0 12px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0 12px}
+.chip{border:0;border-radius:20px;padding:8px 14px;font-weight:800;background:rgba(255,255,255,.35);color:#fff;cursor:pointer;font-size:14px}
+.chip.on{background:#fff;color:#5b3df5;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+.mode{border:0;border-radius:20px;padding:14px 8px;color:#fff;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.22);text-align:center;min-height:104px;transition:transform .08s}
+.mode:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.22)}
+.mode .e{display:block;font-size:32px;margin-bottom:4px}
+.mode small{display:block;font-weight:600;font-size:12px;opacity:.95;margin-top:2px}
+.c1{background:#ff3d81}.c2{background:#ff9f1c}.c3{background:#7c4dff}.c4{background:#00b894}.c5{background:#0984e3}.c6{background:#e17055}.c7{background:#d63031}.c8{background:#6c5ce7}.c9{background:#00a8a8}
+.card{background:#fff;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 5px 0 rgba(0,0,0,.15)}
+.card h2{margin:0 0 8px;font-size:20px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.stat{flex:1;min-width:90px;background:#f4f1ff;border-radius:14px;padding:8px;text-align:center}
+.stat b{display:block;font-size:22px;color:#5b3df5}
+.stat span{font-size:12px;font-weight:700}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-size:16px;font-weight:800;color:#fff;background:#5b3df5;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.btn:active{transform:translateY(2px)}
+.btn.g{background:#00b894}.btn.r{background:#ff3d81}.btn.o{background:#ff9f1c}.btn.w{background:#eee;color:#333}
+.btn[disabled]{opacity:.45}
+.hud{display:flex;gap:8px;align-items:center;color:#fff;font-weight:800;margin:10px 0}
+.hud .sp{flex:1}
+.hud .pill{background:rgba(0,0,0,.25);border-radius:14px;padding:6px 10px}
+.q{font-size:20px;font-weight:800;line-height:1.3}
+.q small{display:block;font-size:13px;color:#6b64a8;margin-bottom:4px}
+.ch{display:block;width:100%;text-align:left;border:3px solid #e3e0ff;background:#fff;border-radius:14px;padding:12px;margin:8px 0;font-size:16px;font-weight:700;cursor:pointer;color:#1d1b3a}
+.ch:active{background:#f4f1ff}
+.ch.ok{background:#c9f7e2;border-color:#00b894}
+.ch.bad{background:#ffd6e3;border-color:#ff3d81}
+.ch[disabled]{cursor:default}
+.fb{margin-top:10px;padding:10px;border-radius:12px;font-weight:700}
+.fb.ok{background:#c9f7e2}.fb.bad{background:#ffe0e9}
+.flash{perspective:900px;margin:12px 0}
+.fc{min-height:230px;border-radius:22px;padding:20px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:22px;font-weight:800;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.2);background:linear-gradient(135deg,#ffd166,#ff9f1c);color:#3a2300;animation:pop .25s}
+.fc.back{background:linear-gradient(135deg,#a0f0d0,#00b894);color:#00332a;font-size:19px}
+.fc small{display:block;font-size:13px;font-weight:700;margin-bottom:8px;opacity:.75}
+@keyframes pop{from{transform:scale(.94);opacity:.5}to{transform:scale(1);opacity:1}}
+.mgrid{display:grid;grid-template-columns:1fr 1.5fr;gap:8px}
+.mt{border:3px solid #e3e0ff;background:#fff;border-radius:12px;padding:10px 8px;font-weight:800;font-size:14px;cursor:pointer;text-align:left;color:#1d1b3a}
+.mt.sel{border-color:#7c4dff;background:#efeaff}
+.mt.done{background:#c9f7e2;border-color:#00b894;opacity:.7}
+.mt.wrong{animation:shake .35s;border-color:#ff3d81;background:#ffd6e3}
+.mt.def{font-weight:600;font-size:13px}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.steps{list-style:none;padding:0;margin:8px 0}
+.steps li{background:#c9f7e2;border-radius:12px;padding:10px;margin:6px 0;font-weight:700}
+.bank{display:flex;flex-direction:column;gap:6px}
+.pill2{display:inline-block;background:#efeaff;border-radius:16px;padding:6px 12px;margin:3px;font-weight:700;font-size:14px}
+.pill2.sel{background:#7c4dff;color:#fff}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.badge{background:#f4f1ff;border-radius:14px;padding:8px;text-align:center;font-size:12px;font-weight:700;opacity:.4;filter:grayscale(1)}
+.badge.on{opacity:1;filter:none;background:#fff3c4}
+.badge b{display:block;font-size:26px}
+.toast{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:#1d1b3a;color:#fff;padding:10px 16px;border-radius:16px;font-weight:800;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.3);max-width:90%;text-align:center;animation:pop .25s}
+.back{color:#fff;background:rgba(0,0,0,.25);border:0;border-radius:14px;padding:8px 12px;font-weight:800;cursor:pointer;font-size:15px}
+label.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eee;font-weight:600;cursor:pointer}
+label.chk input{width:22px;height:22px;flex:none}
+details{margin:6px 0}
+summary{font-weight:800;cursor:pointer;padding:4px 0}
+.tl{margin:4px 0 10px;font-size:14px}
+.tl b{color:#5b3df5}
+.hand{font-size:15px}
+.big{font-size:44px;text-align:center}
+.tag{font-size:11px;background:#efeaff;border-radius:8px;padding:2px 6px;margin-left:4px;color:#5b3df5;font-weight:800}
+.c10{background:#b33771}
+.tdwrap{color:#1d1b3a}
+.tdbar{display:flex;gap:5px;align-items:center;margin:6px 0}
+.tdbar .sp{flex:1}
+.tdbar .pill{background:rgba(0,0,0,.3);color:#fff;font-weight:800;border-radius:14px;padding:6px 8px;font-size:13px;white-space:nowrap}
+.tdbar .back{padding:6px 10px;font-size:13px}
+.tdmain{display:flex;flex-direction:column;align-items:center;gap:8px}
+.tdcv{position:relative;line-height:0;border-radius:14px;overflow:hidden;box-shadow:0 5px 0 rgba(0,0,0,.2);background:#ece3ff}
+#tdcv{touch-action:none;display:block}
+.tdmsg{position:absolute;left:6px;right:6px;top:6px;background:rgba(29,27,58,.88);color:#fff;font-weight:700;font-size:13px;line-height:1.25;border-radius:10px;padding:6px 8px;text-align:center;pointer-events:none;transition:opacity .3s}
+.tdmsg.off{opacity:0}
+.tdside{width:100%}
+.tdctl{display:flex;gap:6px}
+.tdctl .btn{padding:10px 6px;font-size:14px;flex:1;white-space:nowrap}
+.tdans{width:100%;margin:8px 0;background:linear-gradient(90deg,#ff9f1c,#ff3d81);font-size:17px;padding:12px 10px;line-height:1.2}
+.tdans small{display:block;font-weight:700;font-size:12px;margin-top:2px}
+.tdshop{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.tdt{border:3px solid transparent;background:#fff;border-radius:14px;padding:5px 2px;font-weight:800;font-size:12px;cursor:pointer;color:#1d1b3a;text-align:center;box-shadow:0 3px 0 rgba(0,0,0,.2);line-height:1.2}
+.tdt .e{display:block;font-size:22px}
+.tdt.on{border-color:#ff9f1c;background:#fff3c4}
+.tdt.no{opacity:.6}
+.tdinfo{margin:8px 0 0;padding:10px 12px;font-size:14px}
+.tdinfo b{color:#5b3df5}
+.tdinfo .row .btn{flex:1;padding:10px 8px;font-size:14px}
+.tdov{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(20,10,60,.72);display:flex;overflow:auto;padding:12px;z-index:40}
+.tdq{margin:auto;width:100%;max-width:520px}
+.tdq .q{font-size:18px;margin-top:6px}
+.tdq .ch{font-size:15px;padding:10px}
+.tdq ul{margin:6px 0;padding-left:20px}
+.wide .tdmain{flex-direction:row;align-items:flex-start;justify-content:center}
+.wide .tdside{width:340px}
+
+textarea.ans,input.blank{width:100%;border:3px solid #d9d4ff;border-radius:14px;padding:12px;font:16px/1.45 "Trebuchet MS",system-ui,sans-serif;color:#1d1b3a;background:#fff}
+textarea.ans{min-height:130px;resize:vertical}
+.spec{display:flex;gap:8px;align-items:flex-start;padding:5px 0;font-weight:700}
+.spec.ok{color:#0b6b45}.spec.bad{color:#8a2040}
+input.blank.ok{border-color:#0b6b45;background:#e8fff4}
+input.blank.bad{border-color:#c0392b;background:#fff0f3}
+.ch,.mt,.q,.fc{overflow-wrap:anywhere}
+@media(max-width:560px){
+ .mgrid{grid-template-columns:1fr}
+ h1{font-size:24px}
+ .q{font-size:18px}
+ .fc{font-size:18px;min-height:200px}
+ .mode{font-size:15px}
+ .tdshop{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+var SAM_SRC = {CE:'Cells and ecosystems'};
+var SAM_TOPICS = [
+ {id:'cells', name:'Cells', emoji:'\uD83D\uDD2C'},
+ {id:'eco', name:'Ecosystems', emoji:'\uD83C\uDF3F'}
+];
+/* term, definition (verbatim), topic */
+var CE_VERBATIM = [
+ ['Abiotic','Non-living physical and chemical parts of an environment, such as sunlight, water, rocks, temperature, and soil.','eco'],
+ ['ATP','The primary energy-carrying molecule used by cells to do work (often called the cell\'s energy "currency").','cells'],
+ ['Biotic','Living or once-living organisms in an ecosystem, including animals, plants, fungi, and bacteria.','eco'],
+ ['Cell','The basic structural and functional unit of all living things; the smallest unit of life.','cells'],
+ ['Cell membrane','A flexible outer barrier that encloses a cell and regulates what enters and leaves.','cells'],
+ ['Commensalism','A symbiotic relationship where one organism benefits and the other is neither helped nor harmed.','eco'],
+ ['Cytoplasm','The jelly-like fluid that fills the interior of a cell and holds the organelles.','cells'],
+ ['DNA','The hereditary molecule that carries the genetic instructions for the growth, development, and reproduction of living things.','cells'],
+ ['Eukaryotic','Describes an organism or cell that contains a nucleus and membrane-bound organelles (e.g., plants, animals, fungi).','cells'],
+ ['Host','An organism that provides food, shelter, or resources to another organism, such as a parasite.','eco'],
+ ['Mitochondria','The "powerhouses" of the cell; organelles that convert glucose into cellular energy (ATP) through cellular respiration.','cells'],
+ ['Mutualism','A symbiotic relationship where both species benefit from the interaction.','eco'],
+ ['Multicellular','Made up of more than one cell working together (such as humans, trees, and birds).','cells'],
+ ['Nuclear membrane','The double-layered barrier that surrounds and protects the nucleus, regulating what passes in and out.','cells'],
+ ['Nucleus','The control center of a eukaryotic cell that contains its DNA.','cells'],
+ ['Organelle','A tiny, specialized structure inside a cell that carries out a specific function (like an organ inside a body).','cells'],
+ ['Organism','Any individual living thing, such as a plant, animal, fungus, or bacterium.','eco'],
+ ['Parasite','An organism that lives on or inside a host organism and benefits by causing harm to the host.','eco'],
+ ['Parasitism','A symbiotic relationship where one organism (the parasite) benefits while the other (the host) is harmed.','eco'],
+ ['Predator','An animal that hunts, captures, and feeds on other animals.','eco'],
+ ['Prey','An animal that is hunted and eaten by a predator.','eco'],
+ ['Prokaryotic','Describes a simple, single-celled organism that lacks a nucleus and membrane-bound organelles (such as bacteria).','cells'],
+ ['Ribosomes','Tiny cell structures responsible for assembling proteins.','cells'],
+ ['Symbiosis','A close, long-term interaction between two different biological organisms living together.','eco'],
+ ['Unicellular','Made up of only a single cell (such as an amoeba or bacterium).','cells'],
+ ['Vacuole','A storage sac inside a cell used to store water, nutrients, or waste products.','cells']
+];
+var SAM_PAIRS = CE_VERBATIM;
+/* Similar terms are the traps. Distractors are drawn from these groups first. */
+var CONFUSE = {
+ 'Abiotic':['Biotic','Organism'],
+ 'ATP':['DNA','Mitochondria','Ribosomes'],
+ 'Biotic':['Abiotic','Organism'],
+ 'Cell':['Organelle','Organism','Cell membrane'],
+ 'Cell membrane':['Nuclear membrane','Cytoplasm','Vacuole'],
+ 'Commensalism':['Mutualism','Parasitism','Symbiosis'],
+ 'Cytoplasm':['Vacuole','Cell membrane','Nucleus'],
+ 'DNA':['ATP','Nucleus','Ribosomes'],
+ 'Eukaryotic':['Prokaryotic','Unicellular','Multicellular'],
+ 'Host':['Parasite','Parasitism','Prey'],
+ 'Mitochondria':['Ribosomes','ATP','Vacuole','Nucleus'],
+ 'Mutualism':['Commensalism','Parasitism','Symbiosis'],
+ 'Multicellular':['Unicellular','Eukaryotic','Prokaryotic'],
+ 'Nuclear membrane':['Nucleus','Cell membrane','Cytoplasm'],
+ 'Nucleus':['Nuclear membrane','DNA','Organelle'],
+ 'Organelle':['Organism','Cell','Nucleus','Cytoplasm'],
+ 'Organism':['Organelle','Cell','Host'],
+ 'Parasite':['Parasitism','Host','Prey','Predator'],
+ 'Parasitism':['Parasite','Mutualism','Commensalism','Symbiosis'],
+ 'Predator':['Prey','Parasite','Host'],
+ 'Prey':['Predator','Host','Parasite'],
+ 'Prokaryotic':['Eukaryotic','Unicellular','Multicellular'],
+ 'Ribosomes':['Mitochondria','Vacuole','Nucleus','ATP'],
+ 'Symbiosis':['Mutualism','Commensalism','Parasitism'],
+ 'Unicellular':['Multicellular','Prokaryotic','Eukaryotic'],
+ 'Vacuole':['Cytoplasm','Mitochondria','Ribosomes','Cell membrane']
+};
+/* Scenarios. The answer is always one of the 26 terms. Wrong answers are look-alike terms. */
+var SAM_FACTS = [
+ {q:'A remora attaches to a shark and rides along. It eats scraps from the shark\'s meals. The shark is neither helped nor harmed. Which relationship is this?', a:'Commensalism', topic:'eco', w:['Mutualism','Parasitism','Predator'],
+  why:'The remora gets food, so it benefits. The shark is neither helped nor harmed. That is commensalism. Mutualism would mean both benefit. Parasitism would mean the shark is harmed. A predator hunts and eats another animal. The remora does not eat the shark.'},
+ {q:'Sunlight warms a pond. Is sunlight biotic or abiotic?', a:'Abiotic', topic:'eco', w:['Biotic','Organism','Cell'],
+  why:'Sunlight is non-living. It is one of the examples in the abiotic definition, along with water, rocks, temperature, and soil.'},
+ {q:'Which organelle assembles proteins?', a:'Ribosomes', topic:'cells', w:['Mitochondria','Vacuole','Nucleus'],
+  why:'Ribosomes assemble proteins. Mitochondria make ATP. A vacuole stores materials. The nucleus holds DNA. It does not build proteins.'},
+ {q:'A tick lives on a dog and drinks the dog\'s blood. The tick benefits. The dog is weakened and harmed. What is the relationship called?', a:'Parasitism', topic:'eco', w:['Parasite','Host','Mutualism'],
+  why:'Parasitism is the name of the relationship. Parasite is the name of the tick. Host is the name of the dog. Mutualism would mean both benefit, and the dog does not.'},
+ {q:'A tick lives on a dog, drinks the dog\'s blood, and harms the dog. What is the tick called?', a:'Parasite', topic:'eco', w:['Parasitism','Host','Prey'],
+  why:'The tick is the parasite: the organism that benefits by harming the host. Parasitism is the relationship, not the organism. The dog is the host. Prey is an animal hunted and eaten by a predator. The tick does not hunt and eat the dog.'},
+ {q:'A tick lives on a dog and drinks the dog\'s blood, harming the dog. The dog provides food to the tick. What is the dog called?', a:'Host', topic:'eco', w:['Parasite','Prey','Predator'],
+  why:'The dog is the host because it provides food to the parasite and is harmed. The tick is the parasite. The dog is not prey, because the tick does not hunt, capture, and eat the dog.'},
+ {q:'A fungus and an alga live together for a long time as a lichen. The alga makes food. The fungus gives the alga water and a place to live. Both benefit. Which relationship is this?', a:'Mutualism', topic:'eco', w:['Commensalism','Parasitism','Predator'],
+  why:'Both species benefit, and they live together. That is mutualism. Commensalism would mean one is neither helped nor harmed. Parasitism would mean one is harmed.'},
+ {q:'An orchid lives on a tree branch and gets a sunny spot. It does not take nutrients from the tree. The tree is neither helped nor harmed. Which relationship is this?', a:'Commensalism', topic:'eco', w:['Mutualism','Parasitism','Parasite'],
+  why:'The orchid benefits. The tree is neither helped nor harmed. That is commensalism. Parasite would name an organism, not the relationship. Mutualism would mean the tree benefits too.'},
+ {q:'Cattle egrets walk beside cattle and eat insects the cattle stir up. The birds get food. The cattle are neither helped nor harmed. Which relationship is this?', a:'Commensalism', topic:'eco', w:['Mutualism','Parasitism','Predator'],
+  why:'One benefits and the other is neither helped nor harmed. That matches commensalism. Mutualism would need both to benefit. Parasitism would need the cattle to be harmed. The birds are not hunting the cattle, so this is not predation.'},
+ {q:'A hawk hunts, captures, and eats a mouse. Which word names the hawk?', a:'Predator', topic:'eco', w:['Prey','Parasite','Host'],
+  why:'A predator hunts, captures, and feeds on other animals. The hawk does that. The mouse is the prey. A parasite would live on or inside the mouse and harm it over time, instead of hunting and eating it.'},
+ {q:'A hawk hunts, captures, and eats a mouse. Which word names the mouse?', a:'Prey', topic:'eco', w:['Predator','Host','Parasite'],
+  why:'Prey is an animal that is hunted and eaten by a predator. The mouse is not the host, because the hawk does not live on or inside the mouse.'},
+ {q:'A bacterium has no nucleus and no membrane-bound organelles. Which word describes that missing nucleus?', a:'Prokaryotic', topic:'cells', w:['Eukaryotic','Multicellular','Organelle'],
+  why:'Prokaryotic describes a simple, single-celled organism that lacks a nucleus and membrane-bound organelles, such as bacteria. Eukaryotic cells have a nucleus. A bacterium is not made of many cells.'},
+ {q:'A cell from a maple tree contains a nucleus and membrane-bound organelles. Which word describes that cell?', a:'Eukaryotic', topic:'cells', w:['Prokaryotic','Ribosomes','Abiotic'],
+  why:'Eukaryotic describes a cell that contains a nucleus and membrane-bound organelles. Plants are an example in that definition. Prokaryotic cells, such as bacteria, lack a nucleus. Ribosomes are a structure inside the cell, not the word for the whole cell.'},
+ {q:'An amoeba is made up of only a single cell. This question is about how many cells it has, not about a nucleus. Which word fits?', a:'Unicellular', topic:'cells', w:['Multicellular','Prokaryotic','Eukaryotic'],
+  why:'Unicellular means made up of only a single cell, and an amoeba is the example in that definition. Prokaryotic and eukaryotic are about a nucleus. An amoeba has a nucleus, so it is also eukaryotic, but this question asks about the number of cells.'},
+ {q:'A bird is made up of more than one cell working together. This question is about how many cells, not about a nucleus. Which word fits?', a:'Multicellular', topic:'cells', w:['Unicellular','Prokaryotic','Eukaryotic'],
+  why:'Multicellular means made up of more than one cell working together, and birds are an example in that definition. Bird cells have nuclei, so they are eukaryotic, but this question asks about the number of cells.'},
+ {q:'Which structure is the control center of a eukaryotic cell and contains its DNA?', a:'Nucleus', topic:'cells', w:['Nuclear membrane','Ribosomes','Mitochondria'],
+  why:'The nucleus is the control center that contains DNA. The nuclear membrane is the barrier around the nucleus, not the control center itself. Ribosomes assemble proteins. Mitochondria make ATP.'},
+ {q:'Which barrier surrounds and protects the nucleus and regulates what passes in and out of the nucleus?', a:'Nuclear membrane', topic:'cells', w:['Cell membrane','Nucleus','Cytoplasm'],
+  why:'The nuclear membrane is the double-layered barrier around the nucleus. The cell membrane is the outer barrier of the whole cell. The nucleus is the control center inside that barrier. Cytoplasm is the jelly-like fluid.'},
+ {q:'Which flexible outer barrier encloses the whole cell and regulates what enters and leaves the cell?', a:'Cell membrane', topic:'cells', w:['Nuclear membrane','Vacuole','Cytoplasm'],
+  why:'The cell membrane encloses the cell. The nuclear membrane encloses only the nucleus. A vacuole is a storage sac. Cytoplasm is the fluid inside the cell.'},
+ {q:'Cells use one main molecule to carry energy for their work. It is often called the cell\'s energy currency. Which molecule is it?', a:'ATP', topic:'cells', w:['DNA','Ribosomes','Cytoplasm'],
+  why:'ATP is the energy-carrying molecule. DNA carries genetic instructions, not energy for cell work. Ribosomes assemble proteins. Cytoplasm is fluid.'},
+ {q:'Which organelle converts glucose into ATP through cellular respiration?', a:'Mitochondria', topic:'cells', w:['Ribosomes','Vacuole','Nucleus'],
+  why:'Mitochondria are the powerhouses that convert glucose into ATP. Ribosomes assemble proteins. A vacuole stores materials. The nucleus contains DNA.'},
+ {q:'A plant cell stores water in a sac inside the cell. Which organelle is that sac?', a:'Vacuole', topic:'cells', w:['Cytoplasm','Mitochondria','Cell membrane'],
+  why:'A vacuole is a storage sac for water, nutrients, or waste. Cytoplasm is the jelly-like fluid around the organelles. Mitochondria make ATP. The cell membrane is the outer barrier, not a storage sac.'},
+ {q:'Which jelly-like fluid fills the inside of a cell and holds the organelles?', a:'Cytoplasm', topic:'cells', w:['Vacuole','Nucleus','Cell membrane'],
+  why:'Cytoplasm fills the cell and holds the organelles. A vacuole is a storage sac sitting in that fluid. The nucleus is the control center. The cell membrane is the outer barrier.'},
+ {q:'Mitochondria and ribosomes are tiny structures inside a cell, and each one has its own job. What is the general name for a structure like that?', a:'Organelle', topic:'cells', w:['Organism','Cell','Cytoplasm'],
+  why:'An organelle is a tiny specialized structure inside a cell with a specific job, like an organ inside a body. An organism is a whole living thing. A cell is the unit of life that contains organelles. Cytoplasm is the fluid that holds them.'},
+ {q:'A mushroom is one individual living fungus. Which word means any individual living thing, such as a plant, animal, fungus, or bacterium?', a:'Organism', topic:'eco', w:['Organelle','Cell','Host'],
+  why:'A mushroom is an organism. An organelle is a structure inside a cell. A cell is the smallest unit of life. A host is an organism that provides resources to another organism, such as a parasite. This question does not describe a parasite.'},
+ {q:'Which molecule carries the genetic instructions for the growth, development, and reproduction of living things?', a:'DNA', topic:'cells', w:['ATP','Ribosomes','Cytoplasm'],
+  why:'DNA is the hereditary molecule. ATP carries energy. Ribosomes assemble proteins using genetic instructions, but they are not the instructions. Cytoplasm is fluid.'},
+ {q:'What is the smallest unit of life, the basic structural and functional unit of all living things?', a:'Cell', topic:'cells', w:['Organelle','Organism','DNA'],
+  why:'The cell is the smallest unit of life. An organelle is a part inside a cell. An organism is a whole living thing, made of one or more cells. DNA is a molecule inside cells, not the unit of life.'},
+ {q:'Mutualism, commensalism, and parasitism are all types of which bigger idea?', a:'Symbiosis', topic:'eco', w:['Predator','Host','Prey'],
+  why:'Each of those three definitions calls the relationship symbiotic. Symbiosis is any close, long-term interaction between two different organisms living together. Predator, host, and prey name roles in other interactions.'},
+ {q:'A fallen log used to be a living tree. Is the log biotic or abiotic?', a:'Biotic', topic:'eco', w:['Abiotic','Organelle','Vacuole'],
+  why:'Biotic includes living or once-living organisms, including plants. The log was once a living tree, so it is biotic. A rock beside the log would be abiotic.'},
+ {q:'A forest has rocks, a temperature, and soil. Which word covers these non-living parts?', a:'Abiotic', topic:'eco', w:['Biotic','Organism','Symbiosis'],
+  why:'Rocks, temperature, and soil are listed in the abiotic definition. They were never alive. Biotic is for living or once-living organisms.'},
+ {q:'Mistletoe grows on an oak tree and takes water and nutrients from the tree. The mistletoe benefits. The oak is weakened and harmed. Which relationship is this?', a:'Parasitism', topic:'eco', w:['Mutualism','Commensalism','Predator'],
+  why:'One organism benefits and the other is harmed, and the mistletoe lives on the tree. That is parasitism. A predator is an animal that hunts, captures, and feeds on other animals. Mistletoe does not hunt the oak.'},
+ {q:'Mistletoe lives on an oak and harms the oak while taking its water and nutrients. Which word names the oak?', a:'Host', topic:'eco', w:['Parasite','Prey','Predator'],
+  why:'The oak provides resources to the mistletoe and is harmed, so the oak is the host. The mistletoe is the parasite. The oak is not prey, because nothing is hunting and eating it.'},
+ {q:'Clownfish live for a long time among the tentacles of a sea anemone. The anemone protects the clownfish. The clownfish keep the anemone clean and chase away fish that would eat the anemone. Both benefit. Which relationship is this?', a:'Mutualism', topic:'eco', w:['Commensalism','Parasitism','Prey'],
+  why:'Both species benefit from living together. That is mutualism. The anemone is not prey in this partnership. The clownfish defend it.'},
+ {q:'Bacteria live for a long time in a cow\'s gut. The bacteria get food and a place to live. The cow gets help breaking down grass. Both benefit. Which relationship is this?', a:'Mutualism', topic:'eco', w:['Parasitism','Commensalism','Predator'],
+  why:'Both benefit, so this is mutualism. If the bacteria harmed the cow, it would be parasitism. The bacteria are not predators hunting the cow.'},
+ {q:'A flea lives on a cat and drinks the cat\'s blood. The flea benefits and the cat is harmed. The flea does not hunt and eat the cat. Which word names the flea?', a:'Parasite', topic:'eco', w:['Predator','Host','Prey'],
+  why:'The flea lives on the host and benefits by harming it, so it is a parasite. A predator hunts, captures, and feeds on another animal. The flea does not do that to the cat. The cat is the host.'},
+ {q:'A wolf hunts, captures, and eats a rabbit. Which word names the rabbit?', a:'Prey', topic:'eco', w:['Host','Parasite','Predator'],
+  why:'The rabbit is hunted and eaten, so it is prey. It is not a host, because the wolf does not live on or inside the rabbit. The wolf is the predator.'},
+ {q:'A frog, a mushroom, and a bacterium are living. Sunlight is not. Which word describes sunlight?', a:'Abiotic', topic:'eco', w:['Biotic','Organism','Cell'],
+  why:'Sunlight is non-living, so it is abiotic. A frog, a mushroom, and a bacterium are living organisms, so they are biotic.'},
+ {q:'A rock, soil, and the temperature of the air are non-living. A bacterium is living. Which word describes the bacterium?', a:'Biotic', topic:'eco', w:['Abiotic','Organelle','Vacuole'],
+  why:'A bacterium is a living organism, and the biotic definition includes bacteria. Rock, soil, and temperature are abiotic examples.'},
+ {q:'A student says, "The nuclear membrane is the control center that holds DNA." Which word should the student have used for the control center?', a:'Nucleus', topic:'cells', w:['Nuclear membrane','Cell membrane','Cytoplasm'],
+  why:'The nucleus is the control center that contains DNA. The nuclear membrane is only the barrier around the nucleus. The cell membrane encloses the whole cell.'},
+ {q:'A student says, "Parasitism is the organism that lives on the host." Which word should the student use for that organism?', a:'Parasite', topic:'eco', w:['Parasitism','Host','Symbiosis'],
+  why:'Parasite is the organism. Parasitism is the relationship. The host is the organism that is harmed. Symbiosis is the broad name for living closely together.'},
+ {q:'Two different organisms live closely together for a long time. You do not yet know who benefits. Which word names that interaction before you decide who benefits?', a:'Symbiosis', topic:'eco', w:['Mutualism','Commensalism','Parasitism'],
+  why:'Symbiosis is any close, long-term interaction between two different organisms living together. Mutualism, commensalism, and parasitism are the specific kinds. You need to know who benefits before you pick one of those three.'},
+ {q:'A bacterium is one cell with no nucleus. Which word is about the missing nucleus, not about the number of cells?', a:'Prokaryotic', topic:'cells', w:['Unicellular','Eukaryotic','Multicellular'],
+  why:'Prokaryotic is about lacking a nucleus and membrane-bound organelles. Unicellular only means one cell. The bacterium is both, but this question asks about the missing nucleus. Eukaryotic would mean it has a nucleus.'},
+ {q:'An amoeba is one cell with a nucleus and membrane-bound organelles. Which word is about the nucleus, not about the number of cells?', a:'Eukaryotic', topic:'cells', w:['Prokaryotic','Unicellular','Multicellular'],
+  why:'The amoeba has a nucleus and membrane-bound organelles, so it is eukaryotic. It is also unicellular, but this question asks about the nucleus. It is not prokaryotic.'},
+ {q:'Which of these is the outer barrier of the whole cell, not the barrier around the nucleus?', a:'Cell membrane', topic:'cells', w:['Nuclear membrane','Nucleus','Cytoplasm'],
+  why:'The cell membrane encloses the cell and regulates what enters and leaves. The nuclear membrane surrounds only the nucleus. The nucleus is the control center. Cytoplasm is the fluid inside.'}
+];
+/* Clear biotic and abiotic sorts. Once-living counts as biotic. The abiotic examples are the ones named in that definition. */
+var SAM_SORT = [
+ {q:'A frog', bucket:'biotic', topic:'eco', note:'A frog is an animal, so it is a living organism.'},
+ {q:'An oak tree', bucket:'biotic', topic:'eco', note:'An oak tree is a plant, so it is a living organism.'},
+ {q:'A mushroom', bucket:'biotic', topic:'eco', note:'A mushroom is a fungus. Fungi are included in biotic.'},
+ {q:'A bacterium', bucket:'biotic', topic:'eco', note:'Bacteria are living organisms. The biotic definition includes them.'},
+ {q:'A dead log that used to be a living tree', bucket:'biotic', topic:'eco', note:'Biotic includes once-living organisms. The log was once a living tree.'},
+ {q:'A bird', bucket:'biotic', topic:'eco', note:'A bird is an animal, so it is biotic. Birds are also an example of multicellular.'},
+ {q:'An amoeba', bucket:'biotic', topic:'eco', note:'An amoeba is a living organism made of one cell. Living organisms are biotic.'},
+ {q:'Sunlight', bucket:'abiotic', topic:'eco', note:'Sunlight is non-living. It is listed in the abiotic definition.'},
+ {q:'Pond water', bucket:'abiotic', topic:'eco', note:'Water is non-living. It is listed in the abiotic definition.'},
+ {q:'A granite rock', bucket:'abiotic', topic:'eco', note:'A rock is non-living. Rocks are listed in the abiotic definition.'},
+ {q:'The temperature of a pond', bucket:'abiotic', topic:'eco', note:'Temperature is non-living. It is listed in the abiotic definition.'},
+ {q:'Garden soil', bucket:'abiotic', topic:'eco', note:'Soil is non-living. It is listed in the abiotic definition.'}
+];
+var SAM_GOALS = [
+ ['Say all 26 words and their meanings without looking','Words'],
+ ['Tell parasite, parasitism, and host apart with an example','Look-alike words'],
+ ['Tell predator and prey apart, and say how they differ from a parasite and a host','Look-alike words'],
+ ['Tell symbiosis, mutualism, commensalism, and parasitism apart','Look-alike words'],
+ ['Tell prokaryotic and eukaryotic apart','Look-alike words'],
+ ['Tell unicellular and multicellular apart','Look-alike words'],
+ ['Tell the nucleus and the nuclear membrane apart','Look-alike words'],
+ ['Tell the cell membrane and the nuclear membrane apart','Look-alike words'],
+ ['Tell cell, organelle, and organism apart','Look-alike words'],
+ ['Tell biotic and abiotic apart, including once-living things','Look-alike words'],
+ ['Name the organelle that assembles proteins and the one that makes ATP','Cells'],
+ ['Name the molecule that carries energy and the one that carries genetic instructions','Cells']
+];
+var SAM_TIPS = [
+ 'Teaching someone else is one of the best ways to find out what you really know.',
+ 'Get a good night\'s sleep before the test.',
+ 'Eat a nutritious breakfast with protein and healthy fats.',
+ 'Rereading notes can feel like you know it. Quiz yourself instead.',
+ 'Cramming is a weak plan. Study a little bit each day.',
+ 'Say the look-alike words out loud: parasite or parasitism, nucleus or nuclear membrane, prokaryotic or eukaryotic, unicellular or multicellular.'
+];
+var CE_PROMPTS = [
+ {label:'Short answer 1', need:3,
+  q:'A flea lives on a cat and drinks the cat\'s blood. The cat gets weaker. The flea does not hunt and eat the cat. In at least 3 sentences, name the parasite, name the host, and name the relationship. Then say how this is different from a predator and its prey.',
+  model:'The flea is the parasite because it lives on the cat and benefits by harming the cat. The cat is the host because it provides food to the flea and is harmed. The relationship is parasitism: the parasite benefits and the host is harmed. This is different from a predator and its prey. A predator hunts, captures, and eats another animal. The flea does not hunt and eat the cat.',
+  specs:[
+   {label:'Calls the flea a parasite', all:['flea','parasite']},
+   {label:'Calls the cat the host', all:['cat','host']},
+   {label:'Names the relationship parasitism (the whole word)', any:['parasitism']},
+   {label:'Says how a predator or prey is different (hunt, capture, or eat)', any:['predator','prey','hunt','hunts','capture','eat','eats','eaten']}
+  ]},
+ {label:'Short answer 2', need:3,
+  q:'A bacterium is one cell with no nucleus. An amoeba is one cell with a nucleus. A bird is many cells that work together, and those cells have nuclei. In at least 3 sentences, use prokaryotic, eukaryotic, unicellular, and multicellular correctly for these living things.',
+  model:'The bacterium is unicellular because it is only one cell, and it is prokaryotic because it has no nucleus and no membrane-bound organelles. The amoeba is also unicellular, but it is eukaryotic because that one cell has a nucleus. The bird is multicellular because many cells work together, and its cells are eukaryotic because they have nuclei. Unicellular and multicellular are about the number of cells. Prokaryotic and eukaryotic are about the nucleus.',
+  specs:[
+   {label:'Calls the bacterium prokaryotic', all:['bacterium','prokaryotic']},
+   {label:'Uses eukaryotic for the amoeba or the bird', all:['eukaryotic'], anyExtra:['amoeba','bird']},
+   {label:'Uses unicellular for the bacterium or the amoeba', all:['unicellular'], anyExtra:['bacterium','amoeba','bacteria']},
+   {label:'Calls the bird multicellular', all:['bird','multicellular']}
+  ]},
+ {label:'Short answer 3', need:3,
+  q:'In at least 3 sentences, explain the nucleus, the nuclear membrane, and the cell membrane. Say which one holds DNA, which one surrounds the nucleus, and which one encloses the whole cell.',
+  model:'The nucleus is the control center of a eukaryotic cell, and it contains the cell\'s DNA. The nuclear membrane is the double-layered barrier that surrounds and protects the nucleus and regulates what passes in and out. The cell membrane is the flexible outer barrier that encloses the whole cell and regulates what enters and leaves. The nuclear membrane is not the same thing as the cell membrane.',
+  specs:[
+   {label:'Says the nucleus holds DNA', all:['nucleus','dna']},
+   {label:'Names the nuclear membrane as the barrier around the nucleus', any:['nuclear membrane']},
+   {label:'Names the cell membrane as the outer barrier of the whole cell', any:['cell membrane']}
+  ]},
+ {label:'Short answer 4', need:4,
+  q:'In at least 4 sentences, explain symbiosis. Then give one example of mutualism, one example of commensalism, and one example of parasitism. For each example, say who benefits and whether the other organism is helped, unharmed, or harmed.',
+  model:'Symbiosis is a close, long-term interaction between two different organisms living together. Mutualism is when both benefit, such as a fungus and an alga in a lichen: the alga makes food and the fungus provides water and a place to live. Commensalism is when one benefits and the other is neither helped nor harmed, such as a remora riding a shark and eating scraps while the shark is unharmed. Parasitism is when the parasite benefits and the host is harmed, such as a tick living on a dog and taking its blood. Those three are all kinds of symbiosis. The difference is who benefits and who is harmed.',
+  specs:[
+   {label:'Explains symbiosis as organisms living together or a close long-term interaction', any:['symbiosis','live together','living together','live closely','living closely']},
+   {label:'Gives mutualism and says both benefit', all:['mutualism','both']},
+   {label:'Names commensalism', any:['commensalism']},
+   {label:'Names parasitism or a parasite that harms a host', any:['parasitism','parasite']}
+  ]}
+];
+var CE_BLANKS = [
+ {prompt:'Non-living physical and chemical parts of an environment, such as sunlight, water, rocks, temperature, and soil, are ____.', answer:'Abiotic', accept:['abiotic']},
+ {prompt:'Living or once-living organisms in an ecosystem, including animals, plants, fungi, and bacteria, are ____.', answer:'Biotic', accept:['biotic']},
+ {prompt:'The primary energy-carrying molecule used by cells to do work, often called the cell\'s energy currency, is ____.', answer:'ATP', accept:['atp']},
+ {prompt:'The basic structural and functional unit of all living things, and the smallest unit of life, is the ____.', answer:'Cell', accept:['cell']},
+ {prompt:'The organelles that convert glucose into cellular energy (ATP) are the ____.', answer:'Mitochondria', accept:['mitochondria','mitochondrion']},
+ {prompt:'Tiny cell structures responsible for assembling proteins are ____.', answer:'Ribosomes', accept:['ribosomes','ribosome']},
+ {prompt:'The control center of a eukaryotic cell that contains its DNA is the ____.', answer:'Nucleus', accept:['nucleus']},
+ {prompt:'The double-layered barrier that surrounds and protects the nucleus is the ____.', answer:'Nuclear membrane', accept:['nuclear membrane']},
+ {prompt:'The flexible outer barrier that encloses a cell and regulates what enters and leaves is the ____.', answer:'Cell membrane', accept:['cell membrane']},
+ {prompt:'A symbiotic relationship where both species benefit is ____.', answer:'Mutualism', accept:['mutualism']},
+ {prompt:'A symbiotic relationship where one organism benefits and the other is neither helped nor harmed is ____.', answer:'Commensalism', accept:['commensalism']},
+ {prompt:'The organism that lives on or inside a host and benefits by harming the host is a ____.', answer:'Parasite', accept:['parasite']},
+ {prompt:'The symbiotic relationship where the parasite benefits and the host is harmed is ____.', answer:'Parasitism', accept:['parasitism']},
+ {prompt:'A simple single-celled organism that lacks a nucleus, such as a bacterium, is ____.', answer:'Prokaryotic', accept:['prokaryotic']},
+ {prompt:'Made up of only a single cell, such as an amoeba or a bacterium: ____.', answer:'Unicellular', accept:['unicellular']}
+];
+var SAM_ITEMS = (function(){
+ var items = [];
+ SAM_PAIRS.forEach(function(p,i){ items.push({id:'p'+(i+1), kind:'pair', term:p[0], def:p[1], topic:p[2]}); });
+ SAM_FACTS.forEach(function(f,i){ items.push({id:'f'+(i+1), kind:'fact', q:f.q, a:f.a, topic:f.topic, w:f.w, why:f.why, hint:'Scenario'}); });
+ SAM_SORT.forEach(function(s,i){ items.push({id:'b'+(i+1), kind:'sort', q:s.q, name:s.q, bucket:s.bucket, topic:s.topic, note:s.note}); });
+ SAM_GOALS.forEach(function(g,i){ items.push({id:'g'+(i+1), kind:'goal', text:g[0], group:g[1], topic:'goal'}); });
+ return items;
+})();
+</script>
+<script>
+(function(){
+"use strict";
+var KEY='samCellsGame.v1';
+var LEVELNAMES=['Cell Cadet','Membrane Scout','Organelle Ranger','Nucleus Navigator','ATP Ace','Ecosystem Expert','Cell Champion'];
+var SRCNAME={LT:'Living Things',NB:'Notebook 1-9',S2:'Science Notes 2'};
+var BADGES=[
+ ['first','\uD83C\uDF31','First Steps','Answer your first question'],
+ ['s5','\uD83D\uDD25','Hot Streak','5 right in a row'],
+ ['s10','\u26A1','Lightning','10 right in a row'],
+ ['s20','\uD83D\uDE80','Unstoppable','20 right in a row'],
+ ['perfect','\uD83C\uDFAF','Perfect Quiz','A perfect quiz or practice test'],
+ ['speed150','\u23F1\uFE0F','Speed Demon','150 points in a speed round'],
+ ['speed300','\uD83C\uDFC6','Speed Legend','300 points in a speed round'],
+ ['match','\uD83E\uDDE9','Match Maker','Finish Quick Match with no mistakes'],
+ ['sorter','\uD83D\uDDC2\uFE0F','Sorting Star','Sort 10 in a row: biotic or abiotic'],
+ ['order','\uD83D\uDCD6','Deck Done','Finish a flashcard deck'],
+ ['five','\uD83E\uDDEC','Scenario Star','Get 8 scenarios right in one round'],
+ ['comeback','\uD83D\uDCAA','Comeback Kid','Fix a missed item'],
+ ['half','\uD83D\uDD2C','Halfway Scientist','Master half of all items'],
+ ['all','\uD83E\uDDEC','Science Champion','Master every item'],
+ ['days3','\uD83D\uDCC5','3 Day Streak','Study on 3 days'],
+ ['lvl5','\uD83E\uDD47','Level 5','Reach level 5'],
+ ['tdboss','\uD83D\uDC79','Tower Boss','Beat a boss wave in Defend the Cell'],
+ ['tdwin','\uD83C\uDFF0','Cell Guardian','Win all 10 waves of Defend the Cell']
+];
+var ITEMS=SAM_ITEMS, BYID={};
+ITEMS.forEach(function(it){BYID[it.id]=it;});
+var PAIRS=ITEMS.filter(function(i){return i.kind==='pair';});
+
+/* ---------- storage ---------- */
+var S;
+function fresh(){return {xp:0,stats:{},best:{speed:0,match:0},bestStreak:0,badges:{},days:[],checks:{},sound:false,topic:'all',answered:0,vk:{}};}
+function load(){try{var r=localStorage.getItem(KEY);S=r?JSON.parse(r):fresh();}catch(e){S=fresh();}
+ var f=fresh();for(var k in f){if(S[k]===undefined)S[k]=f[k];}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+load();
+function stat(id){return S.stats[id]||(S.stats[id]={c:0,w:0,s:0,miss:false,seen:0});}
+function isMastered(it){
+ if(it.kind==='skipped')return true;
+ if(it.kind==='goal')return !!S.checks[it.id];
+ return stat(it.id).s>=2;}
+function masteredCount(){var n=0;ITEMS.forEach(function(i){if(i.kind!=='skipped'&&isMastered(i))n++;});return n;}
+function totalCount(){return ITEMS.filter(function(i){return i.kind!=='skipped';}).length;}
+function missedItems(){return ITEMS.filter(function(i){var s=S.stats[i.id];return s&&s.miss;});}
+
+/* ---------- audio ---------- */
+var AC=null;
+function beep(f,d,t){if(!S.sound)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var o=AC.createOscillator(),g=AC.createGain();o.type=t||'sine';o.frequency.value=f;g.gain.value=0.07;o.connect(g);g.connect(AC.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+d);o.stop(AC.currentTime+d);}catch(e){}}
+function sOk(){beep(660,.12);setTimeout(function(){beep(880,.14);},110);}
+function sBad(){beep(180,.25,'square');}
+function sWin(){[523,659,784,1047].forEach(function(f,i){setTimeout(function(){beep(f,.18);},i*120);});}
+
+/* ---------- helpers ---------- */
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function pick(a,n){return shuf(a).slice(0,n);}
+function level(){return Math.floor(Math.sqrt(S.xp/50))+1;}
+function lname(l){return LEVELNAMES[Math.min(l,LEVELNAMES.length)-1];}
+function toast(msg){var t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},2300);}
+function today(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function touchDay(){var t=today();if(S.days.indexOf(t)<0){S.days.push(t);}
+ if(S.days.length>=3)badge('days3');}
+function badge(id){if(S.badges[id])return;S.badges[id]=1;var b=BADGES.filter(function(x){return x[0]===id;})[0];if(b){toast(b[1]+' Badge: '+b[2]+'!');sWin();}save();}
+function addXP(n){var l0=level();S.xp+=n;var l1=level();if(l1>l0){toast('\uD83C\uDF89 Level '+l1+': '+lname(l1)+'!');sWin();}if(l1>=5)badge('lvl5');save();}
+function checkMastery(){var m=masteredCount(),t=totalCount();if(m>=t/2)badge('half');if(m>=t)badge('all');}
+function record(it,ok){
+ var s=stat(it.id);S.answered++;touchDay();badge('first');
+ if(ok){s.c++;s.s++;if(s.miss&&s.s>=2){s.miss=false;badge('comeback');}}
+ else{s.w++;s.s=0;s.miss=true;}
+ checkMastery();save();}
+function filtered(kinds){
+ return ITEMS.filter(function(i){
+  if(kinds.indexOf(i.kind)<0)return false;
+  return S.topic==='all'||i.topic===S.topic;});}
+function topicName(){if(S.topic==='all')return 'All topics';var t=SAM_TOPICS.filter(function(x){return x.id===S.topic;})[0];return t.emoji+' '+t.name;}
+
+/* ---------- multiple choice builder ---------- */
+function pre(s){return s.toLowerCase().replace(/[^a-z]/g,'').slice(0,4);}
+function defOf(term){for(var i=0;i<PAIRS.length;i++)if(PAIRS[i].term===term)return PAIRS[i].def;return '';}
+function byTerm(name){for(var i=0;i<PAIRS.length;i++)if(PAIRS[i].term===name)return PAIRS[i];return null;}
+function distractors(it,n){
+ var names=CONFUSE[it.term]||[], preferred=[], i, p, dis, others, rest;
+ for(i=0;i<names.length;i++){p=byTerm(names[i]);if(p&&p.id!==it.id)preferred.push(p);}
+ preferred=shuf(preferred);dis=preferred.slice(0,n);
+ if(dis.length<n){others=PAIRS.filter(function(x){return x.id!==it.id&&dis.indexOf(x)<0&&x.topic===it.topic;});dis=dis.concat(pick(others,n-dis.length));}
+ if(dis.length<n){rest=PAIRS.filter(function(x){return x.id!==it.id&&dis.indexOf(x)<0;});dis=dis.concat(pick(rest,n-dis.length));}
+ return dis.slice(0,n);
+}
+function makeMC(it, dir){
+ if(it.kind==='pair'){
+  dir=dir||it.ask||(Math.random()<0.5?'tdef':'dterm');
+  var dis=distractors(it,3), why=it.term+': '+it.def;
+  if(dir==='dterm') return {hint:'Which word matches this meaning?',text:it.def,choices:shuf([{t:it.term,ok:true}].concat(dis.map(function(p){return {t:p.term};}))),why:why};
+  return {hint:'What does this word mean?',text:it.term,choices:shuf([{t:it.def,ok:true}].concat(dis.map(function(p){return {t:p.def};}))),why:why};
+ }
+ if(it.kind==='fact'){
+  var w=[], seen={}; seen[it.a]=1;
+  (it.w||[]).forEach(function(x){if(x&&!seen[x]){seen[x]=1;w.push(x);}});
+  var whyF=it.why||'', d=defOf(it.a);
+  if(d) whyF=(whyF?whyF+' ':'')+it.a+': '+d;
+  return {hint:it.hint||'Scenario',text:it.q,choices:shuf([{t:it.a,ok:true}].concat(w.slice(0,3).map(function(x){return {t:x};}))),why:whyF};
+ }
+ if(it.kind==='sort'){
+  var bio=it.bucket==='biotic', term=bio?'Biotic':'Abiotic';
+  var whyS=(it.note?it.note+' ':'')+term+': '+defOf(term);
+  return {hint:'Is this biotic or abiotic?',text:it.q,choices:shuf([{t:'Biotic',ok:bio},{t:'Abiotic',ok:!bio}]),why:whyS};
+ }
+ return null;
+}
+
+/* ---------- views ---------- */
+var app=$('app');
+var timer=null;
+function stopTimer(){if(timer){clearInterval(timer);timer=null;}tdStop();}
+function header(){
+ var l=level(),lo=50*(l-1)*(l-1),hi=50*l*l,pct=Math.round(100*(S.xp-lo)/(hi-lo));
+ return '<div class="top"><div class="logo">\uD83D\uDD2C</div><div class="who"><div class="lvl">Level '+l+': '+lname(l)+' <span class="tag">'+S.xp+' XP</span></div><div class="bar"><i style="width:'+pct+'%"></i></div></div><button class="tbtn" id="snd" title="Sound">'+(S.sound?'\uD83D\uDD0A':'\uD83D\uDD07')+'</button></div>';
+}
+function bindHeader(){var b=$('snd');if(b)b.onclick=function(){S.sound=!S.sound;save();b.textContent=S.sound?'\uD83D\uDD0A':'\uD83D\uDD07';sOk();};}
+
+function tagAsk(it, dir){
+ var o={}, k;
+ for(k in it) if(Object.prototype.hasOwnProperty.call(it,k)) o[k]=it[k];
+ o.ask=dir; return o;
+}
+function pairSet(dir){
+ var pairs=filtered(['pair']);
+ if(pairs.length<4) pairs=PAIRS.slice();
+ var take=shuf(pairs).slice(0, Math.min(10, pairs.length)), out=[], i;
+ for(i=0;i<take.length;i++) out.push(tagAsk(take[i], dir));
+ return out;
+}
+function scenarioSet(){
+ var facts=filtered(['fact']);
+ if(!facts.length) facts=ITEMS.filter(function(i){return i.kind==='fact';});
+ return shuf(facts).slice(0, Math.min(10, facts.length));
+}
+function home(){
+ stopTimer();
+ window.scrollTo(0,0);
+ var m=masteredCount(),t=totalCount(),miss=missedItems().length;
+ var chips='<button class="chip'+(S.topic==='all'?' on':'')+'" data-t="all">All</button>'+SAM_TOPICS.map(function(x){return '<button class="chip'+(S.topic===x.id?' on':'')+'" data-t="'+x.id+'">'+x.emoji+' '+x.name+'</button>';}).join('');
+ app.innerHTML=header()+
+ '<h1>Cells and Ecosystems</h1><p class="sub">7th grade: cells, organelles, and how living things interact.</p>'+
+ '<div class="chips">'+chips+'</div>'+
+ '<div class="grid">'+
+ '<button class="mode c1" data-m="flash"><span class="e">\uD83C\uDCCF</span>Flashcards<small>Flip and learn</small></button>'+
+ '<button class="mode c2" data-m="term"><span class="e">\uD83D\uDCDD</span>Term to Meaning<small>See the word, pick the definition</small></button>'+
+ '<button class="mode c3" data-m="def"><span class="e">\uD83D\uDD0D</span>Meaning to Term<small>See the definition, pick the word</small></button>'+
+ '<button class="mode c4" data-m="match"><span class="e">\uD83E\uDDE9</span>Quick Match<small>Pair words and meanings</small></button>'+
+ '<button class="mode c5" data-m="speed"><span class="e">\u23F1\uFE0F</span>Speed Round<small>60 seconds, streaks</small></button>'+
+ '<button class="mode c6" data-m="scene"><span class="e">\uD83E\uDDEC</span>Scenarios<small>Use the words in real situations</small></button>'+
+ '<button class="mode c7" data-m="sort"><span class="e">\uD83C\uDF3F</span>Biotic or Abiotic<small>Living, once-living, or not</small></button>'+
+ '<button class="mode c8" data-m="review"><span class="e">\uD83D\uDD01</span>Missed Items<small>'+miss+' to review</small></button>'+
+ '<button class="mode c9" data-m="guide"><span class="e">\uD83D\uDCD8</span>Study Guide<small>All 26 words</small></button>'+
+ '<button class="mode" data-m="test" style="grid-column:1/-1;min-height:84px;background:#6d28d9"><span class="e">\u270D\uFE0F</span>Test Prep<small>Mixed quiz, written comparisons, fill-in words</small></button>'+
+ '<button class="mode c10" data-m="td" style="grid-column:1/-1;min-height:84px"><span class="e">\uD83D\uDEE1\uFE0F</span>Defend the Cell<small>Answer questions, earn coins, stop the germs'+(S.best.td?' (best: '+S.best.td+'/10 waves)':'')+'</small></button>'+
+ '</div>'+
+ '<div class="card"><h2>My Progress</h2><div class="row"><div class="stat"><b>'+m+'/'+t+'</b><span>Mastered</span></div><div class="stat"><b>'+S.bestStreak+'</b><span>Best streak</span></div><div class="stat"><b>'+S.best.speed+'</b><span>Best speed score</span></div><div class="stat"><b>'+S.days.length+'</b><span>Study days</span></div></div>'+
+ '<div class="bar" style="height:16px;margin-top:10px"><i style="width:'+Math.round(100*m/Math.max(1,t))+'%"></i></div>'+
+ '<p class="tl">A question is mastered when you get it right 2 times in a row. Check off a study goal when you can say it. Topic chips filter practice. Test Prep always uses every word.</p></div>'+
+ '<div class="card"><h2>Badges</h2><div class="badges">'+BADGES.map(function(b){return '<div class="badge'+(S.badges[b[0]]?' on':'')+'" title="'+esc(b[3])+'"><b>'+b[1]+'</b>'+esc(b[2])+'<br><span style="font-weight:500">'+esc(b[3])+'</span></div>';}).join('')+'</div></div>'+
+ '<p class="sub"><a href="../" style="color:#fff;font-weight:800">Science lab game</a></p>'+
+ '<p class="sub"><a href="../west-africa/" style="color:#fff;font-weight:800">West Africa study game</a></p>'+
+ '<p class="sub"><button class="back" id="reset">Reset my progress</button></p>';
+ bindHeader();
+ var cs=app.querySelectorAll('.chip');for(var i=0;i<cs.length;i++)cs[i].onclick=function(){S.topic=this.getAttribute('data-t');save();home();};
+ var ms=app.querySelectorAll('.mode');for(var j=0;j<ms.length;j++)ms[j].onclick=function(){go(this.getAttribute('data-m'));};
+ $('reset').onclick=function(){if(confirm('Erase all of your progress, XP and badges?')){var snd=S.sound;S=fresh();S.sound=snd;save();home();}};
+}
+function go(m){
+ stopTimer();
+ if(m==='flash')return flashcards(filtered(['pair','fact','sort']),'Flashcards');
+ if(m==='term')return runMC(pairSet('tdef'),{title:'Term to Meaning',mode:'term',dir:'tdef'});
+ if(m==='def')return runMC(pairSet('dterm'),{title:'Meaning to Term',mode:'def',dir:'dterm'});
+ if(m==='match')return matching();
+ if(m==='speed')return speed();
+ if(m==='scene')return runMC(scenarioSet(),{title:'Scenarios',mode:'scene'});
+ if(m==='sort')return runMC(pick(filtered(['sort']).length?filtered(['sort']):ITEMS.filter(function(i){return i.kind==='sort';}),10),{title:'Biotic or Abiotic',mode:'sort'});
+ if(m==='review')return review();
+ if(m==='guide')return guide();
+ if(m==='test')return testPrep();
+ if(m==='td')return tdRun();
+}
+function shell(title,inner,onBack){
+ app.innerHTML=header()+'<div class="hud"><button class="back" id="bk">\u2190 Home</button><div class="sp"></div><div class="pill">'+esc(title)+'</div></div>'+inner;
+ window.scrollTo(0,0);
+ bindHeader();$('bk').onclick=function(){home();};
+}
+function empty(title,msg){shell(title,'<div class="card"><h2>Nothing here yet</h2><p>'+esc(msg)+'</p><button class="btn" onclick="void 0" id="eh">Back home</button></div>');$('eh').onclick=home;}
+
+/* ---------- flashcards ---------- */
+function flashcards(list,title){
+ if(!list.length)return empty(title,'No cards for this topic. Try another topic.');
+ var q=shuf(list),i=0,back=false;
+ function face(it){
+  if(it.kind==='pair')return ['Word',it.term,'Meaning',it.def];
+  if(it.kind==='fact'){var dd='';for(var ni=0;ni<PAIRS.length;ni++)if(PAIRS[ni].term===it.a)dd=PAIRS[ni].def;return ['Scenario',it.q,'Answer',it.a+(dd?': '+dd:'')+(it.why?' '+it.why:'')];}
+  if(it.kind==='sort')return ['Biotic or abiotic?',it.q,'Answer',(it.bucket==='biotic'?'Biotic. ':'Abiotic. ')+(it.note||'')];
+  if(it.kind==='seq')return ['Put in order',it.title,'Steps',it.steps.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
+  if(it.kind==='five')return ['Name them','The 5 characteristics of living things',"Answer",it.right.map(function(s,k){return (k+1)+'. '+s;}).join('<br>')];
+  if(it.kind==='lookup')return ['On the study guide word list',it.term,'Note','This word is on the vocabulary list, but its meaning is not given in the study materials. Look it up in your notebook or textbook.'];
+  return ['','',' ',''];
+ }
+ function draw(){
+  if(i>=q.length){addXP(10);badge('order');return shell(title,'<div class="card"><div class="big">\uD83C\uDF89</div><h2>Deck done!</h2><p>You went through '+q.length+' cards. +10 XP</p><button class="btn g" id="again">Go again</button> <button class="btn w" id="hm">Home</button></div>'),$('again').onclick=function(){flashcards(list,title);},$('hm').onclick=home;}
+  var it=q[i],f=face(it);
+  var inner='<div class="hud"><div class="pill">Card '+(i+1)+' of '+q.length+'</div><div class="sp"></div><div class="pill">'+esc(topicName())+'</div></div>'+
+  '<div class="flash"><div class="fc'+(back?' back':'')+'" id="fc"><div><small>'+esc(back?f[2]:f[0])+'</small>'+(back?esc(f[3]):esc(f[1]))+'<small style="margin-top:12px">'+(back?'':'Tap to flip')+'</small></div></div></div>'+
+  '<div class="row"><button class="btn r" id="again" style="flex:1">Study again</button><button class="btn g" id="got" style="flex:1">Got it</button></div>';
+  shell(title,inner);
+  $('fc').onclick=function(){back=!back;draw();};
+  $('again').onclick=function(){var s=stat(it.id);s.miss=true;s.s=0;save();i++;back=false;draw();};
+  $('got').onclick=function(){var s=stat(it.id);s.seen++;if(it.kind==='lookup'){s.s=2;}else if(s.s<1){s.s=1;}checkMastery();addXP(1);i++;back=false;draw();};
+ }
+ draw();
+}
+
+/* ---------- multiple choice runner ---------- */
+function runMC(list,cfg){
+ if(!list.length)return empty(cfg.title,'No questions for this topic yet.');
+ var i=0,score=0,right=0,streak=0,bestS=0,timed=cfg.timed||0,left=timed,over=false,queue=list.slice(),miss=[],cur=null,answered=false,sortStreak=0,sortBest=0;
+ function fin(){
+  if(over)return;over=true;stopTimer();
+  var msg='',xp=0;
+  if(cfg.mode==='speed'){
+   if(score>S.best.speed){S.best.speed=score;msg='New best score! ';}
+   if(score>=150)badge('speed150');if(score>=300)badge('speed300');
+   xp=Math.round(score/5);
+  }else{xp=right*3;if((cfg.mode==='quiz'||cfg.mode==='testmc')&&right===queue.length&&queue.length>=10)badge('perfect');if(cfg.mode==='scene'&&right>=8)badge('five');}
+  if(cfg.mode==='sort'&&sortBest>=10)badge('sorter');
+  addXP(xp);save();
+  var st=(cfg.mode==='speed')?'<div class="stat"><b>'+score+'</b><span>Points</span></div>':'';
+  shell(cfg.title,'<div class="card"><div class="big">'+(right>=queue.length*0.8||cfg.mode==='speed'?'\uD83C\uDFC6':'\uD83D\uDCAA')+'</div><h2>'+msg+'Round complete!</h2><div class="row">'+st+'<div class="stat"><b>'+right+'/'+(cfg.mode==='speed'?i:queue.length)+'</b><span>Correct</span></div><div class="stat"><b>'+bestS+'</b><span>Best streak</span></div><div class="stat"><b>+'+xp+'</b><span>XP</span></div></div>'+
+  (miss.length?'<p><b>Missed:</b> '+miss.map(function(m){return esc(m);}).join('; ')+'</p><p class="tl">Missed items are saved in Missed Items mode.</p>':'<p>No misses. Amazing!</p>')+
+  '<button class="btn g" id="again">Play again</button> <button class="btn w" id="hm">Home</button></div>');
+  $('again').onclick=function(){if(cfg.again)return cfg.again();go(cfg.mode==='review'?'review':cfg.mode);};$('hm').onclick=home;
+ }
+ function next(){
+  if(over)return;
+  if(cfg.mode==='speed'&&i>=queue.length){queue=queue.concat(shuf(list));}
+  if(i>=queue.length)return fin();
+  var it=queue[i],mc=makeMC(it,cfg.dir||it.ask||null);cur=it;answered=false;
+  if(!mc){i++;return next();}
+  var hud='<div class="hud">'+(cfg.mode==='speed'?'<div class="pill" id="tm">\u23F1 '+left+'s</div>':'<div class="pill">Q '+(i+1)+'/'+queue.length+'</div>')+'<div class="sp"></div><div class="pill">\uD83D\uDD25 '+streak+'</div><div class="pill">\u2B50 '+score+'</div></div>';
+  var body='<div class="card"><div class="q"><small>'+esc(mc.hint)+'</small>'+esc(mc.text)+'</div><div id="chs">'+mc.choices.map(function(c,k){return '<button class="ch" data-k="'+k+'">'+esc(c.t)+'</button>';}).join('')+'</div><div id="fb"></div></div>';
+  shell(cfg.title,hud+body);
+  var bs=app.querySelectorAll('.ch');
+  for(var b=0;b<bs.length;b++)bs[b].onclick=function(){
+   if(answered||over)return;answered=true;
+   var k=+this.getAttribute('data-k'),ok=!!mc.choices[k].ok;
+   for(var z=0;z<bs.length;z++){bs[z].disabled=true;if(mc.choices[z].ok)bs[z].classList.add('ok');}
+   if(!ok)this.classList.add('bad');
+   record(it,ok);
+   if(ok){streak++;right++;if(streak>bestS)bestS=streak;if(streak>S.bestStreak)S.bestStreak=streak;
+    var pts=10+Math.min(streak,10)*2;score+=pts;addXP(cfg.mode==='speed'?1:2);sOk();
+    if(streak===5)badge('s5');if(streak===10)badge('s10');if(streak===20)badge('s20');
+    sortStreak++;if(sortStreak>sortBest)sortBest=sortStreak;
+   }else{streak=0;sortStreak=0;sBad();if(miss.indexOf(it.term||it.q||it.name)<0)miss.push(it.term||it.q||it.name);if(cfg.mode==='speed'){left=Math.max(0,left-3);}}
+   save();
+   var fbEl=$('fb');
+   if(cfg.mode==='speed'){
+    setTimeout(function(){i++;next();},ok?350:1100);
+    if(!ok)fbEl.innerHTML='<div class="fb bad">'+esc(mc.why)+' (-3s)</div>';
+    else fbEl.innerHTML='<div class="fb ok">+'+(10+Math.min(streak,10)*2)+'</div>';
+   }else{
+    fbEl.innerHTML='<div class="fb '+(ok?'ok':'bad')+'">'+(ok?'\u2705 Correct! ':'\u274C Not quite. ')+esc(mc.why)+'</div><p><button class="btn" id="nx">'+(i+1>=queue.length?'Finish':'Next')+'</button></p>';
+    $('nx').onclick=function(){i++;next();};
+   }
+  };
+ }
+ if(timed){timer=setInterval(function(){left--;var t=$('tm');if(t)t.textContent='\u23F1 '+Math.max(0,left)+'s';if(left<=0)fin();},1000);}
+ next();
+}
+function speed(){
+ var l=filtered(['pair','fact','sort']);
+ if(!l.length)return empty('Speed Round','No questions for this topic yet.');
+ runMC(shuf(l),{title:'Speed Round',mode:'speed',timed:60});
+}
+
+/* ---------- matching ---------- */
+function matching(){
+ var pool=filtered(['pair']);if(pool.length<4)pool=PAIRS.slice();
+ var seed=pool[Math.floor(Math.random()*pool.length)];
+ var want=CONFUSE[seed.term]||[];
+ var round=[seed], i, p;
+ for(i=0;i<pool.length&&round.length<3;i++){p=pool[i];if(p.id!==seed.id&&want.indexOf(p.term)>=0)round.push(p);}
+ var rest=shuf(pool);
+ for(i=0;i<rest.length&&round.length<6;i++){if(round.indexOf(rest[i])<0)round.push(rest[i]);}
+ var terms=shuf(round),defs=shuf(round),selT=null,selD=null,done={},mist=0,flagged={},total=round.length,t0=Date.now();
+ function clock(){var s=Math.round((Date.now()-t0)/1000);return Math.floor(s/60)+':'+(s%60<10?'0':'')+(s%60);}
+ function draw(){
+  var inner='<div class="hud"><div class="pill">Matched '+Object.keys(done).length+'/'+total+'</div><div class="sp"></div><div class="pill" id="qmclock">'+clock()+'</div><div class="pill">Mistakes '+mist+'</div></div><div class="card"><div class="q"><small>Quick Match: tap a word, then tap its meaning</small></div><div class="mgrid"><div class="bank">'+
+  terms.map(function(p){return '<button class="mt'+(done[p.id]?' done':'')+(selT===p.id?' sel':'')+'" data-id="'+p.id+'" data-s="t">'+esc(p.term)+'</button>';}).join('')+'</div><div class="bank">'+
+  defs.map(function(p){return '<button class="mt def'+(done[p.id]?' done':'')+(selD===p.id?' sel':'')+'" data-id="'+p.id+'" data-s="d">'+esc(p.def)+'</button>';}).join('')+'</div></div></div>';
+  shell('Quick Match',inner);
+  if(timer)clearInterval(timer);
+  timer=setInterval(function(){var el=$('qmclock');if(el)el.textContent=clock();},500);
+  var bs=app.querySelectorAll('.mt');
+  for(var bi=0;bi<bs.length;bi++)bs[bi].onclick=function(){
+   var id=this.getAttribute('data-id'),side=this.getAttribute('data-s');
+   if(done[id])return;
+   if(side==='t')selT=(selT===id?null:id);else selD=(selD===id?null:id);
+   if(selT&&selD){
+    if(selT===selD){done[selT]=1;record(BYID[selT],!flagged[selT]);sOk();addXP(3);selT=selD=null;
+     if(Object.keys(done).length===total)return finish();
+    }else{mist++;sBad();var a=selT,b=selD;if(!flagged[a]){flagged[a]=1;record(BYID[a],false);}selT=selD=null;draw();
+     var w=app.querySelectorAll('.mt');for(var k=0;k<w.length;k++){var wid=w[k].getAttribute('data-id');if(wid===a||wid===b)w[k].classList.add('wrong');}return;}
+   }
+   draw();
+  };
+ }
+ function finish(){
+  if(timer){clearInterval(timer);timer=null;}
+  var secs=Math.round((Date.now()-t0)/1000);
+  var xp=Math.max(10,30-mist*5);if(mist===0)badge('match');addXP(xp);
+  var sc=Math.max(0,100-mist*15);if(sc>S.best.match)S.best.match=sc;
+  if(!S.best.matchSec||secs<S.best.matchSec)S.best.matchSec=secs;
+  save();sWin();
+  shell('Quick Match','<div class="card"><div class="big">\uD83E\uDDE9</div><h2>All matched!</h2><div class="row"><div class="stat"><b>'+mist+'</b><span>Mistakes</span></div><div class="stat"><b>'+secs+'s</b><span>Time</span></div><div class="stat"><b>+'+xp+'</b><span>XP</span></div></div><p><button class="btn g" id="again">New round</button> <button class="btn w" id="hm">Home</button></p></div>');
+  $('again').onclick=matching;$('hm').onclick=home;
+ }
+ draw();
+}
+
+/* ---------- review missed ---------- */
+function review(){
+ var m=missedItems();
+ if(!m.length)return empty('Missed Items','You have no missed items right now. Play other modes and anything you miss will show up here.');
+ var mc=m.filter(function(i){return i.kind==='pair'||i.kind==='fact'||i.kind==='sort';});
+ if(mc.length)return runMC(shuf(mc),{title:'Missed Items ('+m.length+')',mode:'review'});
+ return flashcards(m,'Missed Items');
+}
+
+/* ---------- study guide ---------- */
+function guide(){
+ var groups={};
+ SAM_GOALS.forEach(function(g,i){var id='g'+(i+1);(groups[g[1]]=groups[g[1]]||[]).push('<label class="chk"><input type="checkbox" data-g="'+id+'"'+(S.checks[id]?' checked':'')+'><span>'+esc(g[0])+'</span></label>');});
+ var goalHtml=Object.keys(groups).map(function(k){return '<h3>'+esc(k)+'</h3>'+groups[k].join('');}).join('');
+ var terms=SAM_TOPICS.map(function(t){
+  var ps=PAIRS.filter(function(p){return p.topic===t.id;});
+  return '<h3>'+t.emoji+' '+esc(t.name)+' ('+ps.length+' words)</h3>'+ps.map(function(p){return '<div class="tl"><b>'+esc(p.term)+':</b> '+esc(p.def)+'</div>';}).join('');}).join('');
+ var facts=ITEMS.filter(function(f){return f.kind==='fact';});
+ var factHtml=facts.map(function(f){return '<div class="tl"><b>'+esc(f.q)+'</b><br>'+esc(f.a)+'</div>';}).join('');
+ var bio=SAM_SORT.filter(function(s){return s.bucket==='biotic';}).map(function(s){return esc(s.q);}).join(', ');
+ var ab=SAM_SORT.filter(function(s){return s.bucket==='abiotic';}).map(function(s){return esc(s.q);}).join(', ');
+ shell('Study Guide',
+ '<div class="card"><h2>26 words</h2><p class="tl">These meanings are the ones to memorize. Tap a checkbox when you can say that idea without looking.</p>'+goalHtml+'</div>'+
+ '<div class="card"><h2>Look-alike words</h2>'+
+ '<div class="tl"><b>Parasite</b> is the organism. <b>Parasitism</b> is the relationship. <b>Host</b> is the organism that is harmed.</div>'+
+ '<div class="tl"><b>Predator</b> hunts, captures, and eats another animal. <b>Prey</b> is the animal that is eaten. A parasite lives on or inside a host. It does not hunt and eat the host.</div>'+
+ '<div class="tl"><b>Symbiosis</b> is any close, long-term living together. <b>Mutualism</b>: both benefit. <b>Commensalism</b>: one benefits, the other is neither helped nor harmed. <b>Parasitism</b>: one benefits and the other is harmed.</div>'+
+ '<div class="tl"><b>Prokaryotic</b> cells have no nucleus, such as bacteria. <b>Eukaryotic</b> cells have a nucleus, such as plants, animals, and fungi. An amoeba is one cell with a nucleus, so it is unicellular and eukaryotic.</div>'+
+ '<div class="tl"><b>Unicellular</b> means one cell. <b>Multicellular</b> means many cells working together, such as humans, trees, and birds.</div>'+
+ '<div class="tl"><b>Nucleus</b> is the control center and holds DNA. <b>Nuclear membrane</b> is the barrier around the nucleus. <b>Cell membrane</b> is the barrier around the whole cell.</div>'+
+ '<div class="tl"><b>Ribosomes</b> assemble proteins. <b>Mitochondria</b> convert glucose into ATP. <b>ATP</b> is the cell\'s energy currency. <b>DNA</b> carries genetic instructions.</div>'+
+ '<div class="tl"><b>Biotic</b> means living or once-living. <b>Abiotic</b> means non-living, such as sunlight, water, rocks, temperature, and soil.</div></div>'+
+ '<div class="card"><h2>Biotic or abiotic examples</h2><div class="tl"><b>Biotic:</b> '+bio+'<br><b>Abiotic:</b> '+ab+'</div></div>'+
+ '<div class="card"><details open><summary>All 26 words and meanings</summary>'+terms+'</details><details><summary>Scenario answers ('+facts.length+')</summary>'+factHtml+'</details></div>'+
+ '<div class="card"><h2>How to study</h2><ul>'+SAM_TIPS.map(function(t){return '<li class="tl">'+esc(t)+'</li>';}).join('')+'</ul></div>');
+ var cs=app.querySelectorAll('input[data-g]');
+ for(var i=0;i<cs.length;i++)cs[i].onchange=function(){var id=this.getAttribute('data-g');if(this.checked)S.checks[id]=1;else delete S.checks[id];touchDay();checkMastery();save();};
+}
+
+/* ---------- test prep ---------- */
+function ceHas(text, word){
+ var t=' '+String(text||'').toLowerCase().replace(/\./g,'').replace(/[^a-z0-9]+/g,' ')+' ';
+ var w=' '+String(word||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim()+' ';
+ return w.trim().length>0 && t.indexOf(w)>=0;
+}
+function ceHasAny(text, words){for(var i=0;i<words.length;i++) if(ceHas(text, words[i])) return true; return false;}
+function ceSentences(text){
+ var bits=String(text||'').split(/[.!?]+/), n=0;
+ bits.forEach(function(b){var w=b.trim().split(/\s+/).filter(Boolean); if(w.length>=3) n++;});
+ return n;
+}
+function ceSpecOk(text, sp){
+ var i;
+ if(sp.all){for(i=0;i<sp.all.length;i++) if(!ceHas(text, sp.all[i])) return false;}
+ if(sp.any&&!ceHasAny(text, sp.any)) return false;
+ if(sp.anyExtra&&!ceHasAny(text, sp.anyExtra)) return false;
+ return true;
+}
+function ceNorm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim().replace(/^(a|an|the) /,'');}
+function testQuiz(){
+ var pairs=shuf(PAIRS.slice());
+ var facts=shuf(ITEMS.filter(function(i){return i.kind==='fact';}));
+ var list=[], i;
+ for(i=0;i<7&&i<pairs.length;i++) list.push(tagAsk(pairs[i],'tdef'));
+ for(i=7;i<14&&i<pairs.length;i++) list.push(tagAsk(pairs[i],'dterm'));
+ list=list.concat(facts.slice(0,6));
+ runMC(shuf(list),{title:'Practice test',mode:'testmc',again:testQuiz});
+}
+function testPrep(){
+ shell('Test Prep',
+  '<div class="card"><h2>Practice for the test</h2>'+
+  '<p>There are 26 words. The hard part is telling look-alikes apart: parasite and parasitism, nucleus and nuclear membrane, prokaryotic and eukaryotic, unicellular and multicellular, and the three kinds of symbiosis.</p>'+
+  '<p>Test Prep uses every word, even if a topic chip is selected.</p></div>'+
+  '<div class="card"><h2>Mixed practice test</h2><p>20 questions. Some show the word. Some show the meaning. Some are scenarios. Answer spots are shuffled.</p>'+
+  '<button class="btn g" id="startquiz">Start the 20 questions</button></div>'+
+  '<div class="card"><h2>Write the differences</h2><p>Four short answers. Write in your own words. A sentence needs a period and at least three words.</p>'+
+  '<button class="btn" id="startwrite">Write the short answers</button></div>'+
+  '<div class="card"><h2>Fill in the word</h2><p>Type the vocabulary word that matches each meaning.</p>'+
+  '<button class="btn" id="startblanks">Fill in the words</button></div>');
+ $('startquiz').onclick=testQuiz;
+ $('startwrite').onclick=testWrite;
+ $('startblanks').onclick=testBlanks;
+}
+function testWrite(){
+ var html=CE_PROMPTS.map(function(pr,i){
+  return '<div class="card"><h2>'+esc(pr.label)+'</h2><p><b>'+esc(pr.q)+'</b></p>'+
+   '<p class="tl">Write at least '+pr.need+' sentences.</p>'+
+   '<textarea class="ans" id="ta'+i+'" placeholder="Write in your own words."></textarea></div>';
+ }).join('');
+ shell('Short answers', html+'<button class="btn g" id="checktest">Check my answers</button><div id="testout"></div>');
+ $('checktest').onclick=testScore;
+}
+function testNotes(text, label){
+ var out=[], t=String(text||'').toLowerCase();
+ if(label.indexOf('2')>=0){
+  if(/amoeba[^.]{0,70}prokaryotic|prokaryotic[^.]{0,70}amoeba/.test(t) && !/not prokaryotic|isn.t prokaryotic|is not prokaryotic/.test(t))
+   out.push('An amoeba has a nucleus, so it is eukaryotic, not prokaryotic. It is unicellular because it is one cell.');
+  if(/bird[^.]{0,50}prokaryotic/.test(t) && !/not prokaryotic/.test(t))
+   out.push('A bird\'s cells have nuclei, so the bird is eukaryotic, not prokaryotic. It is multicellular because many cells work together.');
+ }
+ return out;
+}
+function testScore(){
+ var allLen=true, specHit=0, specAll=0;
+ var html=CE_PROMPTS.map(function(pr,i){
+  var text=$('ta'+i).value, n=ceSentences(text), okLen=n>=pr.need;
+  if(!okLen) allLen=false;
+  var specHtml=pr.specs.map(function(sp){
+   specAll++;
+   var got=ceSpecOk(text, sp);
+   if(got) specHit++;
+   return '<div class="spec '+(got?'ok':'bad')+'">'+(got?'\u2705':'\u2B1C')+' '+esc(sp.label)+'</div>';
+  }).join('');
+  var notes=testNotes(text, pr.label).map(function(m){return '<p class="tl"><b>Check this:</b> '+esc(m)+'</p>';}).join('');
+  return '<div class="card"><h2>'+esc(pr.label)+'</h2><p class="tl">'+(okLen?'\u2705 ':'\u274C ')+n+' of '+pr.need+' sentences.</p>'+
+   specHtml+notes+'<p class="tl"><b>One strong answer:</b> '+esc(pr.model)+'</p></div>';
+ }).join('');
+ var xp=0;
+ if(allLen && !testScore.awarded){xp=8+specHit; addXP(xp); testScore.awarded=true;}
+ $('testout').innerHTML=html+'<div class="card"><h2>Ideas found: '+specHit+' of '+specAll+'</h2>'+
+  (xp?'<p>+'+xp+' XP for finishing every box with enough sentences.</p>':'<p>Fix any short answers, then check again.</p>')+
+  '<button class="btn" id="backtest">Back to Test Prep</button></div>';
+ $('backtest').onclick=testPrep;
+ var box=$('testout'); if(box) box.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function testBlanks(){
+ var html=CE_BLANKS.map(function(b,i){
+  return '<div class="card"><p><b>'+esc(b.prompt)+'</b></p><input class="blank" id="bl'+i+'" autocomplete="off" autocapitalize="off" aria-label="'+esc(b.prompt)+'"></div>';
+ }).join('');
+ shell('Fill in the word', html+'<button class="btn g" id="checkbl">Check the words</button><div id="blout"></div>');
+ $('checkbl').onclick=function(){
+  var right=0;
+  CE_BLANKS.forEach(function(b,i){
+   var el=$('bl'+i), got=ceNorm(el.value), ok=b.accept.indexOf(got)>=0;
+   el.className='blank '+(ok?'ok':'bad');
+   if(ok) right++;
+  });
+  var notes=CE_BLANKS.map(function(b,i){
+   var ok=$('bl'+i).className.indexOf('ok')>=0;
+   return '<div class="spec '+(ok?'ok':'bad')+'">'+(ok?'\u2705':'\u274C')+' '+esc(b.answer)+': '+esc(defOf(b.answer))+'</div>';
+  }).join('');
+  $('blout').innerHTML='<div class="card"><h2>'+right+' of '+CE_BLANKS.length+'</h2>'+notes+'<p><button class="btn" id="backbl">Back to Test Prep</button></p></div>';
+  $('backbl').onclick=testPrep;
+  if(right===CE_BLANKS.length){if(!testBlanks.awarded){testBlanks.awarded=true; addXP(12);} sWin();}
+  else sBad();
+ };
+}
+
+/* ---------- tower defense ---------- */
+var TD_COLS=8,TD_ROWS=10,TD_WAVES_N=10,TD_QCAP=6,TD_DISC=0.3;
+var TD_WP=[[-0.5,1.5],[6.5,1.5],[6.5,4.5],[1.5,4.5],[1.5,7.5],[6.5,7.5],[6.5,9.5]];
+var TD_SEG=[],TD_LEN=0,TD_PATHSET={},TD_TILES=[];
+(function(){
+ var acc=0,i,k;
+ for(i=1;i<TD_WP.length;i++){
+  var a=TD_WP[i-1],b=TD_WP[i],l=Math.abs(b[0]-a[0])+Math.abs(b[1]-a[1]);
+  TD_SEG.push({x0:a[0],y0:a[1],x1:b[0],y1:b[1],l:l,s:acc});acc+=l;
+  var n=Math.ceil(l*4);
+  for(k=0;k<=n;k++){var t=k/n,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t,c=Math.floor(x),r=Math.floor(y);if(c>=0&&c<TD_COLS&&r>=0&&r<TD_ROWS)TD_PATHSET[c+','+r]=1;}
+ }
+ TD_LEN=acc;
+ for(var r2=0;r2<TD_ROWS;r2++)for(var c2=0;c2<TD_COLS;c2++)if(!TD_PATHSET[c2+','+r2])TD_TILES.push([c2,r2]);
+})();
+function tdPathPos(d){
+ var s=TD_SEG,i;
+ for(i=0;i<s.length;i++){if(d<=s[i].s+s[i].l||i===s.length-1){var t=Math.max(0,Math.min(1,(d-s[i].s)/s[i].l));return [s[i].x0+(s[i].x1-s[i].x0)*t,s[i].y0+(s[i].y1-s[i].y0)*t,Math.atan2(s[i].y1-s[i].y0,s[i].x1-s[i].x0)];}}
+ return [0,0,0];
+}
+var TD_TOWERS={
+ ab:{name:'Antibody Shooter',emoji:'\uD83D\uDEE1\uFE0F',color:'#2e86de',cost:40,mode:'first',desc:'Fast, cheap shots at the first germ.',
+  lv:[{dmg:8,rate:0.45,range:2.6},{dmg:13,rate:0.4,range:2.8},{dmg:20,rate:0.34,range:3}],up:[45,70]},
+ wbc:{name:'White Blood Cell',emoji:'\u26AA',color:'#f5f6fa',mode:'first',cost:50,desc:'Slows every germ nearby with a chilling pulse.',
+  lv:[{dmg:2,rate:1,range:2.2,slow:0.5,dur:1.6},{dmg:4,rate:0.9,range:2.5,slow:0.6,dur:2},{dmg:7,rate:0.8,range:2.8,slow:0.7,dur:2.4}],up:[40,60]},
+ laser:{name:'Microscope Laser',emoji:'\uD83D\uDD2C',color:'#2d3436',mode:'strong',cost:90,desc:'Long range, slow fire, huge damage to the toughest germ.',
+  lv:[{dmg:45,rate:1.6,range:4.2},{dmg:85,rate:1.5,range:4.6},{dmg:150,rate:1.35,range:5}],up:[80,120]},
+ vac:{name:'Vaccine Splash',emoji:'\uD83D\uDC89',color:'#f39c12',cost:75,mode:'first',desc:'Bursts damage a whole group of germs.',
+  lv:[{dmg:16,rate:1.3,range:2.6,rad:0.9},{dmg:26,rate:1.2,range:2.8,rad:1.1},{dmg:40,rate:1.1,range:3,rad:1.3}],up:[65,100]}
+};
+var TD_KEYS=['ab','wbc','laser','vac'];
+var TD_ENEMIES={
+ germ:{name:'Germ',hp:30,sp:1,r:0.27,rew:2,lives:1,col:'#3ac569'},
+ speedy:{name:'Speedy Bacteria',hp:18,sp:2,r:0.24,rew:2,lives:1,col:'#ff9f1c'},
+ virus:{name:'Tank Virus',hp:100,sp:0.8,r:0.31,rew:4,lives:1,col:'#8e44ad'},
+ splitter:{name:'Splitter Cell',hp:55,sp:1,r:0.3,rew:3,lives:1,col:'#e84393',split:2},
+ mini:{name:'Mini Cell',hp:18,sp:1.5,r:0.17,rew:1,lives:1,col:'#ff8fc4'},
+ boss1:{name:'Mega Bacteria',hp:800,sp:0.6,r:0.52,rew:30,lives:3,col:'#c0392b',boss:1},
+ boss2:{name:'Mega Virus',hp:1900,sp:0.55,r:0.55,rew:50,lives:3,col:'#4b2c82',boss:1}
+};
+/* groups: [type, count, gap seconds, start delay seconds] */
+var TD_WAVES=[
+ {hm:1,g:[['germ',8,1.2,0]]},
+ {hm:1,g:[['germ',8,1.1,0],['speedy',4,1,5]]},
+ {hm:1,g:[['germ',10,1,0],['speedy',6,0.8,4]]},
+ {hm:1,g:[['virus',4,2,0],['germ',10,1,3]]},
+ {hm:1,g:[['boss1',1,1,0],['germ',10,1.2,4]]},
+ {hm:1,g:[['splitter',8,1.4,0],['speedy',8,0.7,6]]},
+ {hm:1,g:[['virus',8,1.6,0],['germ',12,0.9,2]]},
+ {hm:1,g:[['splitter',10,1.2,0],['virus',6,1.8,3],['speedy',10,0.6,8]]},
+ {hm:1,g:[['virus',10,1.4,0],['splitter',12,1,2],['speedy',12,0.6,8]]},
+ {hm:1,g:[['boss2',1,1,0],['virus',8,1.5,3],['splitter',10,1.1,6],['speedy',10,0.6,12]]}
+];
+/* health scaling per wave (tuned by simulation) */
+TD_WAVES.forEach(function(w,i){w.hm=Math.round((1+0.8*i)*100)/100;});
+function tdNew(o){
+ o=o||{};
+ return {coins:o.coins!=null?o.coins:90,lives:10,wave:0,phase:'build',t:0,wt:0,towers:[],enemies:[],projs:[],fx:[],spawns:[],events:[],
+  streak:0,qWave:0,asked:0,right:0,missed:[],kills:0,lost:0,nid:1,noFx:!!o.noFx,hurt:0,bestStreak:0};
+}
+function tdStats(t){return TD_TOWERS[t.key].lv[t.lvl];}
+function tdReward(g,ok){return ok?12+3*Math.min(g.streak+1,5):3;}
+function tdPaidLeft(g){return Math.max(0,TD_QCAP-g.qWave);}
+function tdAnswer(g,ok,coinsOn){
+ var paid=coinsOn!==false&&g.qWave<TD_QCAP,rew=0;
+ g.asked++;
+ if(coinsOn!==false)g.qWave++;
+ if(ok){g.right++;rew=paid?tdReward(g,true):0;g.streak++;if(g.streak>g.bestStreak)g.bestStreak=g.streak;}
+ else{g.streak=0;rew=paid?3:0;}
+ g.coins+=rew;
+ return {reward:rew,paid:paid};
+}
+function tdTileFree(g,c,r){
+ if(c<0||r<0||c>=TD_COLS||r>=TD_ROWS||TD_PATHSET[c+','+r])return false;
+ for(var i=0;i<g.towers.length;i++)if(g.towers[i].c===c&&g.towers[i].r===r)return false;
+ return true;
+}
+function tdTowerAt(g,c,r){for(var i=0;i<g.towers.length;i++)if(g.towers[i].c===c&&g.towers[i].r===r)return g.towers[i];return null;}
+function tdPlace(g,key,c,r){
+ var d=TD_TOWERS[key];
+ if(!d||!tdTileFree(g,c,r)||g.coins<d.cost)return null;
+ g.coins-=d.cost;
+ var t={id:g.nid++,key:key,c:c,r:r,x:c+0.5,y:r+0.5,lvl:0,cd:0.2,ang:-1.57,spent:d.cost};
+ g.towers.push(t);return t;
+}
+function tdUpCost(t){var u=TD_TOWERS[t.key].up;return t.lvl<u.length?u[t.lvl]:0;}
+function tdDisc(cost){return Math.ceil(cost*(1-TD_DISC));}
+function tdUpgrade(g,t,price){
+ if(t.lvl>=TD_TOWERS[t.key].up.length||g.coins<price)return false;
+ g.coins-=price;t.spent+=price;t.lvl++;return true;
+}
+function tdSellValue(t){return Math.floor(t.spent*0.7);}
+function tdSell(g,t){var i=g.towers.indexOf(t);if(i<0)return 0;g.towers.splice(i,1);var v=tdSellValue(t);g.coins+=v;return v;}
+function tdStartWave(g){
+ if(g.phase!=='build'||g.wave>=TD_WAVES_N)return false;
+ g.wave++;g.phase='wave';g.wt=0;g.spawns=[];
+ var w=TD_WAVES[g.wave-1];
+ w.g.forEach(function(gr){for(var i=0;i<gr[1];i++)g.spawns.push({t:gr[3]+i*gr[2],type:gr[0],hm:w.hm});});
+ g.spawns.sort(function(a,b){return a.t-b.t;});
+ return true;
+}
+function tdSpawn(g,type,d,hm){
+ var b=TD_ENEMIES[type],e={type:type,hp:b.hp*hm,max:b.hp*hm,d:d,sp:b.sp,r:b.r,rew:b.rew,lives:b.lives,slow:0,slowT:0,flash:0,dead:false,x:0,y:0,a:0,ph:Math.random()*6.28,hm:hm};
+ var p=tdPathPos(d);e.x=p[0];e.y=p[1];e.a=p[2];g.enemies.push(e);return e;
+}
+function tdFxAdd(g,f){if(!g.noFx&&g.fx.length<300)g.fx.push(f);}
+function tdBurst(g,x,y,col,n,sp){
+ if(g.noFx)return;
+ for(var i=0;i<n;i++){var a=Math.random()*6.28,v=(0.4+Math.random())*sp;tdFxAdd(g,{k:'p',x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:0.45,max:0.45,c:col,s:0.05+Math.random()*0.05});}
+}
+function tdHit(g,e,dmg){
+ if(e.dead)return;
+ e.hp-=dmg;e.flash=0.08;
+ if(e.hp<=0){
+  e.dead=true;g.coins+=e.rew;g.kills++;
+  var b=TD_ENEMIES[e.type];
+  tdBurst(g,e.x,e.y,b.col,b.boss?26:9,b.boss?3:2);
+  tdFxAdd(g,{k:'t',x:e.x,y:e.y-0.2,text:'+'+e.rew,life:0.8,max:0.8,c:'#b8860b'});
+  if(b.split){for(var i=0;i<b.split;i++)tdSpawn(g,'mini',Math.max(0,e.d-0.25*i),e.hm);}
+ }
+}
+function tdAim(g,t,st){
+ var best=null,bv=-1,mode=TD_TOWERS[t.key].mode;
+ for(var i=0;i<g.enemies.length;i++){
+  var e=g.enemies[i];if(e.dead)continue;
+  var dx=e.x-t.x,dy=e.y-t.y,rr=st.range+e.r*0.6;
+  if(dx*dx+dy*dy<=rr*rr){var v=mode==='strong'?e.hp:e.d;if(v>bv){bv=v;best=e;}}
+ }
+ return best;
+}
+function tdStepFx(g,dt){
+ g.hurt=Math.max(0,g.hurt-dt);
+ for(var i=g.fx.length-1;i>=0;i--){var f=g.fx[i];f.life-=dt;if(f.k==='p'){f.x+=f.vx*dt;f.y+=f.vy*dt;}else if(f.k==='t'){f.y-=0.5*dt;}if(f.life<=0)g.fx.splice(i,1);}
+}
+function tdStep(g,dt){
+ tdStepFx(g,dt);
+ if(g.phase!=='wave')return;
+ g.t+=dt;g.wt+=dt;
+ var i,j,e;
+ while(g.spawns.length&&g.spawns[0].t<=g.wt){var s=g.spawns.shift();tdSpawn(g,s.type,0,s.hm);}
+ for(i=0;i<g.enemies.length;i++){
+  e=g.enemies[i];if(e.dead)continue;
+  var f=1;if(e.slowT>0){f=1-e.slow;e.slowT-=dt;}
+  e.flash-=dt;e.ph+=dt*6;
+  e.d+=e.sp*f*dt;
+  var p=tdPathPos(e.d);e.x=p[0];e.y=p[1];e.a=p[2];
+  if(e.d>=TD_LEN){
+   e.dead=true;g.lives-=e.lives;g.lost+=e.lives;g.hurt=0.5;
+   tdBurst(g,e.x,e.y,'#ff4757',10,2);
+   if(g.lives<=0){g.lives=0;g.phase='lost';g.events.push({t:'lost'});}
+  }
+ }
+ if(g.phase!=='wave'){return;}
+ for(i=0;i<g.towers.length;i++){
+  var t=g.towers[i],st=tdStats(t);
+  t.cd-=dt;if(t.cd>0)continue;
+  if(t.key==='wbc'){
+   var any=false;
+   for(j=0;j<g.enemies.length;j++){e=g.enemies[j];if(e.dead)continue;var dx=e.x-t.x,dy=e.y-t.y,rr=st.range+e.r*0.6;
+    if(dx*dx+dy*dy<=rr*rr){any=true;if(st.slow>=e.slow||e.slowT<=0){e.slow=st.slow;}e.slowT=Math.max(e.slowT,st.dur);tdHit(g,e,st.dmg);}}
+   if(any){t.cd=st.rate;tdFxAdd(g,{k:'r',x:t.x,y:t.y,r0:0.3,r1:st.range,life:0.35,max:0.35,c:'#74b9ff'});}else t.cd=0;
+   continue;
+  }
+  var tg=tdAim(g,t,st);
+  if(!tg){t.cd=0;continue;}
+  t.ang=Math.atan2(tg.y-t.y,tg.x-t.x);t.cd=st.rate;
+  if(t.key==='laser'){
+   tdFxAdd(g,{k:'b',x:t.x,y:t.y,x1:tg.x,y1:tg.y,life:0.14,max:0.14,c:'#00e5ff'});
+   tdHit(g,tg,st.dmg);
+  }else if(t.key==='ab'){
+   g.projs.push({k:'b',x:t.x+Math.cos(t.ang)*0.3,y:t.y+Math.sin(t.ang)*0.3,e:tg,dmg:st.dmg,sp:10});
+  }else{
+   g.projs.push({k:'s',x:t.x,y:t.y,e:tg,tx:tg.x,ty:tg.y,dmg:st.dmg,rad:st.rad,sp:5});
+  }
+ }
+ for(i=g.projs.length-1;i>=0;i--){
+  var q=g.projs[i],rm=false;
+  if(q.k==='b'){
+   if(q.e.dead)rm=true;else{
+    var ddx=q.e.x-q.x,ddy=q.e.y-q.y,dist=Math.sqrt(ddx*ddx+ddy*ddy),stp=q.sp*dt;
+    if(dist<=stp+0.08){tdHit(g,q.e,q.dmg);tdBurst(g,q.x,q.y,'#74b9ff',3,1.2);rm=true;}
+    else{q.x+=ddx/dist*stp;q.y+=ddy/dist*stp;}
+   }
+  }else{
+   if(!q.e.dead){q.tx=q.e.x;q.ty=q.e.y;}
+   var sx=q.tx-q.x,sy=q.ty-q.y,sd=Math.sqrt(sx*sx+sy*sy),ss=q.sp*dt;
+   if(sd<=ss+0.05){
+    for(j=0;j<g.enemies.length;j++){e=g.enemies[j];if(e.dead)continue;var ex=e.x-q.tx,ey=e.y-q.ty;if(ex*ex+ey*ey<=q.rad*q.rad)tdHit(g,e,q.dmg);}
+    tdFxAdd(g,{k:'r',x:q.tx,y:q.ty,r0:0.1,r1:q.rad,life:0.3,max:0.3,c:'#fdcb6e'});tdBurst(g,q.tx,q.ty,'#fdcb6e',8,2);
+    rm=true;
+   }else{q.x+=sx/sd*ss;q.y+=sy/sd*ss;}
+  }
+  if(rm)g.projs.splice(i,1);
+ }
+ for(i=g.enemies.length-1;i>=0;i--)if(g.enemies[i].dead)g.enemies.splice(i,1);
+ if(g.phase==='wave'&&!g.spawns.length&&!g.enemies.length){
+  if(g.wave>=TD_WAVES_N){g.phase='won';g.events.push({t:'won'});}
+  else{g.phase='build';g.qWave=0;var bonus=10+2*g.wave;g.coins+=bonus;g.projs=[];g.events.push({t:'clear',w:g.wave,bonus:bonus});}
+ }
+}
+var TD={WAVES:TD_WAVES,TOWERS:TD_TOWERS,ENEMIES:TD_ENEMIES,TILES:TD_TILES,PATH:TD_PATHSET,LEN:TD_LEN,QCAP:TD_QCAP,newGame:tdNew,step:tdStep,place:tdPlace,upgrade:tdUpgrade,upCost:tdUpCost,disc:tdDisc,sell:tdSell,startWave:tdStartWave,answer:tdAnswer,reward:tdReward,free:tdTileFree,stats:tdStats};
+
+/* --- tower defense screen --- */
+var tdUI=null;
+function tdStop(){
+ if(!tdUI)return;
+ var u=tdUI;tdUI=null;
+ if(u.raf)cancelAnimationFrame(u.raf);
+ window.removeEventListener('resize',u.onResize);
+ document.removeEventListener('visibilitychange',u.onVis);
+ if(u.ov&&u.ov.parentNode)u.ov.parentNode.removeChild(u.ov);
+ document.body.classList.remove('tdon');
+}
+function tdPickItem(){
+ var u=tdUI,kinds=['pair','fact','sort'];
+ var ok=function(i){return kinds.indexOf(i.kind)>=0&&i.pool!=='order'&&!i.fa;};
+ var pool=filtered(kinds).filter(ok);if(!pool.length)pool=ITEMS.filter(ok);
+ var main=pool.filter(function(i){return i.kind!=='sort';}),sorts=pool.filter(function(i){return i.kind==='sort';});
+ var missed=missedItems().filter(function(i){return (i.kind==='pair'||i.kind==='fact')&&ok(i);});
+ var cand,tries=0,it=null;
+ while(tries++<12){
+  var r=Math.random();
+  if(missed.length&&r<0.25)cand=missed;else if(sorts.length&&r<0.35)cand=sorts;else cand=main.length?main:pool;
+  it=cand[Math.floor(Math.random()*cand.length)];
+  if(u.recent.indexOf(it.id)<0)break;
+ }
+ u.recent.push(it.id);if(u.recent.length>14)u.recent.shift();
+ return it;
+}
+function tdAsk(purpose,after){
+ var u=tdUI,g=u.g,it=tdPickItem(),mc=makeMC(it);
+ if(!mc){return tdAsk(purpose,after);}
+ u.asking=true;
+ var ov=document.createElement('div');ov.className='tdov';u.ov=ov;
+ var tagT=purpose==='upgrade'?'Quiz discount: answer right to save '+Math.round(TD_DISC*100)+'%':(tdPaidLeft(g)>0?'Answer for coins':'Practice question (no coins)');
+ ov.innerHTML='<div class="tdq"><div class="card"><span class="tag" style="margin:0 0 6px">'+esc(tagT)+'</span><div class="q"><small>'+esc(mc.hint)+'</small>'+esc(mc.text)+'</div><div id="tdchs">'+mc.choices.map(function(c,k){return '<button class="ch" data-k="'+k+'">'+esc(c.t)+'</button>';}).join('')+'</div><div id="tdfb"></div></div></div>';
+ document.body.appendChild(ov);
+ var bs=ov.querySelectorAll('.ch'),done=false;
+ for(var b=0;b<bs.length;b++)bs[b].onclick=function(){
+  if(done)return;done=true;
+  var k=+this.getAttribute('data-k'),ok=!!mc.choices[k].ok,z;
+  for(z=0;z<bs.length;z++){bs[z].disabled=true;if(mc.choices[z].ok)bs[z].classList.add('ok');}
+  if(!ok)this.classList.add('bad');
+  record(it,ok);
+  var res=null,msg;
+  if(purpose==='upgrade'){
+   g.asked++;if(ok){g.right++;g.streak++;if(g.streak>g.bestStreak)g.bestStreak=g.streak;}else g.streak=0;
+   msg=ok?'\u2705 Correct! Upgrade discount earned.':'\u274C Not quite. You pay the full price.';
+  }else{
+   res=tdAnswer(g,ok,true);
+   msg=ok?'\u2705 Correct! '+(res.paid?'+'+res.reward+' coins':'No coins, but great practice')+(g.streak>1?' (streak '+g.streak+')':''):'\u274C Not quite. '+(res.paid?'+'+res.reward+' coins. ':'');
+  }
+  if(ok){addXP(2);sOk();if(g.streak===5)badge('s5');if(g.streak===10)badge('s10');if(g.streak===20)badge('s20');if(g.streak>S.bestStreak)S.bestStreak=g.streak;}
+  else{sBad();var key=it.id,found=false;g.missed.forEach(function(m){if(m.id===key)found=true;});
+   if(!found){var right=mc.choices.filter(function(c){return c.ok;})[0];g.missed.push({id:key,q:mc.text,a:right?right.t:''});}}
+  save();
+  $('tdfb').innerHTML='<div class="fb '+(ok?'ok':'bad')+'">'+esc(msg)+' '+(ok?'':esc(mc.why))+'</div><p><button class="btn" id="tdnx">Continue</button></p>';
+  $('tdnx').onclick=function(){if(ov.parentNode)ov.parentNode.removeChild(ov);u.ov=null;u.asking=false;u.last=0;after(ok);tdSync();};
+ };
+}
+function tdSay(text,ms){
+ var u=tdUI;if(!u)return;var m=$('tdmsg');if(!m)return;
+ m.textContent=text;m.className='tdmsg';
+ if(u.msgT)clearTimeout(u.msgT);
+ u.msgT=setTimeout(function(){var mm=$('tdmsg');if(mm)mm.className='tdmsg off';},ms||3200);
+}
+function tdEnemyLine(w){
+ var seen={},names=[];
+ TD_WAVES[w-1].g.forEach(function(gr){if(!seen[gr[0]]){seen[gr[0]]=1;names.push(TD_ENEMIES[gr[0]].name);}});
+ return names.join(', ');
+}
+function tdFinish(kind){
+ var u=tdUI;if(!u)return;
+ var g=u.g,won=kind==='won',cleared=won?TD_WAVES_N:(g.phase==='build'?g.wave:Math.max(0,g.wave-1));
+ var xp=cleared*4+(won?30:0);
+ if(cleared>(S.best.td||0))S.best.td=cleared;
+ if(won){badge('tdwin');badge('tdboss');}
+ addXP(xp);save();
+ var missed=g.missed.slice(),asked=g.asked,right=g.right,lives=g.lives,lost=g.lost;
+ tdStop();
+ if(won)sWin();else sBad();
+ shell('Defend the Cell','<div class="card"><div class="big">'+(won?'\uD83C\uDFF0':'\uD83E\uDDA0')+'</div><h2>'+(won?(lost===0?'Flawless! The Cell is safe!':'The Cell is saved!'):'The germs broke in!')+'</h2>'+
+  '<div class="row"><div class="stat"><b>'+cleared+'/'+TD_WAVES_N+'</b><span>Waves cleared</span></div><div class="stat"><b>'+lives+'</b><span>Lives left</span></div><div class="stat"><b>'+right+'/'+asked+'</b><span>Questions right</span></div><div class="stat"><b>+'+xp+'</b><span>XP</span></div></div>'+
+  (missed.length?'<h3>Questions to review</h3><ul style="padding-left:18px">'+missed.map(function(m){return '<li class="tl"><b>'+esc(m.q)+'</b><br>Answer: '+esc(m.a)+'</li>';}).join('')+'</ul><p class="tl">These are saved in Missed Items.</p>':(asked?'<p>You answered every question right. Amazing!</p>':'<p class="tl">Answer questions to earn coins next time.</p>'))+
+  '<p><button class="btn g" id="tdagain">Play again</button> <button class="btn w" id="hm">Home</button>'+(missed.length?' <button class="btn o" id="tdrev">Review missed</button>':'')+'</p></div>');
+ $('tdagain').onclick=function(){go('td');};$('hm').onclick=home;
+ var rv=$('tdrev');if(rv)rv.onclick=function(){go('review');};
+}
+function tdRun(){
+ stopTimer();
+ var g=tdNew();
+ var u={g:g,selType:'ab',selTower:null,hover:null,recent:[],asking:false,paused:false,speed:1,raf:0,last:0,T:40,dpr:1,infoKey:'',ov:null,quitT:0,msgT:0,sig:'',time:0};
+ tdUI=u;
+ document.body.classList.add('tdon');
+ app.innerHTML='<div class="tdwrap" id="tdw"><div class="tdbar"><button class="back" id="tdquit">\u2715 Quit</button><div class="sp"></div><span class="pill" id="tdwv"></span><span class="pill" id="tdco"></span><span class="pill" id="tdli"></span><span class="pill" id="tdst"></span></div>'+
+  '<div class="tdmain"><div class="tdcv" id="tdcw"><canvas id="tdcv"></canvas><div class="tdmsg" id="tdmsg"></div></div>'+
+  '<div class="tdside"><button class="btn tdans" id="tdans"></button><div class="tdctl"><button class="btn g" id="tdgo"></button><button class="btn o" id="tdsp">Speed 1x</button><button class="btn w" id="tdps">\u23F8 Pause</button></div>'+
+  '<div class="tdshop" id="tdshop" style="margin-top:8px"></div><div class="card tdinfo" id="tdinfo"></div></div></div></div>';
+ $('tdshop').innerHTML=TD_KEYS.map(function(k){var d=TD_TOWERS[k];return '<button class="tdt" data-k="'+k+'"><span class="e">'+d.emoji+'</span>'+esc(d.name)+'<br>\uD83E\uDE99 '+d.cost+'</button>';}).join('');
+ window.scrollTo(0,0);
+ u.cv=$('tdcv');u.ctx=u.cv.getContext('2d');
+ u.onResize=function(){tdResize();};
+ u.onVis=function(){if(document.hidden&&tdUI){tdUI.paused=true;tdSync();}};
+ window.addEventListener('resize',u.onResize);
+ document.addEventListener('visibilitychange',u.onVis);
+ tdResize();
+ /* input */
+ function tileOf(ev){var r=u.cv.getBoundingClientRect();return [Math.floor((ev.clientX-r.left)/r.width*TD_COLS),Math.floor((ev.clientY-r.top)/r.height*TD_ROWS)];}
+ u.cv.addEventListener('pointerdown',function(ev){
+  ev.preventDefault();if(u.asking||u.done)return;
+  var t=tileOf(ev),c=t[0],r=t[1];
+  if(c<0||r<0||c>=TD_COLS||r>=TD_ROWS)return;
+  var tw=tdTowerAt(g,c,r);
+  if(tw){u.selTower=tw;u.selType=null;u.infoKey='';tdSync();return;}
+  if(u.selType){
+   if(TD_PATHSET[c+','+r]){tdSay('Towers go on the open tiles beside the path.');return;}
+   var d=TD_TOWERS[u.selType];
+   if(g.coins<d.cost){tdSay('You need '+d.cost+' coins. Tap "Answer a question" to earn more!');return;}
+   var nt=tdPlace(g,u.selType,c,r);
+   if(nt){u.selTower=nt;u.selType=null;u.infoKey='';tdBurst(g,nt.x,nt.y,'#ffeaa7',10,1.5);sOk();tdSync();}
+   return;
+  }
+  u.selTower=null;u.infoKey='';tdSync();
+ });
+ u.cv.addEventListener('pointermove',function(ev){if(ev.pointerType==='mouse')u.hover=tileOf(ev);});
+ u.cv.addEventListener('pointerleave',function(){u.hover=null;});
+ $('tdshop').onclick=function(ev){
+  var b=ev.target;while(b&&b!==this&&!b.getAttribute('data-k'))b=b.parentNode;
+  if(!b||b===this||u.asking)return;
+  var k=b.getAttribute('data-k');
+  u.selType=(u.selType===k?null:k);u.selTower=null;u.infoKey='';
+  if(u.selType&&g.coins<TD_TOWERS[k].cost)tdSay('You need '+TD_TOWERS[k].cost+' coins. Answer a question to earn more!');
+  else if(u.selType)tdSay('Now tap a tile with a purple dot to build.');
+  tdSync();
+ };
+ $('tdans').onclick=function(){if(u.asking||u.done)return;tdAsk('coins',function(){});};
+ $('tdgo').onclick=function(){
+  if(u.asking||u.done)return;
+  if(tdStartWave(g)){u.selType=null;u.infoKey='';tdSay('Wave '+g.wave+': '+tdEnemyLine(g.wave)+(TD_WAVES[g.wave-1].g[0][0].indexOf('boss')===0?'. BOSS!':''),3600);tdSync();}
+ };
+ $('tdsp').onclick=function(){u.speed=u.speed===1?2:1;tdSync();};
+ $('tdps').onclick=function(){if(u.asking||u.done)return;u.paused=!u.paused;tdSync();};
+ $('tdquit').onclick=function(){
+  if(u.asking)return;
+  if(!u.quitT||Date.now()-u.quitT>3000){u.quitT=Date.now();this.textContent='Sure? Tap again';return;}
+  var cl=g.phase==='build'?g.wave:Math.max(0,g.wave-1);
+  if(cl>(S.best.td||0))S.best.td=cl;
+  addXP(cl*4);save();home();
+ };
+ tdSay('Answer a question to earn coins, then build towers beside the path. Stop the germs from reaching the Cell!',5000);
+ tdSync();
+ u.raf=requestAnimationFrame(tdLoop);
+}
+function tdResize(){
+ var u=tdUI;if(!u)return;
+ var wide=window.innerWidth>=860,w=$('tdw');if(!w)return;
+ w.className='tdwrap'+(wide?' wide':'');
+ var availW=Math.max(240,app.clientWidth-24),cssW;
+ if(wide){var h=Math.max(420,Math.min(720,window.innerHeight-110));cssW=Math.min(h*TD_COLS/TD_ROWS,availW-360);}
+ else cssW=Math.min(availW,460,Math.max(240,(window.innerHeight-170)*TD_COLS/TD_ROWS));
+ cssW=Math.floor(cssW);var cssH=Math.floor(cssW*TD_ROWS/TD_COLS),dpr=Math.min(window.devicePixelRatio||1,2);
+ u.T=cssW/TD_COLS;u.dpr=dpr;
+ u.cv.width=Math.round(cssW*dpr);u.cv.height=Math.round(cssH*dpr);u.cv.style.width=cssW+'px';u.cv.style.height=cssH+'px';
+ $('tdcw').style.width=cssW+'px';
+}
+function tdLoop(now){
+ var u=tdUI;if(!u)return;
+ if(!u.last)u.last=now;
+ var dt=Math.min(0.05,(now-u.last)/1000);u.last=now;
+ u.time+=dt;
+ var g=u.g;
+ if(!u.paused&&!u.asking&&!u.done){
+  var total=dt*u.speed,n=Math.max(1,Math.ceil(total/(1/60))),h=total/n;
+  for(var i=0;i<n;i++)tdStep(g,h);
+ }
+ while(g.events.length){
+  var ev=g.events.shift();
+  if(ev.t==='clear'){if(ev.w===5)badge('tdboss');tdSay('Wave '+ev.w+' cleared! +'+ev.bonus+' coins. Answer questions and build, then start the next wave.',4200);sWin();
+   var nx=g.wave+1;if(nx===5||nx===10)tdSay('Wave '+ev.w+' cleared! Next up: a BOSS wave. Get ready!',4500);}
+  else if(ev.t==='won'||ev.t==='lost'){u.done=true;var kind=ev.t;setTimeout(function(){if(tdUI===u)tdFinish(kind);},kind==='won'?700:900);}
+ }
+ tdDraw();
+ tdSync();
+ u.raf=requestAnimationFrame(tdLoop);
+}
+function tdSetTxt(id,txt){var e=$(id);if(e&&e.textContent!==txt)e.textContent=txt;}
+function tdInfoStats(t,lv){
+ var s=TD_TOWERS[t].lv[lv],o='Damage '+s.dmg+', range '+s.range+', '+(1/s.rate).toFixed(1)+' shots/s';
+ if(t==='wbc')o='Slows '+Math.round(s.slow*100)+'% for '+s.dur+'s, range '+s.range+', pulse every '+s.rate+'s';
+ if(t==='vac')o+=', blast size '+s.rad;
+ return o;
+}
+function tdSync(){
+ var u=tdUI;if(!u||!$('tdwv'))return;
+ var g=u.g,q=(g.phase==='build'?g.wave+1:g.wave);
+ tdSetTxt('tdwv','\uD83E\uDDA0 Wave '+Math.min(q,TD_WAVES_N)+'/'+TD_WAVES_N);
+ tdSetTxt('tdco','\uD83E\uDE99 '+g.coins);
+ tdSetTxt('tdli','\u2764\uFE0F '+g.lives);
+ tdSetTxt('tdst','\uD83D\uDD25 '+g.streak);
+ var go=$('tdgo');
+ var gt=g.phase==='build'?'\u25B6 Start Wave '+(g.wave+1):(g.phase==='wave'?'Wave '+g.wave+' running...':'Done');
+ tdSetTxt('tdgo',gt);go.disabled=(g.phase!=='build'||u.asking);
+ tdSetTxt('tdsp','Speed '+u.speed+'x');
+ tdSetTxt('tdps',u.paused?'\u25B6 Resume':'\u23F8 Pause');
+ var left=tdPaidLeft(g),a=$('tdans'),html;
+ if(left>0)html='\uD83E\uDDE0 Answer a question for coins<small>Right answer: +'+tdReward(g,true)+' coins ('+left+' paid question'+(left>1?'s':'')+' left this wave)</small>';
+ else html='\uD83E\uDDE0 Practice question<small>No more coins this wave, but you still earn XP and learn!</small>';
+ if(a.getAttribute('data-h')!==html){a.innerHTML=html;a.setAttribute('data-h',html);}
+ a.disabled=!!u.asking;
+ var qb=$('tdquit');if(u.quitT&&Date.now()-u.quitT>3000){u.quitT=0;qb.textContent='\u2715 Quit';}
+ var sb=$('tdshop').children,i;
+ for(i=0;i<sb.length;i++){var k=sb[i].getAttribute('data-k');sb[i].className='tdt'+(u.selType===k?' on':'')+(g.coins<TD_TOWERS[k].cost?' no':'');}
+ /* info panel */
+ var key=(u.selTower?'t'+u.selTower.id+'_'+u.selTower.lvl:'s'+u.selType),info=$('tdinfo');
+ if(u.infoKey!==key){
+  u.infoKey=key;
+  if(u.selTower){
+   var t=u.selTower,d=TD_TOWERS[t.key],maxed=t.lvl>=d.up.length;
+   info.innerHTML='<b>'+d.emoji+' '+esc(d.name)+'</b> <span class="tag">Level '+(t.lvl+1)+'/3</span><br>'+esc(tdInfoStats(t.key,t.lvl))+
+    (maxed?'<br><b>Max level!</b>':'<br>Next level: '+esc(tdInfoStats(t.key,t.lvl+1)))+
+    '<div class="row" style="margin-top:8px">'+(maxed?'':'<button class="btn g" id="tdup"></button>')+'<button class="btn r" id="tdsell"></button></div>';
+   var ub=$('tdup');
+   if(ub)ub.onclick=function(){
+    if(u.asking||u.done)return;
+    var cost=tdUpCost(t),dc=tdDisc(cost);
+    if(g.coins<dc){tdSay('Upgrade needs '+dc+' coins (or '+cost+' without the quiz). Answer questions to earn more!');return;}
+    tdAsk('upgrade',function(ok){
+     var price=ok?dc:cost;
+     if(g.coins<price){tdSay('The full price is '+cost+' coins and you have '+g.coins+'. Earn more coins and try again.',4200);return;}
+     if(tdUpgrade(g,t,price)){tdBurst(g,t.x,t.y,'#55efc4',14,2);tdFxAdd(g,{k:'r',x:t.x,y:t.y,r0:0.2,r1:0.9,life:0.4,max:0.4,c:'#55efc4'});tdSay(d.name+' is now level '+(t.lvl+1)+'! You paid '+price+' coins.');u.infoKey='';}
+    });
+   };
+   $('tdsell').onclick=function(){if(u.asking)return;var v=tdSell(g,t);u.selTower=null;u.infoKey='';tdSay('Sold for '+v+' coins.');tdSync();};
+  }else if(u.selType){
+   var d2=TD_TOWERS[u.selType];
+   info.innerHTML='<b>'+d2.emoji+' '+esc(d2.name)+'</b> costs \uD83E\uDE99 '+d2.cost+'<br>'+esc(d2.desc)+'<br>'+esc(tdInfoStats(u.selType,0))+'<br><span class="tl">Tap a tile with a purple dot to build. Tap a tower to upgrade or sell it.</span>';
+  }else{
+   info.innerHTML='<b>How to play</b><br>1. Answer questions to earn coins.<br>2. Pick a tower and tap a tile beside the path to build it.<br>3. Start the wave. Right answers give bonus coins for streaks!<br>4. Tap a tower to upgrade it (quiz discount) or sell it.';
+  }
+ }
+ if(u.selTower){
+  var t2=u.selTower,d3=TD_TOWERS[t2.key],ub2=$('tdup'),sl=$('tdsell');
+  if(ub2){var c2=tdUpCost(t2);tdSetTxt('tdup','\u2B06 Upgrade \uD83E\uDE99'+c2+' (quiz: '+tdDisc(c2)+' if right)');ub2.style.opacity=g.coins<tdDisc(c2)?0.5:1;}
+  if(sl)tdSetTxt('tdsell','Sell +'+tdSellValue(t2));
+ }
+}
+/* --- drawing --- */
+function tdText(c,u,s,x,y,px,col,bold){c.save();c.setTransform(u.dpr,0,0,u.dpr,0,0);c.font=(bold?'bold ':'')+px+'px "Trebuchet MS",sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillStyle=col;c.fillText(s,x*u.T,y*u.T);c.restore();}
+function tdCircle(c,x,y,r,fill,stroke,lw){c.beginPath();c.arc(x,y,r,0,6.2832);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.lineWidth=lw||0.05;c.strokeStyle=stroke;c.stroke();}}
+function tdDrawTower(c,u,t,x,y,ang,alpha){
+ var d=TD_TOWERS[t.key||t],key=t.key||t;
+ c.save();c.globalAlpha=alpha||1;
+ c.fillStyle='rgba(60,40,120,.25)';c.beginPath();c.rect(x-0.44,y-0.4,0.88,0.88);c.fill();
+ c.fillStyle='#fff';c.strokeStyle='#5b3df5';c.lineWidth=0.05;
+ c.beginPath();c.rect(x-0.42,y-0.44,0.84,0.84);c.fill();c.stroke();
+ c.translate(x,y);c.rotate(ang);
+ if(key==='ab'){c.fillStyle='#1b4f8f';c.fillRect(0,-0.07,0.42,0.14);tdCircle(c,0,0,0.27,d.color,'#1b4f8f',0.05);c.fillStyle='#fff';c.fillRect(-0.08,-0.03,0.16,0.06);}
+ else if(key==='laser'){c.fillStyle='#636e72';c.fillRect(0,-0.05,0.5,0.1);tdCircle(c,0,0,0.29,d.color,'#000',0.04);tdCircle(c,0,0,0.15,'#00e5ff','#fff',0.03);}
+ else if(key==='vac'){c.fillStyle='#d35400';c.fillRect(0,-0.1,0.4,0.2);c.fillStyle='#fff';c.fillRect(0.3,-0.14,0.05,0.28);tdCircle(c,0,0,0.26,d.color,'#a04000',0.05);tdCircle(c,0,0,0.1,'#ffeaa7');}
+ else{c.rotate(-ang);tdCircle(c,0,0,0.29,'#fff','#b2bec3',0.05);tdCircle(c,-0.05,0,0.11,'#a29bfe');tdCircle(c,0.09,0.05,0.09,'#a29bfe');tdCircle(c,0.02,-0.1,0.07,'#a29bfe');}
+ c.restore();
+ if(t.lvl!=null){for(var i=0;i<=t.lvl;i++)tdCircle(c,x-0.15+i*0.15,y+0.36,0.05,'#ffbe0b','#b8860b',0.02);}
+}
+function tdDrawEnemy(c,u,e){
+ var b=TD_ENEMIES[e.type],col=e.flash>0?'#ffffff':b.col,r=e.r,x=e.x,y=e.y,w=Math.sin(e.ph)*0.03,i;
+ if(e.slowT>0)tdCircle(c,x,y,r+0.09,'rgba(116,185,255,.35)','#74b9ff',0.03);
+ c.save();c.translate(x,y);
+ if(e.type==='speedy'){
+  c.rotate(e.a);c.strokeStyle=col;c.lineWidth=0.05;c.beginPath();c.moveTo(-r,0);c.quadraticCurveTo(-r-0.15,0.12*Math.sin(e.ph),-r-0.3,0);c.stroke();
+  c.beginPath();c.ellipse(0,0,r+0.1,r*0.7,0,0,6.2832);c.fillStyle=col;c.fill();c.strokeStyle='#b36b00';c.lineWidth=0.04;c.stroke();
+  tdCircle(c,0.1,-0.05,0.06,'#fff');tdCircle(c,0.1,0.06,0.06,'#fff');tdCircle(c,0.12,-0.05,0.03,'#000');tdCircle(c,0.12,0.06,0.03,'#000');
+ }else if(e.type==='virus'||e.type==='boss2'){
+  var n=e.type==='boss2'?12:9;
+  c.strokeStyle=e.flash>0?'#fff':'#5e3370';c.lineWidth=e.type==='boss2'?0.07:0.05;
+  for(i=0;i<n;i++){var a=i/n*6.2832+e.ph*0.05;c.beginPath();c.moveTo(Math.cos(a)*r*0.9,Math.sin(a)*r*0.9);c.lineTo(Math.cos(a)*(r+0.14),Math.sin(a)*(r+0.14));c.stroke();tdCircle(c,Math.cos(a)*(r+0.15),Math.sin(a)*(r+0.15),e.type==='boss2'?0.06:0.045,'#ff7675');}
+  tdCircle(c,0,0,r+w,col,'#3d1f52',0.05);
+  tdCircle(c,-r*0.32,-r*0.1,r*0.2,'#fff');tdCircle(c,r*0.32,-r*0.1,r*0.2,'#fff');tdCircle(c,-r*0.32,-r*0.06,r*0.09,'#000');tdCircle(c,r*0.32,-r*0.06,r*0.09,'#000');
+  c.strokeStyle='#000';c.lineWidth=0.04;c.beginPath();c.moveTo(-r*0.55,-r*0.42);c.lineTo(-r*0.12,-r*0.28);c.moveTo(r*0.55,-r*0.42);c.lineTo(r*0.12,-r*0.28);c.stroke();
+ }else if(e.type==='splitter'){
+  tdCircle(c,-0.09,0,r*0.85+w,col,'#a3145f',0.04);tdCircle(c,0.09,0,r*0.85-w,col,'#a3145f',0.04);
+  tdCircle(c,-0.06,-0.04,0.07,'#fff');tdCircle(c,0.09,-0.04,0.07,'#fff');tdCircle(c,-0.05,-0.03,0.035,'#000');tdCircle(c,0.1,-0.03,0.035,'#000');
+ }else if(e.type==='mini'){
+  tdCircle(c,0,0,r+w,col,'#c2185b',0.03);tdCircle(c,-0.05,-0.02,0.04,'#fff');tdCircle(c,0.05,-0.02,0.04,'#fff');
+ }else if(e.type==='boss1'){
+  c.strokeStyle=e.flash>0?'#fff':'#7b241c';c.lineWidth=0.06;
+  for(i=0;i<10;i++){var a2=i/10*6.2832+e.ph*0.04;c.beginPath();c.moveTo(Math.cos(a2)*r,Math.sin(a2)*r);c.lineTo(Math.cos(a2)*(r+0.16),Math.sin(a2)*(r+0.16));c.stroke();}
+  tdCircle(c,0,0,r+w,col,'#641e16',0.06);
+  tdCircle(c,-r*0.35,-r*0.1,r*0.22,'#fff');tdCircle(c,r*0.35,-r*0.1,r*0.22,'#fff');tdCircle(c,-r*0.33,-r*0.05,r*0.1,'#000');tdCircle(c,r*0.33,-r*0.05,r*0.1,'#000');
+  c.strokeStyle='#000';c.lineWidth=0.05;c.beginPath();c.moveTo(-r*0.6,-r*0.5);c.lineTo(-r*0.1,-r*0.3);c.moveTo(r*0.6,-r*0.5);c.lineTo(r*0.1,-r*0.3);c.stroke();
+  c.beginPath();c.arc(0,r*0.45,r*0.25,3.4,6.0);c.stroke();
+ }else{
+  tdCircle(c,0,0,r+w,col,'#1e8449',0.04);
+  tdCircle(c,-0.09,-0.05,0.07,'#fff');tdCircle(c,0.09,-0.05,0.07,'#fff');tdCircle(c,-0.08,-0.04,0.035,'#000');tdCircle(c,0.1,-0.04,0.035,'#000');
+  c.strokeStyle='#1e8449';c.lineWidth=0.03;c.beginPath();c.arc(0,0.06,0.1,0.3,2.8);c.stroke();
+ }
+ c.restore();
+ if(e.hp<e.max||b.boss){
+  var bw=b.boss?0.9:0.5,by=y-r-(b.boss?0.28:0.16);
+  c.fillStyle='rgba(0,0,0,.55)';c.fillRect(x-bw/2-0.02,by-0.02,bw+0.04,0.12);
+  var f=Math.max(0,e.hp/e.max);c.fillStyle=f>0.5?'#2ecc71':(f>0.25?'#f1c40f':'#e74c3c');c.fillRect(x-bw/2,by,bw*f,0.08);
+ }
+}
+function tdDraw(){
+ var u=tdUI;if(!u)return;
+ var g=u.g,c=u.ctx,T=u.T,dpr=u.dpr,i,j;
+ c.setTransform(dpr*T,0,0,dpr*T,0,0);
+ c.clearRect(0,0,TD_COLS,TD_ROWS);
+ c.fillStyle='#e9defc';c.fillRect(0,0,TD_COLS,TD_ROWS);
+ for(j=0;j<TD_ROWS;j++)for(i=0;i<TD_COLS;i++){
+  if(TD_PATHSET[i+','+j])continue;
+  c.fillStyle=((i+j)%2)?'#f0e8ff':'#e4d8fb';c.fillRect(i,j,1,1);
+ }
+ c.lineCap='round';c.lineJoin='round';
+ c.beginPath();c.moveTo(TD_WP[0][0],TD_WP[0][1]);for(i=1;i<TD_WP.length;i++)c.lineTo(TD_WP[i][0],TD_WP[i][1]);
+ c.strokeStyle='#d96b7e';c.lineWidth=0.96;c.stroke();
+ c.strokeStyle='#ffb3c0';c.lineWidth=0.8;c.stroke();
+ c.setLineDash([0.18,0.32]);c.lineDashOffset=-(u.time*0.6);c.strokeStyle='#ffd9df';c.lineWidth=0.09;c.stroke();c.setLineDash([]);
+ /* entrance arrows */
+ c.fillStyle='rgba(120,20,40,.55)';for(i=0;i<3;i++){var ax=0.1+i*0.3;c.beginPath();c.moveTo(ax,1.3);c.lineTo(ax+0.2,1.5);c.lineTo(ax,1.7);c.closePath();c.fill();}
+ /* cell */
+ var ce=TD_WP[TD_WP.length-1],cr=0.55+Math.sin(u.time*2)*0.02;
+ tdCircle(c,ce[0],ce[1]-0.28,cr,g.hurt>0?'#ff7675':'#a8f0bd',g.hurt>0?'#c0392b':'#2e9e5b',0.08);
+ tdCircle(c,ce[0],ce[1]-0.28,0.26,'#6c5ce7','#3d2fa8',0.04);
+ tdText(c,u,String(g.lives),ce[0],ce[1]-0.28,Math.max(11,T*0.32),'#fff',true);
+ tdText(c,u,'CELL',ce[0],ce[1]+0.22,Math.max(8,T*0.2),'#1e6b3f',true);
+ /* placement dots */
+ if(u.selType&&!u.asking){for(i=0;i<TD_TILES.length;i++){var tl=TD_TILES[i];if(tdTileFree(g,tl[0],tl[1])){tdCircle(c,tl[0]+0.5,tl[1]+0.5,0.07+0.02*Math.sin(u.time*4),'rgba(91,61,245,.5)');}}}
+ /* hover ghost */
+ if(u.hover&&u.selType&&tdTileFree(g,u.hover[0],u.hover[1])){
+  var hx=u.hover[0]+0.5,hy=u.hover[1]+0.5,hs=TD_TOWERS[u.selType].lv[0];
+  tdCircle(c,hx,hy,hs.range,'rgba(91,61,245,.12)','rgba(91,61,245,.5)',0.03);tdDrawTower(c,u,u.selType,hx,hy,-1.57,0.7);
+ }
+ /* range of selected */
+ if(u.selTower){var st=tdStats(u.selTower);tdCircle(c,u.selTower.x,u.selTower.y,st.range,'rgba(91,61,245,.14)','rgba(91,61,245,.65)',0.04);}
+ for(i=0;i<g.towers.length;i++){var t=g.towers[i];tdDrawTower(c,u,t,t.x,t.y,t.ang,1);if(t===u.selTower){c.strokeStyle='#ff9f1c';c.lineWidth=0.07;c.strokeRect(t.x-0.46,t.y-0.48,0.92,0.92);}}
+ for(i=0;i<g.enemies.length;i++)if(g.enemies[i].d>0.1)tdDrawEnemy(c,u,g.enemies[i]);
+ for(i=0;i<g.projs.length;i++){var p=g.projs[i];if(p.k==='b'){tdCircle(c,p.x,p.y,0.07,'#dff9fb','#0984e3',0.03);}else{tdCircle(c,p.x,p.y,0.13,'#ffeaa7','#e17055',0.04);}}
+ for(i=0;i<g.fx.length;i++){
+  var f=g.fx[i],k=f.life/f.max;
+  if(f.k==='p'){c.globalAlpha=Math.max(0,k);c.fillStyle=f.c;c.fillRect(f.x-f.s/2,f.y-f.s/2,f.s,f.s);c.globalAlpha=1;}
+  else if(f.k==='r'){var rr=f.r0+(f.r1-f.r0)*(1-k);c.globalAlpha=Math.max(0,k)*0.8;c.beginPath();c.arc(f.x,f.y,rr,0,6.2832);c.strokeStyle=f.c;c.lineWidth=0.08;c.stroke();c.globalAlpha=1;}
+  else if(f.k==='b'){c.globalAlpha=Math.max(0,k);c.beginPath();c.moveTo(f.x,f.y);c.lineTo(f.x1,f.y1);c.strokeStyle=f.c;c.lineWidth=0.12;c.stroke();c.strokeStyle='#fff';c.lineWidth=0.04;c.stroke();c.globalAlpha=1;}
+  else if(f.k==='t'){c.globalAlpha=Math.max(0,k);tdText(c,u,f.text,f.x,f.y,Math.max(10,T*0.28),f.c,true);c.globalAlpha=1;}
+ }
+ if(g.hurt>0){c.fillStyle='rgba(255,0,0,'+(g.hurt*0.25)+')';c.fillRect(0,0,TD_COLS,TD_ROWS);}
+ if(u.paused){c.fillStyle='rgba(29,27,58,.55)';c.fillRect(0,0,TD_COLS,TD_ROWS);tdText(c,u,'PAUSED',TD_COLS/2,TD_ROWS/2,Math.max(24,T*0.7),'#fff',true);}
+}
+
+/* ---------- boot + test hooks ---------- */
+window.SamGame={TD:TD,tdUI:function(){return tdUI;},items:ITEMS,makeMC:makeMC,state:function(){return S;},home:home,go:go,defOf:defOf,
+ coverage:function(){
+  var out={total:ITEMS.length,noPath:[],terms:PAIRS.length,facts:0,sorts:0};
+  ITEMS.forEach(function(it){
+   if(it.kind==='fact') out.facts++;
+   if(it.kind==='sort') out.sorts++;
+   var ok=false;
+   if(it.kind==='pair'||it.kind==='fact'||it.kind==='sort') ok=!!makeMC(it);
+   else ok=it.kind==='goal';
+   if(!ok) out.noPath.push(it.id);
+  });
+  return out;}};
+if(/selftest=1/.test(location.search)){
+ var lines=[], bad=0;
+ try{
+  var cov=window.SamGame.coverage();
+  lines.push('items '+cov.total+' pairs '+cov.terms+' facts '+cov.facts+' sorts '+cov.sorts);
+  lines.push('nopath '+(cov.noPath.join(',')||'none'));
+  if(PAIRS.length!==26){bad++; lines.push('paircount '+PAIRS.length);}
+  var termSet={};
+  CE_VERBATIM.forEach(function(row,i){
+   termSet[row[0]]=1;
+   if(!PAIRS[i]||PAIRS[i].term!==row[0]||PAIRS[i].def!==row[1]){bad++; lines.push('verbatim '+row[0]);}
+  });
+  var slots={};
+  for(var n=0;n<40;n++){
+   var mc0=makeMC(PAIRS[0],'tdef');
+   for(var c=0;c<mc0.choices.length;c++) if(mc0.choices[c].ok) slots[c]=1;
+  }
+  var slotKeys=Object.keys(slots);
+  lines.push('slots '+slotKeys.join(','));
+  if(slotKeys.length<2){bad++; lines.push('shuffle stuck');}
+  ITEMS.forEach(function(it){
+   if(it.kind!=='pair'&&it.kind!=='fact'&&it.kind!=='sort') return;
+   var dirs=it.kind==='pair'?['tdef','dterm']:[null];
+   dirs.forEach(function(dir){
+    var mc=makeMC(it, dir);
+    if(!mc||!mc.choices||mc.choices.length<2){bad++; lines.push('mc fail '+it.id); return;}
+    var oks=mc.choices.filter(function(ch){return ch.ok;});
+    if(oks.length!==1){bad++; lines.push('okcount '+it.id+' '+oks.length);}
+    var seen={};
+    mc.choices.forEach(function(ch){
+     if(!ch.t){bad++; lines.push('empty '+it.id);}
+     if(seen[ch.t]){bad++; lines.push('dup '+it.id+' '+ch.t);}
+     seen[ch.t]=1;
+    });
+    if(it.kind==='fact'&&!termSet[it.a]){bad++; lines.push('fact term '+it.id+' '+it.a);}
+    if(it.kind==='fact'&&mc.choices.length!==4){bad++; lines.push('fact n '+it.id+' '+mc.choices.length);}
+    if(it.kind==='pair'&&mc.choices.length!==4){bad++; lines.push('pair n '+it.id+' '+mc.choices.length);}
+   });
+  });
+  var blob=CE_VERBATIM.map(function(r){return r[0]+' '+r[1];}).join('\n')+'\n'+SAM_FACTS.map(function(f){return f.q+' '+f.why;}).join('\n');
+  if(blob.indexOf('\u2014')>=0||blob.indexOf('\u2013')>=0){bad++; lines.push('dash in data');}
+  var g=TD.newGame({noFx:true,coins:500});
+  var placed=0, keys=['ab','wbc','laser','vac'];
+  TD.TILES.forEach(function(tl){ if(placed<4 && TD.free(g,tl[0],tl[1])){ if(TD.place(g,keys[placed],tl[0],tl[1])) placed++; }});
+  lines.push('placed '+placed+' coins '+g.coins);
+  if(!TD.startWave(g)) lines.push('wave failed');
+  var steps; for(steps=0; steps<8000 && g.phase==='wave'; steps++) TD.step(g,0.05);
+  lines.push('phase '+g.phase+' wave '+g.wave+' lives '+g.lives+' kills '+g.kills+' steps '+steps);
+  if(placed!==4 || g.phase==='wave') bad++;
+  lines.push('mcbad '+bad);
+  lines.push(bad===0 ? 'SELFTEST OK' : 'SELFTEST ISSUE');
+ }catch(err){ lines.push('EX '+err.message+' '+err.stack); }
+ document.body.innerHTML='<pre id="selftest">'+lines.join('\n')+'</pre>';
+} else home();
+})();
+
+</script>
+</body>
+</html>
