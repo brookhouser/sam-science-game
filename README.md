@@ -7,3 +7,5 @@ Progress saves in the browser (localStorage). No external dependencies.
 Lessons 11 and 12 (West Africa) have their own game at `west-africa/`: https://brookhouser.github.io/sam-science-game/west-africa/
 
 Cells, organelles, and ecosystems have their own game at `cells-ecosystems/`: https://brookhouser.github.io/sam-science-game/cells-ecosystems/
+
+Size and roots vocabulary has its own game at `vocab-size-words/`: https://brookhouser.github.io/sam-science-game/vocab-size-words/
